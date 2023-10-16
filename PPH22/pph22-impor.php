@@ -94,7 +94,7 @@
                             <label class="col-sm-3 col-form-label ">Bea Masuk (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle" id="persenmasuk" value="10">
+                                    <input type="text" class="form-control  border border-secondary-subtle" id="persenmasuk" value="10" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
@@ -111,7 +111,7 @@
                             <label class="col-sm-3 col-form-label ">Bea Tambahan Lainnya (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle" id="persentambah" value="6">
+                                    <input type="text" class="form-control  border border-secondary-subtle" id="persentambah" value="6" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>

@@ -25,18 +25,16 @@
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
                                 <select class="form-select border border-secondary shadow" id="jenispajak">
-
-                                    <option value="PPH22-impor.php">PPH 22 Atas Barang Impor</option>
-                                    <option value="PPH22-pemerintah.php">PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
-                                    <option value="PPH22-kertas.php">PPH 22 Atas Penjualan Kertas Dalam Negeri</option>
-                                    <option value="PPH22-semen.php" selected>PPH 22 Atas Penjualan Semen Dalam Negeri</option>
-                                    <option value="PPH22-baja.php">PPH 22 Atas Penjualan Baja Dalam Negeri</option>
-                                    <option value="PPH22-rokok.php">PPH 22 Atas Penjualan Rokok Dalam Negeri</option>
-                                    <option value="PPH22-otomotif.php">PPH 22 Atas Penjualan Otomotif Dalam Negeri</option>
-                                    <option value="PPH22-minyak.php">PPH 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
-                                    <option value="PPH22-bumn.php">PPH 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
-                                    <option value="PPH22-kehutanan.php">PPH 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
-                                    </option>
+                                    <option value="pph22-impor.php">PPH 22 Atas Barang Impor</option>
+                                    <option value="pph22-pemerintah.php">PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
+                                    <option value="pph22-kertas.php">PPH 22 Atas Penjualan Kertas Dalam Negeri</option>
+                                    <option value="pph22-semen.php" selected>PPH 22 Atas Penjualan Semen Dalam Negeri</option>
+                                    <option value="pph22-baja.php">PPH 22 Atas Penjualan Baja Dalam Negeri</option>
+                                    <option value="pph22-rokok.php">PPH 22 Atas Penjualan Rokok Dalam Negeri</option>
+                                    <option value="pph22-otomotif.php">PPH 22 Atas Penjualan Otomotif Dalam Negeri</option>
+                                    <option value="pph22-minyak.php">PPH 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
+                                    <option value="pph22-bumn.php">PPH 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
+                                    <option value="pph22-kehutanan.php">PPH 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
                                 </select>
                             </div>
                         </div>

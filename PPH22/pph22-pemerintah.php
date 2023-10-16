@@ -79,19 +79,19 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga Barang </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang1">
+                                                <input type="text" class="form-control shadow" id="harga_barang1" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="persen_pph1">
+                                                <input type="text" class="form-control shadow" id="persen_pph1" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="uang_diterima">
+                                                <input type="text" class="form-control shadow" id="uang_diterima" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -108,31 +108,31 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang termasuk PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang2">
+                                                <input type="text" class="form-control shadow" id="harga_barang2" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="ppn1">
+                                                <input type="text" class="form-control shadow" id="ppn1" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang tidak termasuk PPN (11%) / DPP</label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang_tidak_termasuk">
+                                                <input type="text" class="form-control shadow" id="harga_barang_tidak_termasuk" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="persen_pph2">
+                                                <input type="text" class="form-control shadow" id="persen_pph2" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="uang_diterima2">
+                                                <input type="text" class="form-control shadow" id="uang_diterima2" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -149,37 +149,37 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang termasuk PPN (11%) dan PPnBM (20%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang3">
+                                                <input type="text" class="form-control shadow" id="harga_barang3" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="ppn3">
+                                                <input type="text" class="form-control shadow" id="ppn3" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPnBM (20%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="ppnbm">
+                                                <input type="text" class="form-control shadow" id="ppnbm" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang tidak termasuk PPN dan PPnBM </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang_tidak_termasuk2">
+                                                <input type="text" class="form-control shadow" id="harga_barang_tidak_termasuk2" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="persen_pph3">
+                                                <input type="text" class="form-control shadow" id="persen_pph3" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="uang_diterima3">
+                                                <input type="text" class="form-control shadow" id="uang_diterima3" disabled>
                                             </div>
                                         </div>
                                     </div>
