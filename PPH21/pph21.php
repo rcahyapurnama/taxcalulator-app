@@ -12,15 +12,15 @@
     <!-- akhir judul -->
 
     <!-- awal card -->
-    <div class="row row-cols-1 row-cols-md-2 g-3 p-2">
+    <div class="row row-cols-1 row-cols-lg-2 g-3 p-2">
         <div class="col">
             <div class="card shadow">
                 <h5 class="card-header text-bg-primary ">A. Personal</h5>
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Status NPWP</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Status NPWP</label>
+                            <div class="col-lg-5 ms-auto">
                                 <select class="form-select border border-secondary-subtle shadow" id="npwp">
 
                                     <option value="1">NPWP</option>
@@ -31,8 +31,8 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Status Kawin/Tanggungan</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Status Kawin/Tanggungan</label>
+                            <div class="col-lg-5 ms-auto">
                                 <select class="form-select border border-secondary-subtle shadow" id="status" name="status">
 
                                     <option value="TK/0">TK/0</option>
@@ -48,8 +48,8 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Penghasilan Tidak Kena Pajak</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Penghasilan Tidak Kena Pajak</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class="form-control border border-secondary-subtle shadow" id="ptkp" name="ptkp" disabled>
 
                             </div>
@@ -62,33 +62,33 @@
                 <div class="card-body">
                     <form>
                         <div class="row">
-                            <label class="col-sm-6 col-form-label">Gaji Pokok</label>
-                            <div class="col-sm-5 ms-auto mb-3">
+                            <label class="col-lg-6 col-form-label">Gaji Pokok</label>
+                            <div class="col-lg-5 ms-auto mb-3">
                                 <input type="int" class="mataUang form-control  border border-secondary-subtle shadow" id="gaji" inputmode="numeric">
                             </div>
                         </div>
                         <div class=" row mb-3">
-                            <label class="col-sm-6 col-form-label">Tunjangan</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Tunjangan</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class="mataUang form-control border border-secondary-subtle shadow" id="tunjangan" inputmode="numeric">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Jumlah Tunjangan JKK + JKM </label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Jumlah Tunjangan JKK + JKM </label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="jumlahjkkjkm" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Jumlah Tunjangan BPJSKES</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Jumlah Tunjangan BPJSKES</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="jumlahbpjskes" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Jumah Penghasilan Bruto</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Jumah Penghasilan Bruto</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class="form-control border border-secondary-subtle shadow" id="bruto" disabled>
                             </div>
                         </div>
@@ -100,14 +100,14 @@
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label "> JKK (%)</label>
-                            <div class="col-sm-3">
+                            <label class="col-lg-2 col-form-label "> JKK (%)</label>
+                            <div class="col-lg-3">
                                 <div class="col-auto">
                                     <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkk" value="0.24" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
-                            <div class="col-sm-5 ms-auto">
+                            <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKK dihasilkan dari Gaji Pokok x JKK%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
@@ -117,14 +117,14 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label "> JKM (%)</label>
-                            <div class="col-sm-3">
+                            <label class="col-lg-2 col-form-label "> JKM (%)</label>
+                            <div class="col-lg-3">
                                 <div class="col-auto">
                                     <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkm" value="0.30" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
-                            <div class="col-sm-5 ms-auto">
+                            <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKM dihasilkan dari Gaji Pokok x JKM%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
@@ -134,13 +134,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-sm-2 col-form-label "> BPJSKES (%)</label>
-                            <div class="col-sm-3">
+                            <label class="col-lg-2 col-form-label "> BPJSKES (%)</label>
+                            <div class="col-lg-3">
                                 <input type="text" class="col-2 form-control  border border-secondary-subtle text-end" id="persenbpjs" value="4" inputmode="numeric">
                             </div>
 
                             <label class="col-auto col-form-label ms-4 "> = </label>
-                            <div class="col-sm-5 ms-auto">
+                            <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai BPJS Kesehatan dihasilkan dari Gaji Pokok x BPJSKES% dengan kriteria maksimal Gaji Pokok Rp. 12.000.000" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
@@ -162,8 +162,8 @@
                 <h5 class="card-header text-bg-primary">D. Pengurangan</h5>
                 <div class="card-body">
                     <div class="row">
-                        <label class="col-sm-6 mb-2 col-form-label">Biaya Jabatan</label>
-                        <div class="col-sm-5 ms-auto">
+                        <label class="col-lg-6 mb-2 col-form-label">Biaya Jabatan</label>
+                        <div class="col-lg-5 ms-auto">
                             <div class="col-auto">
                                 <div class="input-group">
                                     <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis mb-3" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai biaya jabatan dihasilkan dari 5% Gaji Pokok dan nilai maksimal biaya jabatan adalah 500,000." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
@@ -173,8 +173,8 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label "> JHT (%)</label>
-                        <div class="col-sm-3">
+                        <label class="col-lg-2 col-form-label "> JHT (%)</label>
+                        <div class="col-lg-3">
                             <div class="col-auto">
 
                                 <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjht" value="2" inputmode="numeric">
@@ -183,20 +183,20 @@
 
                         </div>
                         <label class="col-auto col-form-label ms-4"> = </label>
-                        <div class="col-sm-5 ms-auto">
+                        <div class="col-lg-5 ms-auto">
                             <input type="text" class="form-control shadow border border-secondary-subtle" id="hasiljht" disabled>
                         </div>
                         </form>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label "> JP (%)</label>
-                        <div class="col-sm-3">
+                        <label class="col-lg-2 col-form-label "> JP (%)</label>
+                        <div class="col-lg-3">
                             <div class="col-auto">
                                 <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="1" inputmode="numeric">
                             </div>
                         </div>
                         <label class="col-auto col-form-label ms-4"> = </label>
-                        <div class="col-sm-5 ms-auto">
+                        <div class="col-lg-5 ms-auto">
                             <div class="col-auto">
                                 <div class="input-group">
                                     <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JP dihasilkan dari Gaji Pokok x JP% dengan kriteria maksimal Gaji Pokok Rp. 9,559,600" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
@@ -214,32 +214,32 @@
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Penghasilan Netto</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Penghasilan Netto</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="netto" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Penghasilan Netto Disetahunkan </label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Penghasilan Netto Disetahunkan </label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control  border border-secondary-subtle shadow" id="nettosetahun" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Penghasilan Kena Pajak</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Penghasilan Kena Pajak</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="pkp" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">PPH 21 Terutang Dalam Setahun</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">PPH 21 Terutang Dalam Setahun</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control  border border-secondary-subtle shadow" id="pphsetahun" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="pphsebulan" disabled>
                             </div>
                         </div>
@@ -251,20 +251,20 @@
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">Penghasilan Netto</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Penghasilan Netto</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="gajibersih" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class=" form-control border border-secondary-subtle shadow" id="pph21sebulan1" disabled>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-sm-6 col-form-label">Total Gaji Bersih Bulan ini</label>
-                            <div class="col-sm-5 ms-auto">
+                            <label class="col-lg-6 col-form-label">Total Gaji Bersih Bulan ini</label>
+                            <div class="col-lg-5 ms-auto">
                                 <input type="text" class="form-control border border-secondary-subtle shadow mb-4" id="hasil_akhir" disabled>
                             </div>
                         </div>

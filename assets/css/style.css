@@ -43,6 +43,11 @@
         width: 300px;
 
     }
+    .col.card1-23 {
+        
+        width: 300px;
+
+    }
 .col.note {
     width: 150%;
 }
@@ -63,6 +68,10 @@
         }
 
         .col.col.card1-pem {
+            display: flex;
+            width: auto;
+        }
+        .col.col.card1-23 {
             display: flex;
             width: auto;
         }
@@ -91,9 +100,13 @@
             display: flex;
             width: auto;
         }
-                 .col.note {
-                     width: 380px;
-                 }
+        .col.col.card1-23 {
+            display: flex;
+            width: auto;
+        }
+        .col.note {
+            width: 380px;
+        }
         
     }
 
@@ -119,6 +132,14 @@
         .col.col.card1-pem {
             display: flex;
             width: auto;
+        }
+        .col.col.card1-23 {
+            display: flex;
+            width: 100%;
+        }
+        #card23{
+            display: flex;
+            width: 100%;
         }
         .col.note {
           width: 200%;

@@ -97,19 +97,6 @@
     </div>
 </div>
 </div>
-<script>
-    // Mendapatkan elemen select
-    const selectElement = document.getElementById("jenispajak");
 
-    // Menangani peristiwa saat salah satu opsi dipilih
-    selectElement.addEventListener("change", function() {
-        const selectedValue = this.value;
-        if (selectedValue) {
-            window.location.href = selectedValue; // Arahkan ke URL yang dipilih
-        }
-    });
-</script>
-
-</script>
 
 <?php include("../footer.php") ?>

@@ -14,8 +14,8 @@
 
 <div class="container" id="pph22">
     <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col card1-pem">
-            <div class="card">
+        <div class="col card1-23">
+            <div class="card" id="card23">
                 <h5 class=" card-header text-bg-primary ">
                     Komponen Data
                 </h5>
@@ -26,8 +26,8 @@
                             <div class="col-sm-auto">
                                 <select class="form-select border border-secondary shadow" id="jenispajak23">
 
-                                    <option value="1">PPH 23 Dividen, Bunga, Royalti Dan Hadiah </option>
-                                    <option value="2">PPH 22 Atas Sewa dan Jasa</option>
+                                    <option value="1">PPH 22 Atas Dividen, Bunga, Royalti Dan Hadiah</option>
+                                    <option value="2">PPH 22 Atas Sewa Dan Jasa</option>
 
                                 </select>
                             </div>
@@ -35,7 +35,7 @@
                         <div class="mb-3">
                             <label class="form-label">Status NPWP</label>
                             <div class="col-sm-auto">
-                                <select class="form-select shadow" id="npwp_kertas">
+                                <select class="form-select  border border-secondary shadow" id="npwp_kertas">
 
                                     <option value="1" selected>NPWP</option>
                                     <option value="2">Non-NPWP</option>
@@ -61,7 +61,7 @@
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label"> Penghasilan Bruto </label>
+                            <label class="col-sm-6 col-form-label"> Dasar Pengenaan Pajak (DPP) </label>
                             <div class="col-sm-5 ms-auto">
                                 <input type="text" class="form-control shadow" id="dpp" disabled>
                             </div>
@@ -90,6 +90,8 @@
     </div>
 </div>
 </div>
+
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Mendapatkan elemen select untuk jenis pajak dan npwp
