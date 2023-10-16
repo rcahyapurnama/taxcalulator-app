@@ -53,7 +53,7 @@
                         <div class="mb-3">
                             <label class="form-label">Harga Barang</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang">
+                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang" inputmode="numeric">
                             </div>
                         </div>
                 </div>

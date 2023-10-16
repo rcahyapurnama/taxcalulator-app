@@ -54,7 +54,7 @@
                         <div class="mb-3">
                             <label class="form-label">Dasar Pengenaan Pajak (DPP)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp">
+                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp" inputmode="numeric">
                             </div>
                         </div>
                 </div>

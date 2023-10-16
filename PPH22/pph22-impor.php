@@ -43,25 +43,25 @@
                         <div class="mb-3">
                             <label class="form-label">Harga Kurs Hari ini (Rp)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="kurs">
+                                <input type="text" class="form-control border border-secondary shadow mataUang" id="kurs" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Harga Faktur / <i> Cost </i> (US$)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow dolar" id="cost">
+                                <input type="text" class="form-control border border-secondary shadow dolar" id="cost" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Biaya Asuransi / <i> Insurance </i> (%)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow " id="insurance">
+                                <input type="text" class="form-control border border-secondary shadow " id="insurance" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Biaya Angkut <i>Freight</i> (%)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow" id="freight">
+                                <input type="text" class="form-control border border-secondary shadow" id="freight" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -200,7 +200,7 @@
 
             $(document).ready(function() {
                 // elemen pph impor
-                $("#cost, #insurance, #freight").on("input", function() {
+                $("#cost, #insurance, #freight, #persenmasuk, #persentambah").on("input", function() {
                     totalcif();
                 });
                 $(".mataUang").on("input", function() {

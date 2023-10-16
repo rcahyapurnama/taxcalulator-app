@@ -64,13 +64,13 @@
                         <div class="row">
                             <label class="col-sm-6 col-form-label">Gaji Pokok</label>
                             <div class="col-sm-5 ms-auto mb-3">
-                                <input type="text" class="mataUang form-control  border border-secondary-subtle shadow" id="gaji">
+                                <input type="int" class="mataUang form-control  border border-secondary-subtle shadow" id="gaji" inputmode="numeric">
                             </div>
                         </div>
                         <div class=" row mb-3">
                             <label class="col-sm-6 col-form-label">Tunjangan</label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="mataUang form-control border border-secondary-subtle shadow" id="tunjangan">
+                                <input type="text" class="mataUang form-control border border-secondary-subtle shadow" id="tunjangan" inputmode="numeric">
                             </div>
                         </div>
 
@@ -103,7 +103,7 @@
                             <label class="col-sm-2 col-form-label "> JKK (%)</label>
                             <div class="col-sm-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkk" value="0.24">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkk" value="0.24" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
@@ -120,7 +120,7 @@
                             <label class="col-sm-2 col-form-label "> JKM (%)</label>
                             <div class="col-sm-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkm" value="0.30">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkm" value="0.30" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
@@ -136,7 +136,7 @@
                         <div class="row">
                             <label class="col-sm-2 col-form-label "> BPJSKES (%)</label>
                             <div class="col-sm-3">
-                                <input type="text" class="col-2 form-control  border border-secondary-subtle text-end" id="persenbpjs" value="4">
+                                <input type="text" class="col-2 form-control  border border-secondary-subtle text-end" id="persenbpjs" value="4" inputmode="numeric">
                             </div>
 
                             <label class="col-auto col-form-label ms-4 "> = </label>
@@ -177,7 +177,7 @@
                         <div class="col-sm-3">
                             <div class="col-auto">
 
-                                <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjht" value="2">
+                                <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjht" value="2" inputmode="numeric">
 
                             </div>
 
@@ -192,7 +192,7 @@
                         <label class="col-sm-2 col-form-label "> JP (%)</label>
                         <div class="col-sm-3">
                             <div class="col-auto">
-                                <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="1">
+                                <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="1" inputmode="numeric">
                             </div>
                         </div>
                         <label class="col-auto col-form-label ms-4"> = </label>

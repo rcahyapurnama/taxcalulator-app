@@ -46,7 +46,7 @@
                         <div class="mb-3">
                             <label class="form-label">Dasar Pengenaan Pajak (DPP)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp">
+                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp" inputmode="numeric">
                             </div>
                         </div>
                 </div>
@@ -135,8 +135,28 @@
             // Perbarui tampilan tarif dan judul
             tarifPphElement.value = tarifPph;
             judulElement.textContent = judulPajak;
+            hitung_pph23()
 
+        }
+        $("#harga_barang_dpp").on("input", function() {
+            hitung_pph23()
 
+        });
+        $(".mataUang").on("input", function() {
+            formatMataUang(this);
+
+        });
+
+        function formatMataUang(input) {
+            var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
+            var value = input.value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
+            var formattedValue = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+            input.value = formattedValue;
         }
 
         function hitung_pph23() {
