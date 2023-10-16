@@ -1,5 +1,5 @@
-<?php include("../index.html") ?>
-<script src="assets/js/javascript.js"></script>
+<?php include("../index.php") ?>
+<script src="../assets/js/javascript.js"></script>
 
 <!-- awal judul -->
 <div class="container">

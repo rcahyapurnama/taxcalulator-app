@@ -1,5 +1,5 @@
-<?php include("../index.html") ?>
-<script src="../assets/js/javascriptpph22.js"></script>
+<?php include("../index.php") ?>
+
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">
@@ -138,6 +138,32 @@
 
 
         }
+
+        function hitung_pph23() {
+            var hargaCrc = document.getElementById('harga_barang_dpp').value;
+            var harga = hargaCrc.split(".").join("").split("Rp").join("");
+            var tarifpercent = document.getElementById('tarif_pph').value;
+            var tarif = tarifpercent.split("%").join("");
+
+            getdpp = harga;
+            hitung_pph = (getdpp * parseFloat(tarif) / 100)
+
+
+            $("#dpp").val(new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            }).format(getdpp));
+
+            $("#nilaipph").val(new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            }).format(hitung_pph));
+        }
+
     });
 </script>
 <?php include("../footer.php") ?>
