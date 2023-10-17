@@ -1,11 +1,11 @@
-<?php include("../navbar.php") ?>
-<script src="../assets/js/javascriptpph22.js"></script>
+<?php include("navbar.php") ?>
+<script src="assets/js/javascriptpph22.js"></script>
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">
             <h3> KALKULATOR PAJAK PENGHASILAN PASAL 22
 
-                <P> ATAS PENJUALAN BAJA DALAM NEGERI</p>
+                <P> ATAS PENJUALAN BARANG KEPADA BUMN YANG DIBAYAR DENGAN APBN MAUPUN NON-APBN</p>
 
             </h3>
         </div>
@@ -25,16 +25,15 @@
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
                                 <select class="form-select border border-secondary shadow" id="jenispajak">
-
                                     <option value="pph22-impor.php">PPH 22 Atas Barang Impor</option>
                                     <option value="pph22-pemerintah.php">PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
                                     <option value="pph22-kertas.php">PPH 22 Atas Penjualan Kertas Dalam Negeri</option>
                                     <option value="pph22-semen.php">PPH 22 Atas Penjualan Semen Dalam Negeri</option>
-                                    <option value="pph22-baja.php" selected>PPH 22 Atas Penjualan Baja Dalam Negeri</option>
+                                    <option value="pph22-baja.php">PPH 22 Atas Penjualan Baja Dalam Negeri</option>
                                     <option value="pph22-rokok.php">PPH 22 Atas Penjualan Rokok Dalam Negeri</option>
                                     <option value="pph22-otomotif.php">PPH 22 Atas Penjualan Otomotif Dalam Negeri</option>
                                     <option value="pph22-minyak.php">PPH 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
-                                    <option value="pph22-bumn.php">PPH 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
+                                    <option value="pph22-bumn.php" selected>PPH 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
                                     <option value="pph22-kehutanan.php">PPH 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
                                     </option>
                                 </select>
@@ -43,7 +42,7 @@
                         <div class="mb-3">
                             <label class="form-label">Status NPWP</label>
                             <div class="col-sm-auto">
-                                <select class="form-select  border border-secondary shadow" id="npwp_kertas">
+                                <select class="form-select border border-secondaryshadow" id="npwp_kertas">
 
                                     <option value="1" selected>NPWP</option>
                                     <option value="2">Non-NPWP</option>
@@ -77,7 +76,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label "> Tarif Pajak Penghasilan Pasal 22 </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control shadow" id="tarif_pph" value="0.30%" disabled>
+                                <input type="text" class="form-control shadow" id="tarif_pph" value="1.5%" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -99,7 +98,4 @@
 </div>
 </div>
 
-
-</script>
-
-<?php include("../footer.php") ?>
+<?php include("footer.php") ?>

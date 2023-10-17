@@ -1,5 +1,5 @@
-<?php include("../navbar.php") ?>
-<script src="../assets/js/javascript.js"></script>
+<?php include("navbar.php") ?>
+<script src="assets/js/javascript.js"></script>
 
 <!-- awal judul -->
 <div class="container">

@@ -1,5 +1,5 @@
-<?php include("../navbar.php") ?>
-<script src="../assets/js/javascriptpph22.js"></script>
+<?php include("navbar.php") ?>
+<script src="assets/js/javascriptpph22.js"></script>
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">
@@ -99,4 +99,4 @@
 
 
 
-<?php include("../footer.php") ?>
+<?php include("footer.php") ?>
