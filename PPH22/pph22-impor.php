@@ -1,4 +1,4 @@
-<?php include("../index.php") ?>
+<?php include("../navbar.php") ?>
 
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
@@ -224,6 +224,7 @@
                 }).format(value);
                 input.value = formattedValue;
             }
+
 
             function formatDolar(input) {
                 var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik

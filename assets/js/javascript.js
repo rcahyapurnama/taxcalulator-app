@@ -67,13 +67,122 @@ $(document).ready(function () {
     pphbulanini()
   });
 
+
   document.addEventListener('DOMContentLoaded', function () {
     initializeStatus();
 
   });
 
 
+
+  let currentFormat = 'persen'; // Menyimpan status pilihan saat ini
+
+  function changeDropdownText(text, elementSelector) {
+    document.querySelector(elementSelector).innerHTML = text;
+  }
+
+  // Function to reset input
+  function resetInput(inputId) {
+    document.querySelector(inputId).value = '';
+  }
+
+  // Function to format input as IDR currency
+  function formatInputAsRp(input) {
+    let value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
+    value = value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
+    const formattedValue = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value).replace(/,/g, '.');
+    input.value = formattedValue;
+  }
+
+
+
+  // Event listener untuk "(%)" pada Biaya Asuransi / Insurance
+  document.querySelector('#persen').addEventListener('click', function () {
+    changeDropdownText('JKK (%)', '#pilihjkk');
+    changeDropdownText('JKM (%)', '#pilihjkm');
+    changeDropdownText('BPJSKES (%)', '#pilihbpjskes');
+    changeDropdownText('JHT (%)', '#pilihjht');
+    changeDropdownText('JP (%)', '#pilihjp');
+
+    resetInput('#persenjkk');
+    resetInput('#hasiljkk');
+    resetInput('#persenjkm');
+    resetInput('#hasiljkm');
+    resetInput('#persenbpjs');
+    resetInput('#hasilbpjs');
+    resetInput('#persenjht');
+    resetInput('#hasiljht');
+    resetInput('#persenjp');
+    resetInput('#hasiljp');
+    currentFormat = 'persen'; // Mengubah status pilihan saat ini
+  });
+
+  // Event listener untuk "US$" pada Biaya Asuransi / Insurance
+  document.querySelector('#rupiah').addEventListener('click', function () {
+    changeDropdownText('JKK (Rp)', '#pilihjkk');
+    changeDropdownText('JKM (Rp)', '#pilihjkm');
+    changeDropdownText('BPJSKES (Rp)', '#pilihbpjskes');
+    changeDropdownText('JHT (Rp)', '#pilihjht');
+    changeDropdownText('JP (Rp)', '#pilihjp');
+
+    resetInput('#persenjkk');
+    resetInput('#hasiljkk');
+    resetInput('#persenjkm');
+    resetInput('#hasiljkm');
+    resetInput('#persenbpjs');
+    resetInput('#hasilbpjs');
+    resetInput('#persenjht');
+    resetInput('#hasiljht');
+    resetInput('#persenjp');
+    resetInput('#hasiljp');
+
+    currentFormat = 'rupiah'; // Mengubah status pilihan saat ini
+
+  });
+
+  // Event listener untuk input pada Biaya Asuransi / Insurance
+  document.querySelector('#persenjkk').addEventListener('input', function () {
+
+    if (currentFormat === 'rupiah') {
+      formatInputAsRp(this);
+    }
+    hitungBPJS();
+  });
+  // Event listener untuk input pada Biaya Asuransi / Insurance
+  document.querySelector('#persenjkm').addEventListener('input', function () {
+
+    if (currentFormat === 'rupiah') {
+      formatInputAsRp(this);
+    }
+  });
+  // Event listener untuk input pada Biaya Asuransi / Insurance
+  document.querySelector('#persenbpjs').addEventListener('input', function () {
+    if (currentFormat === 'rupiah') {
+      formatInputAsRp(this);
+    }
+  });
+  document.querySelector('#persenjht').addEventListener('input', function () {
+
+    if (currentFormat === 'rupiah') {
+      formatInputAsRp(this);
+    }
+    hitungpengurangan();
+  });
+  document.querySelector('#persenjp').addEventListener('input', function () {
+    if (currentFormat === 'rupiah') {
+      formatInputAsRp(this);
+    }
+
+  });
+
 });
+
+
 // Fungsi inisialisasi status dan PTKP saat halaman dimuat
 function initializeStatus() {
   var status = "TK/0"; // Set nilai status ke "tk/0" secara default
@@ -132,46 +241,64 @@ function formatMataUang(input) {
   }).format(value);
   input.value = formattedValue;
 }
+// Variabel selectedOptionId di luar event listener
+var selectedOptionId = "persen"; // Atur opsi awal
 
+
+// Fungsi hitungBPJS dengan parameter selectedOptionId
 function hitungBPJS() {
   var gajiCrc = document.getElementById('gaji').value;
   var gaji = gajiCrc.split(".").join("").split("Rp").join("");
-  var jkk = Number($("#persenjkk").val().replace(/[^\d.]/g, ''));
-  var jkm = Number($("#persenjkm").val().replace(/[^\d.]/g, ''));
-  var bpjs = Number($("#persenbpjs").val().replace(/[^\d.]/g, ''));
+  var jkkCrc = document.getElementById('persenjkk').value;
+  var jkmCrc = document.getElementById('persenjkm').value;
+  var bpjsCrc = document.getElementById('persenbpjs').value;
+  var jkk;
+  var jkm;
+  var bpjs;
 
-  if (gaji) {
-    var persentase = gaji * jkk / 100;
-    var persentasejkm = gaji * jkm / 100;
+  // Periksa apakah jkkCrc berisi "Rp"
+  if (jkkCrc.includes("Rp") || jkmCrc.includes("Rp") || bpjsCrc.includes("Rp")) {
+    jkk = jkkCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
+    jkm = jkmCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
+    bpjs = bpjsCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
+  } else {
+    var jkkpersen = parseFloat(jkkCrc.replace(/[^\d.]/g, ''));
+    var jkmpersen = parseFloat(jkmCrc.replace(/[^\d.]/g, ''));
+    var bpjspersen = parseFloat(bpjsCrc.replace(/[^\d.]/g, ''));
 
+
+    // Hitung persentase jika jkk adalah dalam persen
+    jkk = (gaji * jkkpersen) / 100;
+    jkm = (gaji * jkmpersen) / 100;
     // Hitung persentase BPJS Kesehatan dengan batas maksimum gaji 12 juta
     var gajiMaksimal = 12000000;
     var maxbpjs = Math.min(gaji, gajiMaksimal);
-    var persentaseBPJSKes = maxbpjs * bpjs / 100;
+    var bpjs = maxbpjs * bpjspersen / 100;
 
-    // Tampilkan hasil perhitungan persentase
-    $("#hasiljkk").val(new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(persentase));
-
-    $("#hasiljkm").val(new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(persentasejkm));
-
-    $("#hasilbpjs").val(new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(persentaseBPJSKes));
   }
+  $("#hasiljkk").val(new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(jkk));
+
+  $("#hasiljkm").val(new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(jkm));
+
+  $("#hasilbpjs").val(new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(bpjs));
+
 }
+
 
 function hitungJumlahjkkjkm() {
 
@@ -231,17 +358,31 @@ function hitungpengurangan() {
   var gaji = gajiCrc.split(".").join("").split("Rp").join("");
   var brutoCrc = document.getElementById('bruto').value;
   var bruto = brutoCrc.split(".").join("").split("Rp").join("");
-  var jht = Number($("#persenjht").val().replace(/[^\d.]/g, ''));   // Hapus semua karakter non-angka dan titik
-  var jp = Number($("#persenjp").val().replace(/[^\d.]/g, ''));   // Hapus semua karakter non-angka dan titik
+  var jhtCrc = document.getElementById('persenjht').value;
+  var jpCrc = document.getElementById('persenjp').value;
+  var jht;
+  var jp;
 
 
+  // Periksa apakah jkkCrc berisi "Rp"
+  if (jhtCrc.includes("Rp") || jpCrc.includes("Rp")) {
+    jht = jhtCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
+    jp = jpCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
+
+  } else {
+    var jhtpersen = parseFloat(jhtCrc.replace(/[^\d.]/g, ''));
+    var jppersen = parseFloat(jpCrc.replace(/[^\d.]/g, ''));
+
+    var jht = (gaji * jhtpersen) / 100;
+
+    var gajiMaksimal = 9559600;
+    var maxjp = Math.min(gaji, gajiMaksimal);
+    var jp = (maxjp * jppersen) / 100;
+
+
+
+  }
   var jabatan = bruto * 0.05;
-  var biayajht = gaji * jht / 100;
-
-
-  var gajiMaksimal = 9559600;
-  var maxjp = Math.min(gaji, gajiMaksimal);
-  var biayajp = (maxjp * jp / 100);
 
 
   // Jika biaya jabatan lebih dari 500 ribu, set nilai biaya jabatan menjadi 500 ribu
@@ -259,15 +400,15 @@ function hitungpengurangan() {
     currency: 'IDR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(biayajht));
+  }).format(jht));
   $("#hasiljp").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(biayajp));
-}
+  }).format(jp));
 
+}
 function hitungnetto() {
   var brutoCrc = document.getElementById('bruto').value;
   var bruto = brutoCrc.split(".").join("").split("Rp").join("");

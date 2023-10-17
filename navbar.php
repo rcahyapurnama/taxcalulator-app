@@ -31,14 +31,14 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../PPH21/pph21.php">Home</a>
+              <a class="nav-link active" aria-current="page" href="../PPH21/index.php">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Kalkulator Pajak
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../PPH21/pph21.php">PPH 21</a></li>
+                <li><a class="dropdown-item" href="../PPH21/index.php">PPH 21</a></li>
                 <li><a class="dropdown-item" href="../PPH22/pph22-impor.php">PPH 22</a></li>
                 <li><a class="dropdown-item" href="../PPH23/pph23.php">PPH 23</a></li>
               </ul>

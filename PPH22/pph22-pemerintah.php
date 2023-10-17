@@ -1,4 +1,4 @@
-<?php include("../index.php") ?>
+<?php include("../navbar.php") ?>
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">

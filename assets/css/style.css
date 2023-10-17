@@ -48,6 +48,10 @@
         width: 300px;
 
     }
+        #card23 {
+            display: flex;
+            width: 100%;
+        }
 .col.note {
     width: 150%;
 }
@@ -75,6 +79,10 @@
             display: flex;
             width: auto;
         }
+                #card23 {
+                    display: flex;
+                    width: 100%;
+                }
           .col.note {
               width: 380px;
           }
@@ -104,6 +112,10 @@
             display: flex;
             width: auto;
         }
+                #card23 {
+                    display: flex;
+                    width: 100%;
+                }
         .col.note {
             width: 380px;
         }
@@ -116,6 +128,10 @@
             width: 150%;
             justify-content: center;
         }
+                #card23 {
+                    display: flex;
+                    width: 100%;
+                }
     }
 
     @media only screen and (max-width: 991px) {

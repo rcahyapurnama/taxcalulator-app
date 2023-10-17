@@ -1,9 +1,9 @@
-<?php include("../index.php") ?>
+<?php include("../navbar.php") ?>
 
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">
-            <h3> KALKULATOR PAJAK PENGHASILAN PASAL 22
+            <h3> KALKULATOR PAJAK PENGHASILAN PASAL 23
 
                 <P> ATAS DIVIDEN, BUNGA, ROYALTI DAN HADIAH </p>
 

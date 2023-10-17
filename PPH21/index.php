@@ -1,4 +1,4 @@
-<?php include("../index.php") ?>
+<?php include("../navbar.php") ?>
 <script src="../assets/js/javascript.js"></script>
 
 <!-- awal judul -->
@@ -96,11 +96,17 @@
                 </div>
             </div>
             <div class="card shadow mt-3">
-                <h5 class="card-header text-bg-primary ">C. BPJS</h5>
+                <h5 class="card-header text-bg-primary ">C. BPJS Yang Di Bayar Perusahaan</h5>
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
-                            <label class="col-lg-2 col-form-label "> JKK (%)</label>
+                            <label class="dropdown-toggle col-lg-2 col-form-label" data-bs-toggle="dropdown" aria-expanded="false" id="pilihjkk">
+                                JKK (%)
+                            </label>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="persen">Satuan (%)</a></li>
+                                <li><a class="dropdown-item" id="rupiah">Satuan (Rp)</a></li>
+                            </ul>
                             <div class="col-lg-3">
                                 <div class="col-auto">
                                     <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkk" value="0.24" inputmode="numeric">
@@ -117,7 +123,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-lg-2 col-form-label "> JKM (%)</label>
+                            <label class="col-lg-2 col-form-label " id="pilihjkm"> JKM (%)</label>
                             <div class="col-lg-3">
                                 <div class="col-auto">
                                     <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkm" value="0.30" inputmode="numeric">
@@ -134,7 +140,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-lg-2 col-form-label "> BPJSKES (%)</label>
+                            <label class="col-lg-2 col-form-label " id="pilihbpjskes"> BPJSKES (%)</label>
                             <div class="col-lg-3">
                                 <input type="text" class="col-2 form-control  border border-secondary-subtle text-end" id="persenbpjs" value="4" inputmode="numeric">
                             </div>
@@ -173,7 +179,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-lg-2 col-form-label "> JHT (%)</label>
+                        <label class="col-lg-2 col-form-label" id="pilihjht"> JHT (%)</label>
                         <div class="col-lg-3">
                             <div class="col-auto">
 
@@ -189,7 +195,7 @@
                         </form>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-lg-2 col-form-label "> JP (%)</label>
+                        <label class="col-lg-2 col-form-label" id="pilihjp"> JP (%)</label>
                         <div class="col-lg-3">
                             <div class="col-auto">
                                 <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="1" inputmode="numeric">
