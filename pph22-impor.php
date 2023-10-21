@@ -1,4 +1,6 @@
-<?php include("navbar.php") ?>
+<?php
+$pageTitle = "PPH 22 - Atas Barang Impor";
+include("navbar.php") ?>
 
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
@@ -321,5 +323,5 @@
                 }).format(hasil1));
             }
         </script>
-
+        </p>
         <?php include("footer.php") ?>

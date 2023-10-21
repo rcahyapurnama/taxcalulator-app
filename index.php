@@ -1,288 +1,36 @@
-<?php include("navbar.php") ?>
-<script src="assets/js/javascript.js"></script>
+<?php
+$pageTitle = "Welcome";
+include("navbar.php") ?>
 
-<!-- awal judul -->
 <div class="container">
     <div class="row text-center p-4 mt-5">
         <div class="col judul">
-            <h3>Kalkulator Pajak Penghasilan Pasal 21</h3>
+
         </div>
     </div>
 
     <!-- akhir judul -->
 
     <!-- awal card -->
-    <div class="row row-cols-1 row-cols-lg-2 g-3 p-2">
-        <div class="col">
-            <div class="card shadow">
-                <h5 class="card-header text-bg-primary ">A. Personal</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Status NPWP</label>
-                            <div class="col-lg-5 ms-auto">
-                                <select class="form-select border border-secondary-subtle shadow" id="npwp">
-
-                                    <option value="1">NPWP</option>
-                                    <option value="2">Non-NPWP</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Status Kawin/Tanggungan</label>
-                            <div class="col-lg-5 ms-auto">
-                                <select class="form-select border border-secondary-subtle shadow" id="status" name="status">
-
-                                    <option value="TK/0">TK/0</option>
-                                    <option value="TK/1">TK/1</option>
-                                    <option value="TK/2">TK/2</option>
-                                    <option value="TK/3">TK/3</option>
-                                    <option value="K/0">K/0</option>
-                                    <option value="K/1">K/1</option>
-                                    <option value="K/2">K/2</option>
-                                    <option value="K/3">K/3</option>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Penghasilan Tidak Kena Pajak</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary-subtle shadow" id="ptkp" name="ptkp" disabled>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <div class="mb-3" style="max-width: 1500px;">
+        <div class="row g-0">
+            <div class="col-md-7">
+                <img src="welcome.png" class="responsif">
             </div>
-            <div class="card shadow mt-3">
-                <h5 class="card-header text-bg-primary ">B. Pendapatan</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="row">
-                            <label class="col-lg-6 col-form-label">Gaji Pokok</label>
-                            <div class="col-lg-5 ms-auto mb-3">
-                                <input type="int" class="mataUang form-control  border border-secondary-subtle shadow" id="gaji" inputmode="numeric">
-                            </div>
-                        </div>
-                        <div class=" row mb-3">
-                            <label class="col-lg-6 col-form-label">Tunjangan</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class="mataUang form-control border border-secondary-subtle shadow" id="tunjangan" inputmode="numeric">
-                            </div>
-                        </div>
+            <div class="col-md-5 g-4">
+                <div class="card-body fonttext">
 
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Jumlah Tunjangan JKK + JKM </label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="jumlahjkkjkm" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Jumlah Tunjangan BPJSKES</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="jumlahbpjskes" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Jumah Penghasilan Bruto</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary-subtle shadow" id="bruto" disabled>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card shadow mt-3">
-                <h5 class="card-header text-bg-primary ">C. BPJS Yang Di Bayar Perusahaan</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="row mb-3">
-                            <label class="dropdown-toggle col-lg-2 col-form-label" data-bs-toggle="dropdown" aria-expanded="false" id="pilihjkk">
-                                JKK (%)
-                            </label>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" id="persen">Satuan (%)</a></li>
-                                <li><a class="dropdown-item" id="rupiah">Satuan (Rp)</a></li>
-                            </ul>
-                            <div class="col-lg-3">
-                                <div class="col-auto">
-                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkk" value="0.24" inputmode="numeric">
-                                </div>
-                            </div>
-                            <label class="col-auto col-form-label ms-4"> = </label>
-                            <div class="col-lg-5 ms-auto">
-                                <div class="col-auto">
-                                    <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKK dihasilkan dari Gaji Pokok x JKK%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle shadow" type=" text" id="hasiljkk" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-2 col-form-label " id="pilihjkm"> JKM (%)</label>
-                            <div class="col-lg-3">
-                                <div class="col-auto">
-                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkm" value="0.30" inputmode="numeric">
-                                </div>
-                            </div>
-                            <label class="col-auto col-form-label ms-4"> = </label>
-                            <div class="col-lg-5 ms-auto">
-                                <div class="col-auto">
-                                    <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKM dihasilkan dari Gaji Pokok x JKM%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle shadow" type=" text" id="hasiljkm" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-lg-2 col-form-label " id="pilihbpjskes"> BPJSKES (%)</label>
-                            <div class="col-lg-3">
-                                <input type="text" class="col-2 form-control  border border-secondary-subtle text-end" id="persenbpjs" value="4" inputmode="numeric">
-                            </div>
-
-                            <label class="col-auto col-form-label ms-4 "> = </label>
-                            <div class="col-lg-5 ms-auto">
-                                <div class="col-auto">
-                                    <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai BPJS Kesehatan dihasilkan dari Gaji Pokok x BPJSKES% dengan kriteria maksimal Gaji Pokok Rp. 12.000.000" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-
-                                        <input type="text" class="form-control border border-secondary-subtle shadow" id="hasilbpjs" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="col">
-            <div class="card shadow ">
-                <h5 class="card-header text-bg-primary">D. Pengurangan</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <label class="col-lg-6 mb-2 col-form-label">Biaya Jabatan</label>
-                        <div class="col-lg-5 ms-auto">
-                            <div class="col-auto">
-                                <div class="input-group">
-                                    <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis mb-3" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai biaya jabatan dihasilkan dari 5% Gaji Pokok dan nilai maksimal biaya jabatan adalah 500,000." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                    <input type=" text" class="form-control  border border-secondary-subtle shadow mb-3" id="jabatan" disabled>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-lg-2 col-form-label" id="pilihjht"> JHT (%)</label>
-                        <div class="col-lg-3">
-                            <div class="col-auto">
-
-                                <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjht" value="2" inputmode="numeric">
-
-                            </div>
-
-                        </div>
-                        <label class="col-auto col-form-label ms-4"> = </label>
-                        <div class="col-lg-5 ms-auto">
-                            <input type="text" class="form-control shadow border border-secondary-subtle" id="hasiljht" disabled>
-                        </div>
-                        </form>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-lg-2 col-form-label" id="pilihjp"> JP (%)</label>
-                        <div class="col-lg-3">
-                            <div class="col-auto">
-                                <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="1" inputmode="numeric">
-                            </div>
-                        </div>
-                        <label class="col-auto col-form-label ms-4"> = </label>
-                        <div class="col-lg-5 ms-auto">
-                            <div class="col-auto">
-                                <div class="input-group">
-                                    <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JP dihasilkan dari Gaji Pokok x JP% dengan kriteria maksimal Gaji Pokok Rp. 9,559,600" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                    <input class="form-control border border-secondary-subtle" type=" text" id="hasiljp" disabled>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="card shadow mt-3">
-                <h5 class="card-header text-bg-primary">E. Perhitungan PPH 21</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Penghasilan Netto</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="netto" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Penghasilan Netto Disetahunkan </label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control  border border-secondary-subtle shadow" id="nettosetahun" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Penghasilan Kena Pajak</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="pkp" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">PPH 21 Terutang Dalam Setahun</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control  border border-secondary-subtle shadow" id="pphsetahun" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="pphsebulan" disabled>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card shadow mt-3">
-                <h5 class="card-header text-bg-primary">F. Hasil</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">Penghasilan Netto</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="gajibersih" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-lg-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="pph21sebulan1" disabled>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-lg-6 col-form-label">Total Gaji Bersih Bulan ini</label>
-                            <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary-subtle shadow mb-4" id="hasil_akhir" disabled>
-                            </div>
-                        </div>
+                    <h5 class="card-text">Kalkulator Pajak Penghasilan</h5>
+                    <h1 class="card-title">TAX-CAL</h1>
+                    <p></p>
+                    <p class="card-text">Selamat datang di aplikasi perihitungan pajak penghasilan TAX-CAL Silahkan memilih jenis perhitungan pajak didalam menu yang tersedia untuk memulai </p>
+                    <a href="pph21.php" class="btn btn-primary">Mulai Coba Hitung PPH 21 <i class="bi bi-arrow-right-circle"></i> </a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-<!-- akhir card -->
-</p>
-<!-- Script PTKP -->
+</div>
+</div>
 
-
-<?php include("../footer.php") ?>
+<?php include("footer.php") ?>

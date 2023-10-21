@@ -1,11 +1,13 @@
-<?php include("navbar.php") ?>
+<?php
+$pageTitle = "PPH 22 - Pembelian Bahan-Bahan Sektor Perhutanan, Perkebunan, Pertanian, Dan Perikanan";
+include("navbar.php") ?>
 <script src="assets/js/javascriptpph22.js"></script>
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">
             <h3> KALKULATOR PAJAK PENGHASILAN PASAL 22
 
-                <P> ATAS PEMBELIAN BAHAN-BAHAN SEKTOR PERHUTANAN, PERKEBUNAN, PERTANIAN, DAN PERIKANAN</p>
+                <br> ATAS PEMBELIAN BAHAN-BAHAN SEKTOR PERHUTANAN, PERKEBUNAN, PERTANIAN, DAN PERIKANAN</br>
 
             </h3>
         </div>
@@ -13,7 +15,7 @@
 </div>
 
 <div class="container" id="pph22">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4 ">
         <div class="col card1-pem">
             <div class="card">
                 <h5 class=" card-header text-bg-primary ">

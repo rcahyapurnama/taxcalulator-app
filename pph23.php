@@ -1,4 +1,6 @@
-<?php include("navbar.php") ?>
+<?php
+$pageTitle = "PPH 23";
+include("navbar.php") ?>
 
 <div class="container">
     <div class="row text-center p-4 mt-5 ">

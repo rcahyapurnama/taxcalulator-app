@@ -1,4 +1,6 @@
-<?php include("navbar.php") ?>
+<?php
+$pageTitle = "PPH 22 -  Atas Penjualan Semen";
+include("navbar.php") ?>
 <script src="assets/js/javascriptpph22.js"></script>
 <div class="container">
     <div class="row text-center p-4 mt-5 ">

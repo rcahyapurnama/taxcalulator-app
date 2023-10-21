@@ -1,4 +1,6 @@
-<?php include("navbar.php") ?>
+<?php
+$pageTitle = "PPH 22 -  Atas Penjualan Barang Kepada Pemerintah";
+include("navbar.php") ?>
 <div class="container">
     <div class="row text-center p-4 mt-5 ">
         <div class="col judul">
@@ -60,7 +62,7 @@
                 </form>
             </div>
         </div>
-        <div class="col card2">
+        <div class="col card2 mb-5">
             <div class="card" id="pph22card2">
                 <h5 class="card-header text-bg-primary ">
                     Perhitungan
