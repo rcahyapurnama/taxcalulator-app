@@ -28,16 +28,16 @@ include("navbar.php") ?>
                             <div class="col-sm-auto">
                                 <select class="form-select border border-secondary shadow" id="jenispajak">
 
-                                    <option value="pph22-impor.php" selected>pph 22 Atas Barang Impor</option>
-                                    <option value="pph22-pemerintah.php">pph 22 Atas Penjualan Barang Kepada Pemerintah</option>
-                                    <option value="pph22-kertas.php">pph 22 Atas Penjualan Kertas Dalam Negeri</option>
-                                    <option value="pph22-semen.php">pph 22 Atas Penjualan Semen Dalam Negeri</option>
-                                    <option value="pph22-baja.php">pph 22 Atas Penjualan Baja Dalam Negeri</option>
-                                    <option value="pph22-rokok.php">pph 22 Atas Penjualan Rokok Dalam Negeri</option>
-                                    <option value="pph22-otomotif.php">pph 22 Atas Penjualan Otomotif Dalam Negeri</option>
-                                    <option value="pph22-minyak.php">pph 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
-                                    <option value="pph22-bumn.php">pph 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
-                                    <option value="pph22-kehutanan.php">pph 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
+                                    <option value="pph22-impor.php" selected>PPH 22 Atas Barang Impor</option>
+                                    <option value="pph22-pemerintah.php">PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
+                                    <option value="pph22-kertas.php">PPH 22 Atas Penjualan Kertas Dalam Negeri</option>
+                                    <option value="pph22-semen.php">PPH 22 Atas Penjualan Semen Dalam Negeri</option>
+                                    <option value="pph22-baja.php">PPH 22 Atas Penjualan Baja Dalam Negeri</option>
+                                    <option value="pph22-rokok.php">PPH 22 Atas Penjualan Rokok Dalam Negeri</option>
+                                    <option value="pph22-otomotif.php">PPH 22 Atas Penjualan Otomotif Dalam Negeri</option>
+                                    <option value="pph22-minyak.php">PPH 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
+                                    <option value="pph22-bumn.php">PPH 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
+                                    <option value="pph22-kehutanan.php">PPH 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
                                     </option>
                                 </select>
                             </div>
@@ -70,8 +70,8 @@ include("navbar.php") ?>
                             <label class="form-label">Total CIF (US$)</label>
                             <div class="col-sm-auto">
                                 <div class="input-group">
-                                    <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Total CIF (US$) dihasilkan dari Cost + (Cost x insurance %) + (Cost US$ x freight %)" onclick="makeItalic(this)" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                    <input class="form-control border border-secondary-subtle shadow" type="text" id="cifusd" disabled>
+                                    <a tabindex="0" class="input-group-text icon-link-hover text-info-emphasis border border-secondary" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Total CIF (US$) dihasilkan dari Cost + (Cost x insurance %) + (Cost US$ x freight %)" onclick="makeItalic(this)" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                    <input class="form-control border border-secondary shadow" type="text" id="cifusd" disabled>
                                 </div>
                             </div>
                         </div>
@@ -89,22 +89,22 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label"> Total CIF (Cost,Insurance, Freight) dalam Rupiah </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control shadow" id="cifrp" disabled>
+                                <input type="text" class="form-control border border-secondary shadow shadow" id="cifrp" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label ">Bea Masuk (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle" id="persenmasuk" value="10" inputmode="numeric">
+                                    <input type="text" class="form-control  border border-secondary-subtle shadow" id="persenmasuk" value="10" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
                             <div class="col-sm-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Bea Masuk dihasilkan dari CIF dalam Rupiah x Bea Masuk (%)" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle shadow" type=" text" id="beamasuk" disabled>
+                                        <a tabindex="0" class="input-group-text  border border-secondary shadow icon-link-hover text-info-emphasis " id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Bea Masuk dihasilkan dari (CIF dalam Rupiah x Bea Masuk (%))" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg "></i></a>
+                                        <input class="form-control  border-start-0 border-secondary shadow " type=" text" id="beamasuk" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -113,15 +113,15 @@ include("navbar.php") ?>
                             <label class="col-sm-3 col-form-label ">Bea Tambahan Lainnya (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle" id="persentambah" value="6" inputmode="numeric">
+                                    <input type="text" class="form-control border border-secondary-subtle shadow" id="persentambah" value="6" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
                             <div class="col-sm-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKK dihasilkan dari Gaji Pokok x JKK%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle shadow" type=" text" id="beatambah" disabled>
+                                        <a tabindex="0" class="input-group-text border border-secondary shadow icon-link-hover text-info-emphasis " id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Bea Tambahan dihasilkan dari ( CIF dalam Rupiah x Bea Tambahan Lainnya (%) )" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <input class="form-control border-start-0 border-secondary shadow" type=" text" id="beatambah" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -129,11 +129,11 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label">Nilai Impor</label>
                             <div class="col-sm-5 ms-auto mb-4">
-                                <input type="text" class="form-control shadow" id="Nimpor" disabled>
+                                <input type="text" class="form-control border border-secondary shadow" id="Nimpor" disabled>
                             </div>
                         </div>
                         <div class="row container ">
-                            <span class=" border-top border-secondary ms-2 mb-5"></span>
+                            <span class=" border-top border border-secondary ms-2 mb-5"></span>
                         </div>
                         <div class="row mb-3">
                             <h5 class="col-sm-12 ">Perhitungan Pajak Penghasilan Pasal 22 Jika Importir Memiliki API</h5>
@@ -141,20 +141,20 @@ include("navbar.php") ?>
                         <div class="row mb-5">
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="  form-control  border border-secondary-subtle" id="labelimpor" value="2.5%" disabled>
+                                    <input type="text" class="  form-control border border-secondary" id="labelimpor" value="2.5%" disabled>
                                 </div>
                             </div>
                             <label class="col-sm-1 col-form-label ms-3 "><i class="bi bi-x-lg"></i></label>
                             <div class="col-sm-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control border border-secondary-subtle" id="nilaimpor" value="0" disabled>
+                                    <input type="text" class="form-control border border-secondary" id="nilaimpor" value="0" disabled>
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-3" style="font-size: 25px; margin-top:-8px;"> = </label>
                             <div class=" col-sm-4 ms-auto">
                                 <div class="col-auto">
                                     <div class="col-auto">
-                                        <input type="text" class="form-control border border-secondary-subtle" id="hasilakhir" value="0" disabled>
+                                        <input type="text" class="form-control border border-secondary" id="hasilakhir" value="0" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -165,20 +165,20 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle" id="labelimpor1" value="7.5%" disabled>
+                                    <input type="text" class="form-control  border border-secondary" id="labelimpor1" value="7.5%" disabled>
                                 </div>
                             </div>
                             <label class="col-sm-1 col-form-label ms-3 "><i class="bi bi-x-lg"></i></label>
                             <div class="col-sm-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle" id="nilaimpor1" value="0" disabled>
+                                    <input type="text" class="form-control  border border-secondary" id="nilaimpor1" value="0" disabled>
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-3" style="font-size: 25px; margin-top:-8px;"> = </label>
                             <div class="col-sm-4 ms-auto">
                                 <div class="col-auto">
                                     <div class="col-auto">
-                                        <input type="text" class="form-control border border-secondary-subtle" id="hasilakhir1" value="0" disabled>
+                                        <input type="text" class="form-control border border-secondary" id="hasilakhir1" value="0" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +189,8 @@ include("navbar.php") ?>
             </div>
         </div>
         <script>
+            var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+            var popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
             // Mendapatkan elemen select
             const selectElement = document.getElementById("jenispajak");
 

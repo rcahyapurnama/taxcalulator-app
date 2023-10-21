@@ -73,19 +73,19 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label"> Dasar Pengenaan Pajak (DPP) </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control shadow" id="dpp" disabled>
+                                <input type="text" class="form-control border border-secondary shadow " id="dpp" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label "> Tarif Pajak Penghasilan Pasal 22 </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control shadow" id="tarif_pph" value="0.30%" disabled>
+                                <input type="text" class="form-control border border-secondary shadow " id="tarif_pph" value="0.30%" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label"> Nilai Pajak Penghasilan Pasal 22</label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control shadow" id="nilaipph" disabled>
+                                <input type="text" class="form-control border border-secondary shadow " id="nilaipph" disabled>
                             </div>
                         </div>
                     </form>

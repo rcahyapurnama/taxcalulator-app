@@ -15,7 +15,7 @@ include("navbar.php") ?>
     <div class="mb-3" style="max-width: 1500px;">
         <div class="row g-0">
             <div class="col-md-7">
-                <img src="welcome.png" class="responsif">
+                <img src="assets/img/welcome.png" class="responsif">
             </div>
             <div class="col-md-5 g-4">
                 <div class="card-body fonttext">

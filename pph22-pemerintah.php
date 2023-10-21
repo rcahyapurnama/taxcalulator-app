@@ -27,16 +27,16 @@ include("navbar.php") ?>
                             <div class="col-sm-auto">
                                 <select class="form-select border border-secondary shadow" id="jenispajak">
 
-                                    <option value="pph22-impor.php">pph 22 Atas Barang Impor</option>
-                                    <option value="pph22-pemerintah.php" selected>pph 22 Atas Penjualan Barang Kepada Pemerintah</option>
-                                    <option value="pph22-kertas.php">pph 22 Atas Penjualan Kertas Dalam Negeri</option>
-                                    <option value="pph22-semen.php">pph 22 Atas Penjualan Semen Dalam Negeri</option>
-                                    <option value="pph22-baja.php">pph 22 Atas Penjualan Baja Dalam Negeri</option>
-                                    <option value="pph22-rokok.php">pph 22 Atas Penjualan Rokok Dalam Negeri</option>
-                                    <option value="pph22-otomotif.php">pph 22 Atas Penjualan Otomotif Dalam Negeri</option>
-                                    <option value="pph22-minyak.php">pph 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
-                                    <option value="pph22-bumn.php">pph 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
-                                    <option value="pph22-kehutanan.php">pph 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
+                                    <option value="pph22-impor.php">PPH 22 Atas Barang Impor</option>
+                                    <option value="pph22-pemerintah.php" selected>PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
+                                    <option value="pph22-kertas.php">PPH 22 Atas Penjualan Kertas Dalam Negeri</option>
+                                    <option value="pph22-semen.php">PPH 22 Atas Penjualan Semen Dalam Negeri</option>
+                                    <option value="pph22-baja.php">PPH 22 Atas Penjualan Baja Dalam Negeri</option>
+                                    <option value="pph22-rokok.php">PPH 22 Atas Penjualan Rokok Dalam Negeri</option>
+                                    <option value="pph22-otomotif.php">PPH 22 Atas Penjualan Otomotif Dalam Negeri</option>
+                                    <option value="pph22-minyak.php">PPH 22 Atas Penjualan Penjualan Minyak Tanah / Gas LPG, Pelumas</option>
+                                    <option value="pph22-bumn.php">PPH 22 Atas Penjualan Barang Kepada BUMN yang dibayar dengan APBN maupun Non-APBN</option>
+                                    <option value="pph22-kehutanan.php">PPH 22 Atas Pembelian bahan-bahan sektor perhutanan, perkebunan, pertanian, dan perikanan
                                     </option>
                                 </select>
                             </div>
@@ -81,19 +81,19 @@ include("navbar.php") ?>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga Barang </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang1" disabled>
+                                                <input type="text" class="form-control  border border-secondary shadow " id="harga_barang1" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="persen_pph1" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="persen_pph1" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="uang_diterima" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="uang_diterima" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -110,31 +110,31 @@ include("navbar.php") ?>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang termasuk PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang2" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang2" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="ppn1" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="ppn1" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang tidak termasuk PPN (11%) / DPP</label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang_tidak_termasuk" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang_tidak_termasuk" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="persen_pph2" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="persen_pph2" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="uang_diterima2" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="uang_diterima2" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -151,37 +151,37 @@ include("navbar.php") ?>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang termasuk PPN (11%) dan PPnBM (20%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang3" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang3" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="ppn3" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="ppn3" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPnBM (20%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="ppnbm" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="ppnbm" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang tidak termasuk PPN dan PPnBM </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="harga_barang_tidak_termasuk2" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang_tidak_termasuk2" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="persen_pph3" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="persen_pph3" disabled>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control shadow" id="uang_diterima3" disabled>
+                                                <input type="text" class="form-control border border-secondary shadow " id="uang_diterima3" disabled>
                                             </div>
                                         </div>
                                     </div>
