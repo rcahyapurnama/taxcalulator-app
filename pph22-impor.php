@@ -13,16 +13,16 @@ include("navbar.php") ?>
         </div>
     </div>
 </div>
+<form method="post" action="cetak/cetak_pph22-impor.php" target="_blank">
+    <div class="container" id="pph22">
+        <div class="row row-cols-1 row-cols-lg-1 g-3 p-2">
+            <div class="col card1">
+                <div class="card" id="pph22card1">
+                    <h5 class=" card-header text-bg-primary ">
+                        Komponen Data
+                    </h5>
+                    <div class="card-body">
 
-<div class="container" id="pph22">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col card1">
-            <div class="card" id="pph22card1">
-                <h5 class=" card-header text-bg-primary ">
-                    Komponen Data
-                </h5>
-                <div class="card-body">
-                    <form>
                         <div class="mb-3">
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
@@ -45,25 +45,25 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Harga Kurs Hari ini (Rp)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="kurs" inputmode="numeric">
+                                <input type="text" class="form-control border border-secondary shadow mataUang" id="kurs" name="kurs" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Harga Faktur / <i> Cost </i> (US$)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow dolar" id="cost" inputmode="numeric">
+                                <input type="text" class="form-control border border-secondary shadow dolar" id="cost" name="cost" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Biaya Asuransi / <i> Insurance </i> (%)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow " id="insurance" inputmode="numeric">
+                                <input type="text" class="form-control border border-secondary shadow " id="insurance" name="insurance" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Biaya Angkut <i>Freight</i> (%)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow" id="freight" inputmode="numeric">
+                                <input type="text" class="form-control border border-secondary shadow" id="freight" name="freight" inputmode="numeric">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -71,32 +71,32 @@ include("navbar.php") ?>
                             <div class="col-sm-auto">
                                 <div class="input-group">
                                     <a tabindex="0" class="input-group-text icon-link-hover text-info-emphasis border border-secondary" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Total CIF (US$) dihasilkan dari Cost + (Cost x insurance %) + (Cost US$ x freight %)" onclick="makeItalic(this)" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                    <input class="form-control border border-secondary shadow" type="text" id="cifusd" disabled>
+                                    <input class="form-control border border-secondary shadow" type="text" id="cifusd" name="cifusd" readonly>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
                 </div>
-                </form>
             </div>
-        </div>
-        <div class="col card2">
-            <div class="card" id="pph22card2">
-                <h5 class="card-header text-bg-primary ">
-                    Perhitungan
-                </h5>
-                <div class="card-body">
-                    <form>
+            <div class="col card2">
+                <div class="card" id="pph22card2">
+                    <h5 class="card-header text-bg-primary ">
+                        Perhitungan
+                    </h5>
+                    <div class="card-body">
+
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label"> Total CIF (Cost,Insurance, Freight) dalam Rupiah </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary shadow shadow" id="cifrp" disabled>
+                                <input type="text" class="form-control border border-secondary shadow shadow" id="cifrp" name="cifrp" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label ">Bea Masuk (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary-subtle shadow" id="persenmasuk" value="10" inputmode="numeric">
+                                    <input type="text" class="form-control  border border-secondary-subtle shadow" id="persenmasuk" value="10" name="persenmasuk" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
@@ -104,7 +104,7 @@ include("navbar.php") ?>
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text  border border-secondary shadow icon-link-hover text-info-emphasis " id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Bea Masuk dihasilkan dari (CIF dalam Rupiah x Bea Masuk (%))" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg "></i></a>
-                                        <input class="form-control  border-start-0 border-secondary shadow " type=" text" id="beamasuk" disabled>
+                                        <input class="form-control  border-start-0 border-secondary shadow " type=" text" id="beamasuk" name="beamasuk" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@ include("navbar.php") ?>
                             <label class="col-sm-3 col-form-label ">Bea Tambahan Lainnya (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control border border-secondary-subtle shadow" id="persentambah" value="6" inputmode="numeric">
+                                    <input type="text" class="form-control border border-secondary-subtle shadow" id="persentambah" name="persentambah" value="6" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
@@ -121,7 +121,7 @@ include("navbar.php") ?>
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text border border-secondary shadow icon-link-hover text-info-emphasis " id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai Bea Tambahan dihasilkan dari ( CIF dalam Rupiah x Bea Tambahan Lainnya (%) )" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border-start-0 border-secondary shadow" type=" text" id="beatambah" disabled>
+                                        <input class="form-control border-start-0 border-secondary shadow" type=" text" id="beatambah" name="beatambah" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label">Nilai Impor</label>
                             <div class="col-sm-5 ms-auto mb-4">
-                                <input type="text" class="form-control border border-secondary shadow" id="Nimpor" disabled>
+                                <input type="text" class="form-control border border-secondary shadow" id="Nimpor" name="Nimpor" readonly>
                             </div>
                         </div>
                         <div class="row container ">
@@ -141,20 +141,20 @@ include("navbar.php") ?>
                         <div class="row mb-5">
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="  form-control border border-secondary" id="labelimpor" value="2.5%" disabled>
+                                    <input type="text" class="  form-control border border-secondary" id="labelimpor" name="labelimpor" value="2.5%" readonly>
                                 </div>
                             </div>
                             <label class="col-sm-1 col-form-label ms-3 "><i class="bi bi-x-lg"></i></label>
                             <div class="col-sm-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control border border-secondary" id="nilaimpor" value="0" disabled>
+                                    <input type="text" class="form-control border border-secondary" id="nilaimpor" readonly>
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-3" style="font-size: 25px; margin-top:-8px;"> = </label>
                             <div class=" col-sm-4 ms-auto">
                                 <div class="col-auto">
                                     <div class="col-auto">
-                                        <input type="text" class="form-control border border-secondary" id="hasilakhir" value="0" disabled>
+                                        <input type="text" class="form-control border border-secondary" id="hasilakhir" name="hasilakhir" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -165,165 +165,290 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary" id="labelimpor1" value="7.5%" disabled>
+                                    <input type="text" class="form-control  border border-secondary" id="labelimpor1" name="labelimpor1" value="7.5%" readonly>
                                 </div>
                             </div>
                             <label class="col-sm-1 col-form-label ms-3 "><i class="bi bi-x-lg"></i></label>
                             <div class="col-sm-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary" id="nilaimpor1" value="0" disabled>
+                                    <input type="text" class="form-control  border border-secondary" id="nilaimpor1" readonly>
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-3" style="font-size: 25px; margin-top:-8px;"> = </label>
                             <div class="col-sm-4 ms-auto">
                                 <div class="col-auto">
                                     <div class="col-auto">
-                                        <input type="text" class="form-control border border-secondary" id="hasilakhir1" value="0" disabled>
+                                        <input type="text" class="form-control border border-secondary" id="hasilakhir1" name="hasilakhir1" readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-
+                    </div>
                 </div>
             </div>
         </div>
-        <script>
-            var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-            var popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-            // Mendapatkan elemen select
-            const selectElement = document.getElementById("jenispajak");
+        <div class=" row row-cols-1 row-cols-lg-1 g-3 p-2">
+            <div class="col">
+                <div class="card shadow">
+                    <h5 class="card-header  text-bg-primary d-flex justify-content-center ">Aksi</h5>
+                    <div class="card-body">
+                        <div class="col d-flex gap-3 justify-content-center">
 
-            // Menangani peristiwa saat salah satu opsi dipilih
-            selectElement.addEventListener("change", function() {
-                const selectedValue = this.value;
-                if (selectedValue) {
-                    window.location.href = selectedValue; // Arahkan ke URL yang dipilih
-                }
-            });
+                            <button class="btn btn-warning col-5" type="button" onclick="resetInput()">Reset</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary col-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="validateInputs()">
+                                Cetak
+                            </button>
 
-            $(document).ready(function() {
-                // elemen pph impor
-                $("#cost, #insurance, #freight, #persenmasuk, #persentambah").on("input", function() {
-                    totalcif();
-                });
-                $(".mataUang").on("input", function() {
-                    formatRupiah(this);
-                })
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-dialog-centered myModal">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Masukan Data</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-4">
+                                                <label class="col-form-label">Nama :</label>
+                                                <input type="text" class="form-control border border-secondary-subtle" id="nama" name="nama">
+                                                <small id="namaError" class="form-text text-danger"></small>
+                                            </div>
+                                            <hr>
+                                            <div class="mb-3">
+                                                <label class="col-form-label">Nomor API :</label>
+                                                <input type="text" class="form-control border border-secondary-subtle" id="noApi" name="noApi" placeholder="Jika tidak memiliki API isi mengunakan simbol strip (-)">
+                                                <small id="noApiError" class="form-text text-danger"></small>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary col-5 " type="submit" id="submitButton" data-bs-dismiss="modal" onclick="submitAndClear()" disabled>Cetak</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+<script>
+    // Menggunakan JavaScript untuk membuka tab baru saat tombol diklik
+    document.getElementById('submitButton').addEventListener('click', function() {
+        document.forms[0].submit();
 
-                $(".dolar").on("input", function() {
-                    formatDolar(this);
+    });
 
-                });
-            });
+    var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    var popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    // Mendapatkan elemen select
+    const selectElement = document.getElementById("jenispajak");
 
-            function formatRupiah(input) {
-                var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
-                var value = input.value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
-                var formattedValue = new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0
-                }).format(value);
-                input.value = formattedValue;
+    // Menangani peristiwa saat salah satu opsi dipilih
+    selectElement.addEventListener("change", function() {
+        const selectedValue = this.value;
+        if (selectedValue) {
+            window.location.href = selectedValue; // Arahkan ke URL yang dipilih
+        }
+    });
+
+    $(document).ready(function() {
+        // elemen pph impor
+        $("#cost, #insurance, #freight, #persenmasuk, #persentambah").on("input", function() {
+            totalcif();
+        });
+        $(".mataUang").on("input", function() {
+            formatRupiah(this);
+        })
+
+        $(".dolar").on("input", function() {
+            formatDolar(this);
+
+        });
+    });
+
+    function formatRupiah(input) {
+        var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
+        var value = input.value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
+        var formattedValue = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(value);
+        input.value = formattedValue;
+    }
+
+
+    function formatDolar(input) {
+        var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
+        var value = input.value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
+
+        var formattedValue = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+            useGrouping: true
+        }).format(value);
+
+        input.value = formattedValue;
+    }
+
+    function totalcif() {
+        var kursStr = document.getElementById('kurs').value;
+        var kurs = kursStr.split(".").join("").split("Rp").join("");
+        var cost = parseFloat($("#cost").val().replace(/[^\d.]/g, '')) || 0;
+        var insurance = parseFloat($("#insurance").val()) || 0;
+        var freight = parseFloat($("#freight").val().replace(/[^\d.]/g, '')) || 0;
+        var beamasuk = Number($("#persenmasuk").val()) || 0;
+        var beatambah = Number($("#persentambah").val()) || 0;
+
+        var cifusd = parseFloat(cost) + (parseFloat(cost) * parseFloat(insurance) / 100) + (parseFloat(cost) * parseFloat(freight) / 100);
+
+        var cifRp = cifusd * kurs;
+
+        var masuk = beamasuk * cifRp / 100;
+        var tambah = beatambah * cifRp / 100;
+
+        var impor = (parseFloat(cifRp) + parseFloat(masuk) + parseFloat(tambah));
+
+        var hasil = impor * 2.5 / 100;
+        var hasil1 = impor * 7.5 / 100;
+
+        $("#cifusd").val(new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(cifusd));
+
+        $("#cifrp").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(cifRp));
+        $("#beamasuk").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(masuk));
+        $("#beatambah").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(tambah));
+        $("#Nimpor").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(impor));
+
+
+        $("#nilaimpor").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(impor));
+        $("#hasilakhir").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(hasil));
+        $("#nilaimpor1").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(impor));
+        $("#hasilakhir1").val(new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(hasil1));
+    }
+
+
+    function resetInput() {
+
+        document.getElementById("kurs").value = "";
+        document.getElementById("cost").value = "";
+        document.getElementById("insurance").value = "";
+        document.getElementById("freight").value = "";
+        document.getElementById("cifusd").value = "";
+        document.getElementById("cifrp").value = "";
+        document.getElementById("beamasuk").value = "";
+        document.getElementById("beatambah").value = "";
+        document.getElementById("Nimpor").value = "";
+        document.getElementById("nilaimpor").value = "";
+        document.getElementById("hasilakhir").value = "";
+        document.getElementById("nilaimpor1").value = "";
+        document.getElementById("hasilakhir1").value = "";
+
+    }
+
+    nama.addEventListener('input', validateInputs);
+    noApi.addEventListener('input', validateInputs);
+
+    function validateInputs() {
+        const nama = document.getElementById('nama');
+        const noApi = document.getElementById('noApi');
+        const noNpwpError = document.getElementById('noNpwpError');
+        const submitButton = document.getElementById('submitButton');
+        if (nama.value.trim() !== '' && noApi.value.trim() !== '') {
+            submitButton.disabled = false;
+
+        } else {
+            submitButton.disabled = true;
+        }
+        // Validasi "Nama"
+        if (nama.value.trim() === '') {
+            namaError.textContent = 'Nama harus diisi!';
+        } else {
+            namaError.textContent = '';
+        }
+
+        // Validasi "NIK"
+        if (noApi.value.trim() === '') {
+            noApiError.textContent = 'Nomor API harus diisi!';
+        } else {
+            noApiError.textContent = '';
+        }
+
+    }
+
+    function submitAndClear() {
+        var nama = document.getElementById("nama");
+        var noApi = document.getElementById("noApi");
+
+
+        var dataToSend = {
+            nama: nama.value,
+            noApi: noApi.value,
+
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: 'cetak/cetak_pph22-impor.php', // Gantilah dengan URL atau skrip yang sesuai
+            data: dataToSend,
+            success: function(response) {
+                // Data berhasil dikirim, tindakan setelah pengiriman
+                nama.value = '';
+                noApi.value = '';
+                validateInputs()
+
             }
-
-
-            function formatDolar(input) {
-                var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
-                var value = input.value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
-
-                var formattedValue = new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                    useGrouping: true
-                }).format(value);
-
-                input.value = formattedValue;
-            }
-
-            function totalcif() {
-                var kursStr = document.getElementById('kurs').value;
-                var kurs = kursStr.split(".").join("").split("Rp").join("");
-                var cost = parseFloat($("#cost").val().replace(/[^\d.]/g, '')) || 0;
-                var insurance = parseFloat($("#insurance").val()) || 0;
-                var freight = parseFloat($("#freight").val().replace(/[^\d.]/g, '')) || 0;
-                var beamasuk = Number($("#persenmasuk").val()) || 0;
-                var beatambah = Number($("#persentambah").val()) || 0;
-
-                var cifusd = parseFloat(cost) + (parseFloat(cost) * parseFloat(insurance) / 100) + (parseFloat(cost) * parseFloat(freight) / 100);
-
-                var cifRp = cifusd * kurs;
-
-                var masuk = beamasuk * cifRp / 100;
-                var tambah = beatambah * cifRp / 100;
-
-                var impor = (parseFloat(cifRp) + parseFloat(masuk) + parseFloat(tambah));
-
-                var hasil = impor * 2.5 / 100;
-                var hasil1 = impor * 7.5 / 100;
-
-                $("#cifusd").val(new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(cifusd));
-
-                $("#cifrp").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(cifRp));
-                $("#beamasuk").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(masuk));
-                $("#beatambah").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(tambah));
-                $("#Nimpor").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(impor));
-
-
-                $("#nilaimpor").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(impor));
-                $("#hasilakhir").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(hasil));
-                $("#nilaimpor1").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(impor));
-                $("#hasilakhir1").val(new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                }).format(hasil1));
-            }
-        </script>
-        </p>
-        <?php include("footer.php") ?>
+        });
+    }
+</script>
+</p>
+<?php include("footer.php") ?>

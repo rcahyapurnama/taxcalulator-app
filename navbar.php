@@ -15,6 +15,7 @@
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
 
+
   <title>Kalkulator Pajak | <?php echo $pageTitle; ?> </title>
 </head>
 
@@ -74,97 +75,96 @@
         </div>
       </nav>
     </header>
-    <main class="main">
-      <script>
-        /*!
-         * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
-         * Copyright 2011-2023 The Bootstrap Authors
-         * Licensed under the Creative Commons Attribution 3.0 Unported License.
-         */
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+      /*!
+       * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+       * Copyright 2011-2023 The Bootstrap Authors
+       * Licensed under the Creative Commons Attribution 3.0 Unported License.
+       */
 
-        (() => {
-          'use strict'
+      (() => {
+        'use strict'
 
-          const getStoredTheme = () => localStorage.getItem('theme')
-          const setStoredTheme = theme => localStorage.setItem('theme', theme)
+        const getStoredTheme = () => localStorage.getItem('theme')
+        const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
-          const getPreferredTheme = () => {
-            const storedTheme = getStoredTheme()
-            if (storedTheme) {
-              return storedTheme
-            }
-
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        const getPreferredTheme = () => {
+          const storedTheme = getStoredTheme()
+          if (storedTheme) {
+            return storedTheme
           }
 
-          const setTheme = theme => {
-            if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              document.documentElement.setAttribute('data-bs-theme', 'dark')
-            } else {
-              document.documentElement.setAttribute('data-bs-theme', theme)
-            }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+
+        const setTheme = theme => {
+          if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark')
+          } else {
+            document.documentElement.setAttribute('data-bs-theme', theme)
+          }
+        }
+
+        setTheme(getPreferredTheme())
+
+        const showActiveTheme = (theme, focus = false) => {
+          const themeSwitcher = document.querySelector('#bd-theme')
+
+          if (!themeSwitcher) {
+            return
           }
 
-          setTheme(getPreferredTheme())
+          const themeSwitcherText = document.querySelector('#bd-theme-text')
+          const activeThemeIcon = document.querySelector('.theme-icon-active')
+          const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+          const iconOfActiveBtn = btnToActive.querySelector('i').dataset.themeIcon
 
-          const showActiveTheme = (theme, focus = false) => {
-            const themeSwitcher = document.querySelector('#bd-theme')
 
-            if (!themeSwitcher) {
-              return
-            }
-
-            const themeSwitcherText = document.querySelector('#bd-theme-text')
-            const activeThemeIcon = document.querySelector('.theme-icon-active')
-            const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-            const iconOfActiveBtn = btnToActive.querySelector('i').dataset.themeIcon
-
-            document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-              element.classList.remove('active')
-              element.setAttribute('aria-pressed', 'false')
-            })
-
-            btnToActive.classList.add('active')
-            btnToActive.setAttribute('aria-pressed', 'true')
-            activeThemeIcon.classList.remove(activeThemeIcon.dataset.themeIconActive)
-            activeThemeIcon.classList.add(iconOfActiveBtn)
-            activeThemeIcon.dataset.iconActive = iconOfActiveBtn
-            const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
-            themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
-
-            if (focus) {
-              themeSwitcher.focus()
-            }
-          }
-
-          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            const storedTheme = getStoredTheme()
-            if (storedTheme !== 'light' && storedTheme !== 'dark') {
-              setTheme(getPreferredTheme())
-            }
+          document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+            element.classList.remove('active')
+            element.setAttribute('aria-pressed', 'false')
           })
 
-          window.addEventListener('DOMContentLoaded', () => {
-            showActiveTheme(getPreferredTheme())
+          btnToActive.classList.add('active')
 
-            document.querySelectorAll('[data-bs-theme-value]')
-              .forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                  const theme = toggle.getAttribute('data-bs-theme-value')
-                  setStoredTheme(theme)
-                  setTheme(theme)
-                  showActiveTheme(theme, true)
-                })
+          activeThemeIcon.classList.remove(activeThemeIcon.dataset.themeIconActive)
+          activeThemeIcon.classList.add(iconOfActiveBtn)
+          activeThemeIcon.dataset.iconActive = iconOfActiveBtn
+          const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+          themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+          if (focus) {
+            themeSwitcher.focus()
+          }
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+          const storedTheme = getStoredTheme()
+          if (storedTheme !== 'light' && storedTheme !== 'dark') {
+            setTheme(getPreferredTheme())
+          }
+        })
+
+        window.addEventListener('DOMContentLoaded', () => {
+          showActiveTheme(getPreferredTheme())
+
+          document.querySelectorAll('[data-bs-theme-value]')
+            .forEach(toggle => {
+              toggle.addEventListener('click', () => {
+                const theme = toggle.getAttribute('data-bs-theme-value')
+                setStoredTheme(theme)
+                setTheme(theme)
+                showActiveTheme(theme, true)
               })
-          })
-        })()
-      </script>
+            })
+        })
+      })()
+    </script>
+    <script src="https://kit.fontawesome.com/70b688cff9.js" crossorigin="anonymous"></script>
+    <!-- J-QUERY -->
+    <script src="assets/js/jquery-v3.7.1.js"></script>
 
-      <script>
 
-      </script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-      <script src="https://kit.fontawesome.com/70b688cff9.js" crossorigin="anonymous"></script>
-      <!-- J-QUERY -->
-      <script src="assets/js/jquery-v3.7.1.js"></script>
+    <main class="main">

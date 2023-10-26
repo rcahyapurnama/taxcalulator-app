@@ -15,14 +15,15 @@ include("navbar.php") ?>
 </div>
 
 <div class="container" id="pph22">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col card1-23">
-            <div class="card" id="card23">
-                <h5 class=" card-header text-bg-primary ">
-                    Komponen Data
-                </h5>
-                <div class="card-body">
-                    <form>
+    <form method="post" action="cetak/cetak_pph23.php" target="_blank">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col card1-pem">
+                <div class="card">
+                    <h5 class=" card-header text-bg-primary ">
+                        Komponen Data
+                    </h5>
+                    <div class="card-body">
+
                         <div class="mb-3">
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
@@ -37,7 +38,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Status NPWP</label>
                             <div class="col-sm-auto">
-                                <select class="form-select  border border-secondary shadow" id="npwp_kertas">
+                                <select class="form-select border border-secondary shadow" id="npwp_kertas" name="npwp_kertas">
 
                                     <option value="1" selected>NPWP</option>
                                     <option value="2">Non-NPWP</option>
@@ -48,51 +49,91 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Dasar Pengenaan Pajak (DPP)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp" inputmode="numeric">
+                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp" inputmode="numeric" name="harga_barang_dpp">
                             </div>
                         </div>
+                    </div>
+
                 </div>
-                </form>
             </div>
-        </div>
-        <div class="col card2">
-            <div class="card" id="pph22card2">
-                <h5 class="card-header text-bg-primary ">
-                    Perhitungan
-                </h5>
-                <div class="card-body">
-                    <form>
+            <div class="col card2">
+                <div class="card" id="pph22card2">
+                    <h5 class="card-header text-bg-primary ">
+                        Perhitungan
+                    </h5>
+                    <div class="card-body">
+
                         <div class="row mb-3">
                             <label class="col-sm-6 col-form-label"> Dasar Pengenaan Pajak (DPP) </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary shadow " id="dpp" disabled>
+                                <input type="text" class="form-control border border-secondary shadow " id="dpp" name="dpp" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label "> Tarif Pajak Penghasilan Pasal 23 </label>
+                            <label class="col-sm-6 col-form-label "> Tarif Pajak Penghasilan Pasal 22 </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary shadow " id="tarif_pph" disabled>
+                                <input type="text" class="form-control border border-secondary shadow " id="tarif_pph" name="tarif_pph" value="0.25%" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label"> Nilai Pajak Penghasilan Pasal 23</label>
+                            <label class="col-sm-6 col-form-label"> Nilai Pajak Penghasilan Pasal 22</label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary shadow " id="nilaipph" disabled>
+                                <input type="text" class="form-control border border-secondary shadow " id="nilaipph" name="nilaipph" readonly>
                             </div>
                         </div>
-                    </form>
+
+                    </div>
+                </div>
+                <div class="col note mt-3">
+                    <div class="col d-flex gap-3 justify-content-center">
+
+                        <button class="btn btn-warning col-4" type="button" onclick="resetInput()">Reset</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary col-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Cetak
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered myModal">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Masukan Data</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-4">
+                                            <label class="col-form-label">Nama:</label>
+                                            <input type="text" class="form-control border border-secondary-subtle" id="nama" name="nama">
+                                            <small id="namaError" class="form-text text-danger"></small>
+                                        </div>
+                                        <hr>
+                                        <div class="mb-3">
+                                            <label class="col-form-label">NIK:</label>
+                                            <input type="text" class="form-control border border-secondary-subtle " id="nik" name="nik">
+                                            <small id="nikError" class="form-text text-danger"></small>
+                                        </div>
+                                        <hr>
+                                        <div class="mb-3">
+                                            <label class="col-form-label">Nomor NPWP:</label>
+                                            <input type="text" class="form-control border border-secondary-subtle" id="no_npwp" name="no_npwp">
+                                            <small id="noNpwpError" class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary col-5 " type="submit" id="submitButton" data-bs-dismiss="modal" onclick="submitAndClear()" readonly>Cetak</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <b>Catatan</b>
+                    <p class=" ms-3" style="font-size: small;"><i> * Besar tarif pajak penghasilan pasal 22 yang diterapkan kepada wajib pajak yang tidak memiliki Nomor Pokok Wajib Pajak atau NPWP akan lebih tinggi 100% (seratus persen) daripada tarif yang di terapkan kepada wajib pajak yang memiliki Nomor Pokok Wajib Pajak</i></p>
                 </div>
             </div>
-            <div class="col note mt-3">
-
-                <b>Catatan</b>
-                <p class=" ms-3" style="font-size: small;"><i> * Besar tarif pajak penghasilan pasal 23 yang diterapkan kepada wajib pajak yang tidak memiliki Nomor Pokok Wajib Pajak atau NPWP akan lebih tinggi 100% (seratus persen) daripada tarif yang di terapkan kepada wajib pajak yang memiliki Nomor Pokok Wajib Pajak</i></p>
-            </div>
         </div>
-    </div>
+    </form>
 </div>
-</div>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -188,6 +229,105 @@ include("navbar.php") ?>
             }).format(hitung_pph));
         }
 
+        const nama = document.getElementById('nama');
+        const nik = document.getElementById('nik');
+        const namaError = document.getElementById('namaError');
+        const nikError = document.getElementById('nikError');
+        const statusNpwp = document.getElementById('npwp_kertas');
+        const noNpwp = document.getElementById('no_npwp');
+        const noNpwpError = document.getElementById('noNpwpError');
+        const submitButton = document.getElementById('submitButton');
+        // Fungsi untuk mengatur nilai dan memicu perubahan saat halaman dimuat
+        window.addEventListener('load', function() {
+            statusNpwp.value = '1'; // Mengatur nilai 'NPWP' pada saat halaman dimuat
+            noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+            noNpwp.addEventListener('input', validateNoNpwp);
+            noNpwp.removeAttribute('readonly');
+            validateInputs();
+        });
+
+        nama.addEventListener('input', validateInputs);
+        nik.addEventListener('input', validateInputs);
+        statusNpwp.addEventListener('change', validateInputs);
+
+        function validateInputs() {
+            if (nama.value.trim() !== '' && nik.value.trim() !== '' && statusNpwp.value !== '' && (statusNpwp.value !== '1' || (statusNpwp.value === '1' && noNpwp.value.trim() !== '' && noNpwpError.textContent === ''))) {
+                submitButton.disabled = false;
+
+            } else {
+                submitButton.disabled = true;
+            }
+            // Validasi "Nama"
+            if (nama.value.trim() === '') {
+                namaError.textContent = 'Nama harus diisi';
+            } else {
+                namaError.textContent = '';
+            }
+
+            // Validasi "NIK"
+            if (nik.value.trim() === '') {
+                nikError.textContent = 'NIK harus diisi';
+            } else {
+                nikError.textContent = '';
+            }
+
+        }
+
+
+        statusNpwp.addEventListener('change', function() {
+            if (statusNpwp.value === '1') {
+                noNpwp.value = '';
+                noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilih Status NPWP sebagai NPWP';
+                noNpwp.addEventListener('input', validateNoNpwp);
+                noNpwp.removeAttribute('readonly');
+            } else if (statusNpwp.value === '2') {
+                noNpwp.value = '-';
+                noNpwp.setAttribute('readonly', true);
+                noNpwpError.textContent = 'Anda Memilih Status NPWP sebagai Non-NPWP maka Input Otomatis bernilai Strip (-)';
+                noNpwp.removeEventListener('input', validateNoNpwp);
+            } else {
+                noNpwpError.textContent = '';
+                noNpwp.removeAttribute('readonly');
+                noNpwp.removeEventListener('input', validateNoNpwp);
+            }
+            validateInputs();
+        });
+
+        function validateNoNpwp() {
+            if (noNpwp.value.trim() === '') {
+                noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+
+            } else {
+                noNpwpError.textContent = '';
+
+            }
+            validateInputs();
+        }
+
+        function submitAndClear() {
+            var nama = document.getElementById("nama");
+            var noApi = document.getElementById("noApi");
+
+
+            var dataToSend = {
+                nama: nama.value,
+                noApi: noApi.value,
+
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'cetak/cetak_pph22-impor.php', // Gantilah dengan URL atau skrip yang sesuai
+                data: dataToSend,
+                success: function(response) {
+                    // Data berhasil dikirim, tindakan setelah pengiriman
+                    nama.value = '';
+                    noApi.value = '';
+                    validateInputs()
+
+                }
+            });
+        }
     });
 </script>
 <?php include("footer.php") ?>

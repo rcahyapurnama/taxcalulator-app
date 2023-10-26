@@ -8,6 +8,7 @@ $(document).ready(function () {
     initializeStatus()
 
   });
+
   $("#persenjkk, #persenjkm, #persenbpjs").on("input", function () {
     hitungBPJS();
     hitungJumlahjkkjkm();
@@ -389,6 +390,9 @@ function hitungpengurangan() {
   if (jabatan > 500000) {
     jabatan = 500000;
   }
+
+  jumlah_pengurangan = jabatan + jht + jp;
+
   $("#jabatan").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
@@ -407,6 +411,12 @@ function hitungpengurangan() {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(jp));
+  $("#jumlah_pengurangan").val(new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(jumlah_pengurangan));
 
 }
 function hitungnetto() {
@@ -458,14 +468,16 @@ function hitungPKP() {
     var pkp = parseFloat(nettosetahun) - parseFloat(ptkp);
 
   }
-
-  $("#pkp").val(new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(pkp));
-
+  if (isNaN(pkp)) {
+    pkp = "";
+  } else {
+    $("#pkp").val(new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(pkp));
+  }
 
 
 }
@@ -479,7 +491,7 @@ function hitungpph21() {
   if (PKPInput == 0) {
     pphterutang = 0;
   } else {
-    if (NPWPInput === "1") {
+    if (NPWPInput === 'NPWP') {
       if (PKPInput <= 60000000) {
         pphterutang = PKPInput * 0.05;
       } else if (PKPInput > 60000000 && PKPInput <= 250000000) {
@@ -491,7 +503,7 @@ function hitungpph21() {
       } else {
         pphterutang = (60000000 * 0.05) + (250000000 - 60000000) * 0.15 + (500000000 - 250000000) * 0.25 + (5000000000 - 500000000) * 0.30 + (PKPInput - 5000000000) * 0.35;
       }
-    } else {
+    } else if (NPWPInput === 'Non-NPWP') {
       if (PKPInput <= 60000000) {
         pphterutang = PKPInput * 0.05 * 1.20;
       } else if (PKPInput > 60000000 && PKPInput <= 250000000) {
@@ -503,9 +515,9 @@ function hitungpph21() {
       } else {
         pphterutang = (60000000 * 0.05 + (250000000 - 60000000) * 0.15 + (500000000 - 250000000) * 0.25 + (5000000000 - 500000000) * 0.30 + (PKPInput - 5000000000) * 0.35) * 1.20;
       }
+
     }
   }
-
   // Tampilkan hasil perhitungan PPH Terutang Setahun
   $("#pphsetahun").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -515,24 +527,22 @@ function hitungpph21() {
   }).format(pphterutang));
 
 
+  // Cek jika PPH adalah NaN, maka kosongkan nilai
+
 }
 
 function pphbulanini() {
   var nettoCrc = document.getElementById('netto').value;
   var netto = nettoCrc.split(".").join("").split("Rp").join("");
-  var pphsebulanCrc = document.getElementById('pphsebulan').value;
-  var pph = pphsebulanCrc.split(".").join("").split("Rp").join("");
-
   var pphCrc = document.getElementById('pphsetahun').value;
   var pph = pphCrc.split(".").join("").split("Rp").join("");
 
 
-  var hitungpphbulanan = (pph / 12);
-  var hasilnetto = netto;
-  var hasilpphsebulan = hitungpphbulanan;
-  var hasilakhir = hasilnetto - hasilpphsebulan;
 
-
+  hitungpphbulanan = (pph / 12);
+  hasilnetto = netto;
+  hasilpphsebulan = hitungpphbulanan;
+  hasilakhir = hasilnetto - hasilpphsebulan;
 
   $("#pphsebulan").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -540,6 +550,8 @@ function pphbulanini() {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(hitungpphbulanan));
+
+
 
   $("#gajibersih").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -562,5 +574,62 @@ function pphbulanini() {
     maximumFractionDigits: 0,
   }).format(hasilakhir));
 
+
+
 }
+
+
+function resetInput() {
+  document.getElementById("npwp").value = "1";
+  document.getElementById("status").value = "TK/0";
+  initializeStatus();
+  document.getElementById("gaji").value = "";
+  document.getElementById("tunjangan").value = "";
+  document.getElementById("jumlahjkkjkm").value = "";
+  document.getElementById("jumlahbpjskes").value = "";
+  document.getElementById("bruto").value = "";
+  document.getElementById("hasiljkk").value = "";
+  document.getElementById("hasiljkm").value = "";
+  document.getElementById("hasilbpjs").value = "";
+  document.getElementById("jabatan").value = "";
+  document.getElementById("hasiljht").value = "";
+  document.getElementById("hasiljp").value = "";
+  document.getElementById("netto").value = "";
+  document.getElementById("nettosetahun").value = "";
+  document.getElementById("pkp").value = "";
+  document.getElementById("pphsetahun").value = "";
+  document.getElementById("pphsebulan").value = "";
+  document.getElementById("gajibersih").value = "";
+  document.getElementById("pph21sebulan1").value = "";
+  document.getElementById("hasil_akhir").value = "";
+}
+
+function submitAndClear() {
+  var nama = document.getElementById("nama");
+  var nik = document.getElementById("nik");
+  var noNpwp = document.getElementById("no_npwp");
+
+  var dataToSend = {
+    nama: nama.value,
+    nik: nik.value,
+    noNpwp: noNpwp.value
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: 'cetak/cetak_pph21.php', // Gantilah dengan URL atau skrip yang sesuai
+    data: dataToSend,
+    success: function (response) {
+      // Data berhasil dikirim, tindakan setelah pengiriman
+      nama.value = '';
+      nik.value = '';
+      statusNpwp.value = 'NPWP'; // Atur kembali ke nilai default jika perlu
+      noNpwp.value = '';
+      noNpwpError.textContent = '';
+      validateInputs();
+      validateNoNpwp();
+    }
+  });
+}
+
 

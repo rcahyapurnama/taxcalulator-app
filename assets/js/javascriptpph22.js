@@ -25,6 +25,9 @@ $(document).ready(function () {
     $("#harga_barang_dpp,#npwp_kertas,#jenispajak").on("input change", function () {
         hitung_kertas();
     });
+
+
+
 });
 document.addEventListener("DOMContentLoaded", function () {
     // Mendapatkan elemen select untuk jenis pajak dan npwp
@@ -60,6 +63,106 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Perbarui tampilan tarif pph
         tarifpphElement.value = tarifpph;
+    }
+
+    const nama = document.getElementById('nama');
+    const nik = document.getElementById('nik');
+    const namaError = document.getElementById('namaError');
+    const nikError = document.getElementById('nikError');
+    const statusNpwp = document.getElementById('npwp_kertas');
+    const noNpwp = document.getElementById('no_npwp');
+    const noNpwpError = document.getElementById('noNpwpError');
+    const submitButton = document.getElementById('submitButton');
+    // Fungsi untuk mengatur nilai dan memicu perubahan saat halaman dimuat
+    window.addEventListener('load', function () {
+        statusNpwp.value = '1'; // Mengatur nilai 'NPWP' pada saat halaman dimuat
+        noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+        noNpwp.addEventListener('input', validateNoNpwp);
+        noNpwp.removeAttribute('readonly');
+        validateInputs();
+    });
+
+    nama.addEventListener('input', validateInputs);
+    nik.addEventListener('input', validateInputs);
+    statusNpwp.addEventListener('change', validateInputs);
+
+    function validateInputs() {
+        if (nama.value.trim() !== '' && nik.value.trim() !== '' && statusNpwp.value !== '' && (statusNpwp.value !== '1' || (statusNpwp.value === '1' && noNpwp.value.trim() !== '' && noNpwpError.textContent === ''))) {
+            submitButton.disabled = false;
+
+        } else {
+            submitButton.disabled = true;
+        }
+        // Validasi "Nama"
+        if (nama.value.trim() === '') {
+            namaError.textContent = 'Nama harus diisi';
+        } else {
+            namaError.textContent = '';
+        }
+
+        // Validasi "NIK"
+        if (nik.value.trim() === '') {
+            nikError.textContent = 'NIK harus diisi';
+        } else {
+            nikError.textContent = '';
+        }
+
+    }
+
+
+    statusNpwp.addEventListener('change', function () {
+        if (statusNpwp.value === '1') {
+            noNpwp.value = '';
+            noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilih Status NPWP sebagai NPWP';
+            noNpwp.addEventListener('input', validateNoNpwp);
+            noNpwp.removeAttribute('readonly');
+        } else if (statusNpwp.value === '2') {
+            noNpwp.value = '-';
+            noNpwp.setAttribute('readonly', true);
+            noNpwpError.textContent = 'Anda Memilih Status NPWP sebagai Non-NPWP maka Input Otomatis bernilai Strip (-)';
+            noNpwp.removeEventListener('input', validateNoNpwp);
+        } else {
+            noNpwpError.textContent = '';
+            noNpwp.removeAttribute('readonly');
+            noNpwp.removeEventListener('input', validateNoNpwp);
+        }
+        validateInputs();
+    });
+
+    function validateNoNpwp() {
+        if (noNpwp.value.trim() === '') {
+            noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+
+        } else {
+            noNpwpError.textContent = '';
+
+        }
+        validateInputs();
+    }
+
+    function submitAndClear() {
+        var nama = document.getElementById("nama");
+        var noApi = document.getElementById("noApi");
+
+
+        var dataToSend = {
+            nama: nama.value,
+            noApi: noApi.value,
+
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: 'cetak/cetak_pph22-impor.php', // Gantilah dengan URL atau skrip yang sesuai
+            data: dataToSend,
+            success: function (response) {
+                // Data berhasil dikirim, tindakan setelah pengiriman
+                nama.value = '';
+                noApi.value = '';
+                validateInputs()
+
+            }
+        });
     }
 });
 
@@ -127,4 +230,6 @@ function hitung_kertas() {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
     }).format(hitung_pph));
+
+
 }

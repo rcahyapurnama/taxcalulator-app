@@ -24,7 +24,7 @@ include("navbar.php") ?>
                     <h1 class="card-title">TAX-CAL</h1>
                     <p></p>
                     <p class="card-text">Selamat datang di aplikasi perihitungan pajak penghasilan TAX-CAL Silahkan memilih jenis perhitungan pajak didalam menu yang tersedia untuk memulai </p>
-                    <a href="pph21.php" class="btn btn-primary">Mulai Coba Hitung PPH 21 <i class="bi bi-arrow-right-circle"></i> </a>
+                    <a href="pph21.php" class="btn btn-primary">Mulai Hitung PPH 21 <i class="bi bi-arrow-right-circle"></i> </a>
                 </div>
             </div>
         </div>
