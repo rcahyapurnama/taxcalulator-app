@@ -15,7 +15,7 @@ include("navbar.php") ?>
 </div>
 
 <div class="container" id="pph22">
-    <form method="post" action="cetak/cetak_pph22-otomotif.php" target="_blank">
+    <form method="post" action="cetak/cetak_pph22_otomotif.php" target="_blank">
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col card1-pem">
                 <div class="card">

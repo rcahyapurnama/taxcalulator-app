@@ -27,7 +27,7 @@ $nilaipph = $_POST['nilaipph'];
 // Membuat objek FPDF
 $pdf = new FPDF();
 
-$pdf->SetTitle('cetak pph22 atas penjualan rokok dalam negeri.pdf');
+$pdf->SetTitle('cetak pph22 atas penjualan minyak.pdf');
 
 $pdf->AddPage();
 
@@ -37,7 +37,7 @@ $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(10, 10, '', 0, 1);
 $pdf->Cell(190, 0, 'RINCIAN PERHITUNGAN PAJAK PENGHASILAN PASAL 22 ', 0, 0, 'C');
 $pdf->Ln(4);
-$pdf->Cell(190, 10,  'ATAS PENJUALAN ROKOK DALAM NEGERI', 0, 0, 'C');
+$pdf->Cell(190, 10,  'ATAS PENJUALAN PENJUALAN MINYAK TANAH / GAS LPG, PELUMAS', 0, 0, 'C');
 
 $pdf->Cell(10, 15, '', 0, 1);
 $pdf->SetFont('Arial', '', 9);
@@ -86,4 +86,4 @@ $pdf->Cell(90, 9, iconv('UTF-8', 'ISO-8859-9', $nilaipph), 'LBR', 0, 'R');
 
 
 // Simpan dokumen PDF
-$pdf->Output('cetak pph22 atas penjualan rokok dalam negeri.pdf', 'I');
+$pdf->Output('cetak pph22 atas penjualan minyak.pdf', 'I');
