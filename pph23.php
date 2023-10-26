@@ -70,13 +70,13 @@ include("navbar.php") ?>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label "> Tarif Pajak Penghasilan Pasal 22 </label>
+                            <label class="col-sm-6 col-form-label "> Tarif Pajak Penghasilan Pasal 23 </label>
                             <div class="col-sm-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary shadow " id="tarif_pph" name="tarif_pph" value="0.25%" readonly>
+                                <input type="text" class="form-control border border-secondary shadow " id="tarif_pph" name="tarif_pph" value="15%" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-6 col-form-label"> Nilai Pajak Penghasilan Pasal 22</label>
+                            <label class="col-sm-6 col-form-label"> Nilai Pajak Penghasilan Pasal 23</label>
                             <div class="col-sm-5 ms-auto">
                                 <input type="text" class="form-control border border-secondary shadow " id="nilaipph" name="nilaipph" readonly>
                             </div>
@@ -87,7 +87,8 @@ include("navbar.php") ?>
                 <div class="col note mt-3">
                     <div class="col d-flex gap-3 justify-content-center">
 
-                        <button class="btn btn-warning col-4" type="button" onclick="resetInput()">Reset</button>
+                        <button class="btn btn-warning col-4" type="button" onclick="reset()">Reset</button>
+
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary col-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Cetak
@@ -229,108 +230,120 @@ include("navbar.php") ?>
             }).format(hitung_pph));
         }
 
-        const nama = document.getElementById('nama');
-        const nik = document.getElementById('nik');
-        const namaError = document.getElementById('namaError');
-        const nikError = document.getElementById('nikError');
-        const statusNpwp = document.getElementById('npwp_kertas');
-        const noNpwp = document.getElementById('no_npwp');
-        const noNpwpError = document.getElementById('noNpwpError');
-        const submitButton = document.getElementById('submitButton');
-        // Fungsi untuk mengatur nilai dan memicu perubahan saat halaman dimuat
-        window.addEventListener('load', function() {
-            statusNpwp.value = '1'; // Mengatur nilai 'NPWP' pada saat halaman dimuat
-            noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+    });
+
+    function reset() {
+
+
+        document.getElementById("harga_barang_dpp").value = "";
+        document.getElementById("dpp").value = "";
+        document.getElementById("nilaipph").value = "";
+
+
+    }
+
+
+    const nama = document.getElementById('nama');
+    const nik = document.getElementById('nik');
+    const namaError = document.getElementById('namaError');
+    const nikError = document.getElementById('nikError');
+    const statusNpwp = document.getElementById('npwp_kertas');
+    const noNpwp = document.getElementById('no_npwp');
+    const noNpwpError = document.getElementById('noNpwpError');
+    const submitButton = document.getElementById('submitButton');
+    // Fungsi untuk mengatur nilai dan memicu perubahan saat halaman dimuat
+    window.addEventListener('load', function() {
+        statusNpwp.value = '1'; // Mengatur nilai 'NPWP' pada saat halaman dimuat
+        noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+        noNpwp.addEventListener('input', validateNoNpwp);
+        noNpwp.removeAttribute('readonly');
+        validateInputs();
+    });
+
+    nama.addEventListener('input', validateInputs);
+    nik.addEventListener('input', validateInputs);
+    statusNpwp.addEventListener('change', validateInputs);
+
+    function validateInputs() {
+        if (nama.value.trim() !== '' && nik.value.trim() !== '' && statusNpwp.value !== '' && (statusNpwp.value !== '1' || (statusNpwp.value === '1' && noNpwp.value.trim() !== '' && noNpwpError.textContent === ''))) {
+            submitButton.disabled = false;
+
+        } else {
+            submitButton.disabled = true;
+        }
+        // Validasi "Nama"
+        if (nama.value.trim() === '') {
+            namaError.textContent = 'Nama harus diisi';
+        } else {
+            namaError.textContent = '';
+        }
+
+        // Validasi "NIK"
+        if (nik.value.trim() === '') {
+            nikError.textContent = 'NIK harus diisi';
+        } else {
+            nikError.textContent = '';
+        }
+
+    }
+
+
+    statusNpwp.addEventListener('change', function() {
+        if (statusNpwp.value === '1') {
+            noNpwp.value = '';
+            noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilih Status NPWP sebagai NPWP';
             noNpwp.addEventListener('input', validateNoNpwp);
             noNpwp.removeAttribute('readonly');
-            validateInputs();
-        });
-
-        nama.addEventListener('input', validateInputs);
-        nik.addEventListener('input', validateInputs);
-        statusNpwp.addEventListener('change', validateInputs);
-
-        function validateInputs() {
-            if (nama.value.trim() !== '' && nik.value.trim() !== '' && statusNpwp.value !== '' && (statusNpwp.value !== '1' || (statusNpwp.value === '1' && noNpwp.value.trim() !== '' && noNpwpError.textContent === ''))) {
-                submitButton.disabled = false;
-
-            } else {
-                submitButton.disabled = true;
-            }
-            // Validasi "Nama"
-            if (nama.value.trim() === '') {
-                namaError.textContent = 'Nama harus diisi';
-            } else {
-                namaError.textContent = '';
-            }
-
-            // Validasi "NIK"
-            if (nik.value.trim() === '') {
-                nikError.textContent = 'NIK harus diisi';
-            } else {
-                nikError.textContent = '';
-            }
-
+        } else if (statusNpwp.value === '2') {
+            noNpwp.value = '-';
+            noNpwp.setAttribute('readonly', true);
+            noNpwpError.textContent = 'Anda Memilih Status NPWP sebagai Non-NPWP maka Input Otomatis bernilai Strip (-)';
+            noNpwp.removeEventListener('input', validateNoNpwp);
+        } else {
+            noNpwpError.textContent = '';
+            noNpwp.removeAttribute('readonly');
+            noNpwp.removeEventListener('input', validateNoNpwp);
         }
-
-
-        statusNpwp.addEventListener('change', function() {
-            if (statusNpwp.value === '1') {
-                noNpwp.value = '';
-                noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilih Status NPWP sebagai NPWP';
-                noNpwp.addEventListener('input', validateNoNpwp);
-                noNpwp.removeAttribute('readonly');
-            } else if (statusNpwp.value === '2') {
-                noNpwp.value = '-';
-                noNpwp.setAttribute('readonly', true);
-                noNpwpError.textContent = 'Anda Memilih Status NPWP sebagai Non-NPWP maka Input Otomatis bernilai Strip (-)';
-                noNpwp.removeEventListener('input', validateNoNpwp);
-            } else {
-                noNpwpError.textContent = '';
-                noNpwp.removeAttribute('readonly');
-                noNpwp.removeEventListener('input', validateNoNpwp);
-            }
-            validateInputs();
-        });
-
-        function validateNoNpwp() {
-            if (noNpwp.value.trim() === '') {
-                noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
-
-            } else {
-                noNpwpError.textContent = '';
-
-            }
-            validateInputs();
-        }
-
-        function submitAndClear() {
-            var nama = document.getElementById("nama");
-            var nik = document.getElementById("nik");
-            var no_npwp = document.getElementById("no_npwp");
-
-
-            var dataToSend = {
-                nama: nama.value,
-                nik: nik.value,
-                no_npwp: no_npwp.value,
-
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: 'cetak/cetak_pph23.php', // Gantilah dengan URL atau skrip yang sesuai
-                data: dataToSend,
-                success: function(response) {
-                    // Data berhasil dikirim, tindakan setelah pengiriman
-                    nama.value = '';
-                    nik.value = '';
-
-                    validateInputs()
-                    validateNoNpwp();
-                }
-            });
-        }
+        validateInputs();
     });
+
+    function validateNoNpwp() {
+        if (noNpwp.value.trim() === '') {
+            noNpwpError.textContent = 'No NPWP harus diisi, karena anda memilh Status NPWP sebagai NPWP';
+
+        } else {
+            noNpwpError.textContent = '';
+
+        }
+        validateInputs();
+    }
+
+    function submitAndClear() {
+        var nama = document.getElementById("nama");
+        var nik = document.getElementById("nik");
+        var no_npwp = document.getElementById("no_npwp");
+
+
+        var dataToSend = {
+            nama: nama.value,
+            nik: nik.value,
+            no_npwp: no_npwp.value,
+
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: 'cetak/cetak_pph23.php', // Gantilah dengan URL atau skrip yang sesuai
+            data: dataToSend,
+            success: function(response) {
+                // Data berhasil dikirim, tindakan setelah pengiriman
+                nama.value = '';
+                nik.value = '';
+
+                validateInputs()
+                validateNoNpwp();
+            }
+        });
+    }
 </script>
 <?php include("footer.php") ?>

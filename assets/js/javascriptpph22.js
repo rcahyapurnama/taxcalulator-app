@@ -169,7 +169,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+function resetInput() {
 
+
+    document.getElementById("harga_barang_dpp").value = "";
+    document.getElementById("dpp").value = "";
+    document.getElementById("nilaipph").value = "";
+
+
+
+}
 function formatRupiah(input) {
     var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
     var value = input.value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
