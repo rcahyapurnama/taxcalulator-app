@@ -142,12 +142,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function submitAndClear() {
         var nama = document.getElementById("nama");
-        var noApi = document.getElementById("noApi");
+        var nik = document.getElementById("nik");
+        var no_npwp = document.getElementById("no_npwp");
 
 
         var dataToSend = {
             nama: nama.value,
-            noApi: noApi.value,
+            nik: nik.value,
+            no_npwp: no_npwp.value,
 
         };
 
@@ -158,8 +160,10 @@ document.addEventListener("DOMContentLoaded", function () {
             success: function (response) {
                 // Data berhasil dikirim, tindakan setelah pengiriman
                 nama.value = '';
-                noApi.value = '';
+                nik.value = '';
+
                 validateInputs()
+                validateNoNpwp();
 
             }
         });

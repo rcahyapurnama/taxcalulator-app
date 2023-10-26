@@ -306,25 +306,28 @@ include("navbar.php") ?>
 
         function submitAndClear() {
             var nama = document.getElementById("nama");
-            var noApi = document.getElementById("noApi");
+            var nik = document.getElementById("nik");
+            var no_npwp = document.getElementById("no_npwp");
 
 
             var dataToSend = {
                 nama: nama.value,
-                noApi: noApi.value,
+                nik: nik.value,
+                no_npwp: no_npwp.value,
 
             };
 
             $.ajax({
                 type: 'POST',
-                url: 'cetak/cetak_pph22-impor.php', // Gantilah dengan URL atau skrip yang sesuai
+                url: 'cetak/cetak_pph23.php', // Gantilah dengan URL atau skrip yang sesuai
                 data: dataToSend,
                 success: function(response) {
                     // Data berhasil dikirim, tindakan setelah pengiriman
                     nama.value = '';
-                    noApi.value = '';
-                    validateInputs()
+                    nik.value = '';
 
+                    validateInputs()
+                    validateNoNpwp();
                 }
             });
         }

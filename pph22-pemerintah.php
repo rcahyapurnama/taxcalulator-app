@@ -276,7 +276,7 @@ include("navbar.php") ?>
             // Tambahkan event listener ke elemen select
             npwpSelect.addEventListener("change", function() {
                 // Periksa nilai yang dipilih dalam elemen select
-                if (npwpSelect.value === "Non-NPWP") {
+                if (npwpSelect.value === "2") {
                     // Jika value adalah "2", ubah teks pada semua elemen dengan class "ubahLabel"
                     labels.forEach(function(label) {
                         label.textContent = "(3%)";
@@ -433,9 +433,30 @@ include("navbar.php") ?>
             formatRupiah(this);
 
         });
+
     });
 
+    function resetInput() {
 
+
+        document.getElementById("harga_barang").value = "";
+        document.getElementById("harga_barang1").value = "";
+        document.getElementById("persen_pph1").value = "";
+        document.getElementById("uang_diterima").value = "";
+        document.getElementById("harga_barang2").value = "";
+        document.getElementById("ppn1").value = "";
+        document.getElementById("harga_barang_tidak_termasuk").value = "";
+        document.getElementById("persen_pph2").value = "";
+        document.getElementById("uang_diterima2").value = "";
+        document.getElementById("harga_barang3").value = "";
+        document.getElementById("ppn3").value = "";
+        document.getElementById("ppnbm").value = "";
+        document.getElementById("harga_barang_tidak_termasuk2").value = "";
+        document.getElementById("persen_pph3").value = "";
+        document.getElementById("uang_diterima3").value = "";
+
+
+    }
 
     const nama = document.getElementById('nama');
     const nik = document.getElementById('nik');
@@ -514,12 +535,14 @@ include("navbar.php") ?>
 
     function submitAndClear() {
         var nama = document.getElementById("nama");
-        var noApi = document.getElementById("noApi");
+        var nik = document.getElementById("nik");
+        var no_npwp = document.getElementById("no_npwp");
 
 
         var dataToSend = {
             nama: nama.value,
-            noApi: noApi.value,
+            nik: nik.value,
+            no_npwp: no_npwp.value,
 
         };
 
@@ -530,8 +553,11 @@ include("navbar.php") ?>
             success: function(response) {
                 // Data berhasil dikirim, tindakan setelah pengiriman
                 nama.value = '';
-                noApi.value = '';
-                validateInputs()
+                nik.value = '';
+
+                validateInputs();
+                validateNoNpwp();
+
 
             }
         });

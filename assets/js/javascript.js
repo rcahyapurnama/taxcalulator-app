@@ -580,7 +580,7 @@ function pphbulanini() {
 
 
 function resetInput() {
-  document.getElementById("npwp").value = "1";
+
   document.getElementById("status").value = "TK/0";
   initializeStatus();
   document.getElementById("gaji").value = "";
@@ -608,6 +608,8 @@ function submitAndClear() {
   var nama = document.getElementById("nama");
   var nik = document.getElementById("nik");
   var noNpwp = document.getElementById("no_npwp");
+  var status = document.getElementById("npwp");
+
 
   var dataToSend = {
     nama: nama.value,
@@ -623,11 +625,11 @@ function submitAndClear() {
       // Data berhasil dikirim, tindakan setelah pengiriman
       nama.value = '';
       nik.value = '';
-      statusNpwp.value = 'NPWP'; // Atur kembali ke nilai default jika perlu
-      noNpwp.value = '';
-      noNpwpError.textContent = '';
+
+
       validateInputs();
-      validateNoNpwp();
+
+
     }
   });
 }
