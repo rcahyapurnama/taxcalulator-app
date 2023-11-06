@@ -1,11 +1,7 @@
-
 <?php
-
+ob_end_clean();
 
 require('../assets/lib/fpdf186/fpdf.php');
-
-// Atur header PDF sebelum menampilkan konten
-
 
 // Mengambil nilai dari select dan input
 $nama = $_POST['nama'];
@@ -164,8 +160,6 @@ $pdf->Cell(95, 10, '', 'R');
 $pdf->Ln();
 $pdf->Cell(95, 10, "$nama", 'LBR', '0', 'C');
 $pdf->Cell(95, 10, '', 'BR');
-
-
 
 // Simpan dokumen PDF
 $pdf->Output('I', 'cetak-pph21-' . $nama . '.pdf');

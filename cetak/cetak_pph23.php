@@ -7,6 +7,7 @@ require('../assets/lib/fpdf186/fpdf.php');
 // Mengambil nilai dari select dan input
 $nama = $_POST['nama'];
 $nik = $_POST['nik'];
+$jenispajak23 = $_POST['jenispajak23'];
 $npwp = $_POST['npwp_kertas'];
 // Buat daftar pemetaan
 $npwpMapping = [
@@ -22,13 +23,14 @@ $dpp = $_POST['dpp'];;
 $tarif_pph = $_POST['tarif_pph'];
 $nilaipph = $_POST['nilaipph'];
 
+
 // Buat daftar pemetaan
-$npwpMapping = [
+$jenispajakMapping = [
     '1' => 'ATAS DIVIDEN, BUNGA, ROYALTI DAN HADIAH',
     '2' => 'ATAS SEWA DAN JASA'
 ];
 // Gunakan nilai numerik sebagai kunci untuk mendapatkan teks yang sesuai
-$titleText = isset($npwpMapping[$npwp]) ? $npwpMapping[$npwp] : 'Tidak Diketahui';
+$titleText = isset($jenispajakMapping[$jenispajak23]) ? $jenispajakMapping[$jenispajak23] : 'Tidak Diketahui';
 
 
 

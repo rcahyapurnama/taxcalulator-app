@@ -25,7 +25,7 @@
       <nav class="navbar navbar-expand-lg shadow fixed-top bg-primary" data-bs-theme="dark">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <h4>Tax-Cal</h4>
+            <h3>TAX-CAL</h3>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -17,8 +17,8 @@ include("navbar.php") ?>
 <div class="container" id="pph22">
     <form method="post" action="cetak/cetak_pph23.php" target="_blank">
         <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col card1-pem">
-                <div class="card">
+            <div class="col card1-23">
+                <div class="card" id="card23">
                     <h5 class=" card-header text-bg-primary ">
                         Komponen Data
                     </h5>
@@ -27,7 +27,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="jenispajak23">
+                                <select class="form-select border border-secondary shadow" id="jenispajak23" name="jenispajak23">
 
                                     <option value="1">PPH 22 Atas Dividen, Bunga, Royalti Dan Hadiah</option>
                                     <option value="2">PPH 22 Atas Sewa Dan Jasa</option>
