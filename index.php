@@ -27,6 +27,35 @@ include("navbar.php") ?>
                     <a href="pph21.php" class="btn btn-primary">Mulai Hitung PPH 21 <i class="bi bi-arrow-right-circle"></i> </a>
                 </div>
             </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="d-flex justify-content-center">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

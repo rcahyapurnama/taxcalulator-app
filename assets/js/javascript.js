@@ -46,6 +46,7 @@ $(document).ready(function () {
     hitungpph21()
     pphbulanini()
 
+
   });
   $("#tunjangan").on("input", function () {
     jumlahbruto();
@@ -67,14 +68,26 @@ $(document).ready(function () {
     hitungpph21()
     pphbulanini()
   });
+  $("#infopph").on("click", function () {
+    tambahBaris();
+  });
 
 
   document.addEventListener('DOMContentLoaded', function () {
     initializeStatus();
+    // Menambahkan event listener pada input PKP
+
+    var pkpInput = document.getElementById('pkp');
+    pkpInput.addEventListener('change', handleInputChanges);
+
+    var pkpinfo = document.getElementById('infopph');
+    pkpinfo.addEventListener('click', handleInputChanges);
 
   });
 
-
+  function handleInputChanges() {
+    tambahBaris();
+  }
 
   let currentFormat = 'persen'; // Menyimpan status pilihan saat ini
 
@@ -87,19 +100,6 @@ $(document).ready(function () {
     document.querySelector(inputId).value = '';
   }
 
-  // Function to format input as IDR currency
-  function formatInputAsRp(input) {
-    let value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
-    value = value.replace(/\D/g, ''); // Hapus semua karakter non-angka dan titik
-    const formattedValue = new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(value).replace(/,/g, '.');
-    input.value = formattedValue;
-  }
-
 
 
   // Event listener untuk "(%)" pada Biaya Asuransi / Insurance
@@ -110,17 +110,28 @@ $(document).ready(function () {
     changeDropdownText('JHT (%)', '#pilihjht');
     changeDropdownText('JP (%)', '#pilihjp');
 
-    resetInput('#persenjkk');
-    resetInput('#hasiljkk');
-    resetInput('#persenjkm');
-    resetInput('#hasiljkm');
-    resetInput('#persenbpjs');
-    resetInput('#hasilbpjs');
-    resetInput('#persenjht');
-    resetInput('#hasiljht');
-    resetInput('#persenjp');
-    resetInput('#hasiljp');
+
+    document.querySelector('#persenjkk').value = '0.24';
+    document.querySelector('#hasiljkk').value = '';
+    document.querySelector('#persenjkm').value = '0.30';
+    document.querySelector('#hasiljkm').value = '';
+    document.querySelector('#persenbpjs').value = '4';
+    document.querySelector('#hasilbpjs').value = '';
+    document.querySelector('#persenjht').value = '2';
+    document.querySelector('#hasiljht').value = '';
+    document.querySelector('#persenjp').value = '1';
+    document.querySelector('#hasiljp').value = '';
     currentFormat = 'persen'; // Mengubah status pilihan saat ini
+
+    hitungBPJS();
+    hitungJumlahjkkjkm();
+    jumlahbruto();
+    hitungpengurangan()
+    hitungnetto()
+    nettosetahun()
+    hitungPKP()
+    hitungpph21()
+    pphbulanini()
   });
 
   // Event listener untuk "US$" pada Biaya Asuransi / Insurance
@@ -131,52 +142,63 @@ $(document).ready(function () {
     changeDropdownText('JHT (Rp)', '#pilihjht');
     changeDropdownText('JP (Rp)', '#pilihjp');
 
-    resetInput('#persenjkk');
-    resetInput('#hasiljkk');
-    resetInput('#persenjkm');
-    resetInput('#hasiljkm');
-    resetInput('#persenbpjs');
-    resetInput('#hasilbpjs');
-    resetInput('#persenjht');
-    resetInput('#hasiljht');
-    resetInput('#persenjp');
-    resetInput('#hasiljp');
+    document.querySelector('#persenjkk').value = 'Rp 0';
+    document.querySelector('#hasiljkk').value = '';
+    document.querySelector('#persenjkm').value = 'Rp 0';
+    document.querySelector('#hasiljkm').value = '';
+    document.querySelector('#persenbpjs').value = 'Rp 0';
+    document.querySelector('#hasilbpjs').value = '';
+    document.querySelector('#persenjht').value = 'Rp 0';
+    document.querySelector('#hasiljht').value = '';
+    document.querySelector('#persenjp').value = 'Rp 0';
+    document.querySelector('#hasiljp').value = '';
+
 
     currentFormat = 'rupiah'; // Mengubah status pilihan saat ini
 
+    hitungBPJS();
+    hitungJumlahjkkjkm();
+    jumlahbruto();
+    hitungpengurangan()
+    hitungnetto()
+    nettosetahun()
+    hitungPKP()
+    hitungpph21()
+    pphbulanini()
   });
 
   // Event listener untuk input pada Biaya Asuransi / Insurance
   document.querySelector('#persenjkk').addEventListener('input', function () {
 
     if (currentFormat === 'rupiah') {
-      formatInputAsRp(this);
+      formatMataUang(this);
     }
     hitungBPJS();
+
   });
   // Event listener untuk input pada Biaya Asuransi / Insurance
   document.querySelector('#persenjkm').addEventListener('input', function () {
 
     if (currentFormat === 'rupiah') {
-      formatInputAsRp(this);
+      formatMataUang(this);
     }
   });
   // Event listener untuk input pada Biaya Asuransi / Insurance
   document.querySelector('#persenbpjs').addEventListener('input', function () {
     if (currentFormat === 'rupiah') {
-      formatInputAsRp(this);
+      formatMataUang(this);
     }
   });
   document.querySelector('#persenjht').addEventListener('input', function () {
 
     if (currentFormat === 'rupiah') {
-      formatInputAsRp(this);
+      formatMataUang(this);
     }
     hitungpengurangan();
   });
   document.querySelector('#persenjp').addEventListener('input', function () {
     if (currentFormat === 'rupiah') {
-      formatInputAsRp(this);
+      formatMataUang(this);
     }
 
   });
@@ -526,9 +548,6 @@ function hitungpph21() {
     maximumFractionDigits: 0,
   }).format(pphterutang));
 
-
-  // Cek jika PPH adalah NaN, maka kosongkan nilai
-
 }
 
 function pphbulanini() {
@@ -628,10 +647,542 @@ function submitAndClear() {
 
 
       validateInputs();
-
-
     }
   });
 }
+
+function tambahBaris() {
+  var tabel = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
+  var newRowTemplate = document.getElementById("newRowTemplate");
+  // Hapus semua baris sebelum menambahkan yang baru
+  while (tabel.rows.length > 0) {
+    tabel.deleteRow(0);
+  }
+  // Clone template
+  var newRow = newRowTemplate.cloneNode(true);
+
+  // Set nomor langkah
+  var nomorLangkah = 1; // Setel ke 1, karena ini adalah baris pertama
+  newRow.cells[0].textContent = nomorLangkah;
+  newRow.style.display = "table-row";
+
+  // Set nilai turunan berdasarkan PKPInput
+  var PKPInputCrc = document.getElementById('pkp').value;
+  var PKPInput = PKPInputCrc.split(".").join("").split("Rp").join("");
+
+  if (parseFloat(PKPInput) <= 60000000) {
+    // Format nilai turunan sebagai mata uang
+    var formattedNilaiTurunan = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(parseFloat(PKPInput));
+
+    var hasil = PKPInput * 0.05;
+    var formathasil = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(parseFloat(hasil));
+
+    // Set nilai turunan
+    newRow.cells[1].textContent = formattedNilaiTurunan;
+    newRow.cells[2].textContent = formattedNilaiTurunan;
+    newRow.cells[3].textContent = '5 %';
+    newRow.cells[4].textContent = formathasil;
+    // Tambahkan kelas 'new-row' agar bisa diidentifikasi
+
+    tabel.appendChild(newRow);
+    updateTotal();
+
+
+  } else if (parseFloat(PKPInput) > 60000000 && parseFloat(PKPInput) <= 250000000) {
+    var turunan1 = 60000000;
+    var formatTurunan1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan1);
+
+    var hasil_1 = turunan1 * 0.05;
+    var formathasil1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_1);
+    // Set nilai turunan untuk baris pertama
+    newRow.cells[1].textContent = formatTurunan1;
+    newRow.cells[2].textContent = formatTurunan1;
+    newRow.cells[3].textContent = '5 %';
+    newRow.cells[4].textContent = formathasil1;
+
+
+    var turunan2 = parseFloat(PKPInput) - turunan1;
+    var formatTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan2);
+
+    var hasil_2 = turunan2 * 0.15;
+    var formathasil2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_2);
+
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 60000000)
+    var newRow2 = tabel.insertRow();
+    var nomorLangkah2 = '2';
+    newRow2.insertCell(0).textContent = nomorLangkah2;
+    newRow2.insertCell(1).textContent = PKPInputCrc + " - " + formatTurunan1;
+    newRow2.insertCell(2).textContent = formatTurunan2;
+    newRow2.insertCell(3).textContent = '15 %';
+    newRow2.insertCell(4).textContent = formathasil2;
+
+    tabel.appendChild(newRow);
+    tabel.appendChild(newRow2);
+    updateTotal();
+  } else if (parseFloat(PKPInput) > 250000000 && parseFloat(PKPInput) <= 500000000) {
+    var turunan1 = 60000000;
+    var formatTurunan1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan1);
+
+    var hasil_1 = turunan1 * 0.05;
+    var formathasil1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_1);
+    // Set nilai turunan untuk baris pertama
+    newRow.cells[1].textContent = formatTurunan1;
+    newRow.cells[2].textContent = formatTurunan1;
+    newRow.cells[3].textContent = '5 %';
+    newRow.cells[4].textContent = formathasil1;
+
+
+    var turunan2 = 250000000;
+    var formatTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan2);
+
+    var hitungturunan2 = turunan2 - turunan1;
+    var formathitungTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan2);
+
+    var hasil_2 = hitungturunan2 * 0.15;
+    var formathasil2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_2);
+    // Tambahkan baris baru untuk nilai turunan (250000000 - 60000000)
+    var newRow2 = tabel.insertRow();
+    var nomorLangkah2 = '2';
+    newRow2.insertCell(0).textContent = nomorLangkah2;
+    newRow2.insertCell(1).textContent = formatTurunan2 + " - " + formatTurunan1;
+    newRow2.insertCell(2).textContent = formathitungTurunan2;
+    newRow2.insertCell(3).textContent = '15 %';
+    newRow2.insertCell(4).textContent = formathasil2;
+
+
+    var turunan3 = PKPInput - 250000000;
+    var formatTurunan3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan3);
+
+    var hasil_3 = turunan3 * 0.25;
+    var formathasil3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_3);
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 250000000)
+    var newRow3 = tabel.insertRow(1);
+    var nomorLangkah3 = '3';
+    newRow3.insertCell(0).textContent = nomorLangkah3;
+    newRow3.insertCell(1).textContent = PKPInputCrc + " - " + formatTurunan2;
+    newRow3.insertCell(2).textContent = formatTurunan3;
+    newRow3.insertCell(3).textContent = '25 %';
+    newRow3.insertCell(4).textContent = formathasil3;
+
+    tabel.appendChild(newRow);
+    tabel.appendChild(newRow2);
+    tabel.appendChild(newRow3);
+    updateTotal();
+  } else if (parseFloat(PKPInput) > 500000000 && parseFloat(PKPInput) <= 5000000000) {
+    var turunan1 = 60000000;
+    var formatTurunan1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan1);
+
+    var hasil_1 = turunan1 * 0.05;
+    var formathasil1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_1);
+    // Set nilai turunan untuk baris pertama
+    newRow.cells[1].textContent = formatTurunan1;
+    newRow.cells[2].textContent = formatTurunan1;
+    newRow.cells[3].textContent = '5 %';
+    newRow.cells[4].textContent = formathasil1;
+
+    var turunan2 = 250000000;
+    var formatTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan2);
+
+    var hitungturunan2 = turunan2 - turunan1;
+    var formathitungTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan2);
+
+    var hasil_2 = hitungturunan2 * 0.15;
+    var formathasil2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_2);
+
+    // Tambahkan baris baru untuk nilai turunan (250000000 - 60000000)
+    var newRow2 = tabel.insertRow();
+    var nomorLangkah2 = '2';
+    newRow2.insertCell(0).textContent = nomorLangkah2;
+    newRow2.insertCell(1).textContent = formatTurunan2 + " - " + formatTurunan1;
+    newRow2.insertCell(2).textContent = formathitungTurunan2;
+    newRow2.insertCell(3).textContent = '15 %';
+    newRow2.insertCell(4).textContent = formathasil2;
+
+
+    var turunan3 = 500000000;
+    var formatTurunan3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan3);
+
+    var hitungturunan3 = turunan3 - turunan2;
+    var formathitungTurunan3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan3);
+
+    var hasil_3 = hitungturunan3 * 0.25;
+    var formathasil3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_3);
+
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 250000000)
+    var newRow3 = tabel.insertRow(1);
+    var nomorLangkah3 = '3';
+    newRow3.insertCell(0).textContent = nomorLangkah3;
+    newRow3.insertCell(1).textContent = formatTurunan3 + " - " + formatTurunan2;
+    newRow3.insertCell(2).textContent = formathitungTurunan3;
+    newRow3.insertCell(3).textContent = '25 %';
+    newRow3.insertCell(4).textContent = formathasil3;
+
+
+    var hitungturunan4 = PKPInput - turunan3;
+    var formathitungTurunan4 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan4);
+
+    var hasil_4 = hitungturunan4 * 0.30;
+    var formathasil4 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_4);
+
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 250000000)
+    var newRow4 = tabel.insertRow(1);
+    var nomorLangkah4 = '4';
+    newRow4.insertCell(0).textContent = nomorLangkah4;
+    newRow4.insertCell(1).textContent = PKPInputCrc + " - " + formatTurunan3;
+    newRow4.insertCell(2).textContent = formathitungTurunan4;
+    newRow4.insertCell(3).textContent = '30 %';
+    newRow4.insertCell(4).textContent = formathasil4;
+
+    tabel.appendChild(newRow);
+    tabel.appendChild(newRow2);
+    tabel.appendChild(newRow3);
+    tabel.appendChild(newRow4);
+    updateTotal();
+
+  } else {
+    var turunan1 = 60000000;
+    var formatTurunan1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan1);
+
+    var hasil_1 = turunan1 * 0.05;
+    var formathasil1 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_1);
+    // Set nilai turunan untuk baris pertama
+    newRow.cells[1].textContent = formatTurunan1;
+    newRow.cells[2].textContent = formatTurunan1;
+    newRow.cells[3].textContent = '5 %';
+    newRow.cells[4].textContent = formathasil1;
+
+    var turunan2 = 250000000;
+    var formatTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan2);
+
+    var hitungturunan2 = turunan2 - turunan1;
+    var formathitungTurunan2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan2);
+
+    var hasil_2 = hitungturunan2 * 0.15;
+    var formathasil2 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_2);
+
+    // Tambahkan baris baru untuk nilai turunan (250000000 - 60000000)
+    var newRow2 = tabel.insertRow();
+    var nomorLangkah2 = '2';
+    newRow2.insertCell(0).textContent = nomorLangkah2;
+    newRow2.insertCell(1).textContent = formatTurunan2 + " - " + formatTurunan1;
+    newRow2.insertCell(2).textContent = formathitungTurunan2;
+    newRow2.insertCell(3).textContent = '15 %';
+    newRow2.insertCell(4).textContent = formathasil2;
+
+
+    var turunan3 = 500000000;
+    var formatTurunan3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan3);
+
+    var hitungturunan3 = turunan3 - turunan2;
+    var formathitungTurunan3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan3);
+
+    var hasil_3 = hitungturunan3 * 0.25;
+    var formathasil3 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_3);
+
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 250000000)
+    var newRow3 = tabel.insertRow(1);
+    var nomorLangkah3 = '3';
+    newRow3.insertCell(0).textContent = nomorLangkah3;
+    newRow3.insertCell(1).textContent = formatTurunan3 + " - " + formatTurunan2;
+    newRow3.insertCell(2).textContent = formathitungTurunan3;
+    newRow3.insertCell(3).textContent = '25 %';
+    newRow3.insertCell(4).textContent = formathasil3;
+
+    var turunan4 = 5000000000;
+    var formatTurunan4 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(turunan4);
+
+    var hitungturunan4 = turunan4 - turunan3;
+    var formathitungTurunan4 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan4);
+
+    var hasil_4 = hitungturunan4 * 0.30;
+    var formathasil4 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_4);
+
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 250000000)
+    var newRow4 = tabel.insertRow(1);
+    var nomorLangkah4 = '4';
+    newRow4.insertCell(0).textContent = nomorLangkah4;
+    newRow4.insertCell(1).textContent = formatTurunan4 + " - " + formatTurunan3;
+    newRow4.insertCell(2).textContent = formathitungTurunan4;
+    newRow4.insertCell(3).textContent = '30 %';
+    newRow4.insertCell(4).textContent = formathasil4;
+
+    var hitungturunan5 = PKPInput - turunan4;
+    var formathitungTurunan5 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hitungturunan5);
+
+    var hasil_5 = hitungturunan5 * 0.35;
+    var formathasil5 = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(hasil_5);
+
+
+    // Tambahkan baris baru untuk nilai turunan (PKPInput - 250000000)
+    var newRow5 = tabel.insertRow(1);
+    var nomorLangkah5 = '5';
+    newRow5.insertCell(0).textContent = nomorLangkah5;
+    newRow5.insertCell(1).textContent = PKPInputCrc + " - " + formatTurunan4;
+    newRow5.insertCell(2).textContent = formathitungTurunan5;
+    newRow5.insertCell(3).textContent = '35 %';
+    newRow5.insertCell(4).textContent = formathasil5;
+
+    tabel.appendChild(newRow);
+    tabel.appendChild(newRow2);
+    tabel.appendChild(newRow3);
+    tabel.appendChild(newRow4);
+    tabel.appendChild(newRow5);
+    updateTotal();
+  }
+
+  // Setel properti CSS untuk memusatkan teks di dalam sel
+  newRow.cells[0].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow.cells[0].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow.cells[3].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow.cells[3].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow2.cells[0].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow2.cells[0].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow2.cells[3].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow2.cells[3].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow3.cells[0].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow3.cells[0].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow3.cells[3].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow3.cells[3].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow4.cells[0].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow4.cells[0].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow4.cells[3].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow4.cells[3].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow5.cells[0].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow5.cells[0].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+  newRow5.cells[3].style.textAlign = "center"; // Memusatkan secara horizontal
+  newRow5.cells[3].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+
+}
+
+
+
+
+// Fungsi untuk menghitung total dan memperbarui tfoot
+function updateTotal() {
+  var tbody = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
+  var totalCell = document.getElementById("baristotal").querySelector('.total');
+
+
+  var total = 0;
+
+  // Iterasi melalui kolom hasil dalam tbody
+  for (var i = 0; i < tbody.rows.length; i++) {
+    var hasilText = tbody.rows[i].cells[4].textContent;
+    var hasilValue = parseFloat(hasilText.replace(/[^\d-]/g, ''));
+
+    // Pastikan hasilValue adalah angka yang valid
+    if (!isNaN(hasilValue)) {
+      total += hasilValue;
+    }
+
+    // Format total sebagai mata uang
+    var formattedTotal = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(parseFloat(total));
+
+    // Set nilai total pada tfoot
+    totalCell.textContent = formattedTotal;
+  }
+}
+
 
 

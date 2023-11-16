@@ -118,7 +118,7 @@ include("navbar.php") ?>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKK dihasilkan dari Gaji Pokok x JKK%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JKK dihasilkan dari Gaji Pokok x JKK%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
                                         <input class="form-control border border-secondary-subtle shadow" type=" text" id="hasiljkk" name="hasiljkk" readonly>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@ include("navbar.php") ?>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JKM dihasilkan dari Gaji Pokok x JKM%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JKM dihasilkan dari Gaji Pokok x JKM%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
                                         <input class="form-control border border-secondary-subtle shadow" type=" text" id="hasiljkm" name="hasiljkm" readonly>
                                     </div>
                                 </div>
@@ -151,7 +151,7 @@ include("navbar.php") ?>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai BPJS Kesehatan dihasilkan dari Gaji Pokok x BPJSKES% dengan kriteria maksimal Gaji Pokok Rp. 12.000.000" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai BPJS Kesehatan dihasilkan dari Gaji Pokok x BPJSKES% dengan kriteria maksimal Gaji Pokok Rp. 12.000.000" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
 
                                         <input type="text" class="form-control border border-secondary-subtle shadow" id="hasilbpjs" name="hasilbpjs" readonly>
                                     </div>
@@ -171,12 +171,12 @@ include("navbar.php") ?>
                     <h5 class="card-header text-bg-primary">D. Pengurangan</h5>
                     <div class="card-body">
                         <div class="row">
-                            <label class="col-lg-6 mb-2 col-form-label">Biaya Jabatan</label>
+                            <label class="col-lg-6 col-form-label">Biaya Jabatan</label>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis mb-3" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai biaya jabatan dihasilkan dari 5% Gaji Pokok dan nilai maksimal biaya jabatan adalah 500,000." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input type=" text" class="form-control  border border-secondary-subtle shadow mb-3" id="jabatan" name="jabatan" readonly>
+                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info mb-3" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai biaya jabatan dihasilkan dari 5% Gaji Pokok dan nilai maksimal biaya jabatan adalah 500,000." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <input type="text" class="form-control  border border-secondary-subtle shadow mb-3" id="jabatan" name="jabatan" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@ include("navbar.php") ?>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover text-warning-emphasis border border-secondary-subtle" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Informasi." data-bs-content="Nilai JP dihasilkan dari Gaji Pokok x JP% dengan kriteria maksimal Gaji Pokok Rp. 9,559,600" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JP dihasilkan dari Gaji Pokok x JP% dengan kriteria maksimal Gaji Pokok Rp. 9,559,600" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
                                         <input class="form-control border border-secondary-subtle" type=" text" id="hasiljp" name="hasiljp" readonly>
                                     </div>
                                 </div>
@@ -253,7 +253,10 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">PPH 21 Terutang Dalam Setahun</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control  border border-secondary-subtle shadow" id="pphsetahun" name="pphsetahun" readonly>
+                                <div class="input-group">
+                                    <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" id="infopph" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                    <input type="text" class=" form-control  border border-secondary-subtle shadow" id="pphsetahun" name="pphsetahun" readonly>
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -306,37 +309,80 @@ include("navbar.php") ?>
                             <button type="button" class="btn btn-primary col-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Cetak
                             </button>
+                        </div>
+                        <!-- Modal Info perhitungan PPH 21 -->
+                        <div class="modal fade" id="staticBackdrop2" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Informasi.</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Langkah perhitungan mencari nilai PPH 21.
+                                        <div class="table-responsive mt-4">
+                                            <table class="table table-bordered  align-middle" id="pphTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">Langkah</th>
+                                                        <th class="text-center">Nilai Turunan</th>
+                                                        <th class="text-center">Hasil Turunan</th>
+                                                        <th class="text-center">Tarif</th>
+                                                        <th class="text-center">Hasil</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Placeholder row for new entries -->
+                                                    <tr id="newRowTemplate" style="display: none;">
+                                                        <td class="text-center"></td>
+                                                        <td class="nilaiTurunan"></td>
+                                                        <td class="hasilTurunan"></td>
+                                                        <td class="tarif"></td>
+                                                        <td class="hasil"></td>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog  modal-dialog-centered myModal">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Masukan Data</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr id="baristotal">
+                                                        <td colspan="4" class="text-end fs-4">Total</td>
+                                                        <td class="total">hasil</td>
+
+                                                </tfoot>
+                                            </table>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="mb-4">
-                                                <label class="col-form-label">Nama:</label>
-                                                <input type="text" class="form-control border border-secondary-subtle" id="nama" name="nama">
-                                                <small id="namaError" class="form-text text-danger"></small>
-                                            </div>
-                                            <hr>
-                                            <div class="mb-3">
-                                                <label class="col-form-label">NIK:</label>
-                                                <input type="text" class="form-control border border-secondary-subtle " id="nik" name="nik">
-                                                <small id="nikError" class="form-text text-danger"></small>
-                                            </div>
-                                            <hr>
-                                            <div class="mb-3">
-                                                <label class="col-form-label">Nomor NPWP:</label>
-                                                <input type="text" class="form-control border border-secondary-subtle" id="no_npwp" name="no_npwp">
-                                                <small id="noNpwpError" class="form-text text-danger"></small>
-                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered myModal">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Masukan Data</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-4">
+                                            <label class="col-form-label">Nama:</label>
+                                            <input type="text" class="form-control border border-secondary-subtle" id="nama" name="nama">
+                                            <small id="namaError" class="form-text text-danger"></small>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary col-5 " type="submit" id="submitButton" data-bs-dismiss="modal" onclick="submitAndClear()" disabled>Cetak</button>
+                                        <hr>
+                                        <div class="mb-3">
+                                            <label class="col-form-label">NIK:</label>
+                                            <input type="text" class="form-control border border-secondary-subtle " id="nik" name="nik">
+                                            <small id="nikError" class="form-text text-danger"></small>
                                         </div>
+                                        <hr>
+                                        <div class="mb-3">
+                                            <label class="col-form-label">Nomor NPWP:</label>
+                                            <input type="text" class="form-control border border-secondary-subtle" id="no_npwp" name="no_npwp">
+                                            <small id="noNpwpError" class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary col-5 " type="submit" id="submitButton" data-bs-dismiss="modal" onclick="submitAndClear()" disabled>Cetak</button>
                                     </div>
                                 </div>
                             </div>
@@ -345,8 +391,9 @@ include("navbar.php") ?>
                 </div>
             </div>
         </div>
+</div>
 
-    </form>
+</form>
 </div>
 <!-- akhir card -->
 </p>
@@ -431,6 +478,9 @@ include("navbar.php") ?>
         validateInputs();
     }
 </script>
+
+
+
 
 
 <?php include("footer.php") ?>
