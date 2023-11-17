@@ -659,8 +659,8 @@ function addRow(table, nomor, step, value, percentage, denda) {
     newRow.insertCell(5).textContent = formatCurrency(hasil);
   }
   // Setel properti CSS untuk memusatkan teks di dalam sel
-  for (var i = 0; i < 5; i++) {
-    if (i === 0 || i === 3 || i === 4) {
+  for (var i = 0; i <= 5; i++) {
+    if (i === 0 || i === 4) {
       newRow.cells[i].style.textAlign = "center"; // Memusatkan secara horizontal
       newRow.cells[i].style.verticalAlign = "middle"; // Memusatkan secara vertikal
 
@@ -687,7 +687,7 @@ function tambahBaris() {
   var NPWPInput = document.getElementById('npwp').value;
 
   if (!PKPInput || isNaN(PKPInput)) {
-    pkpErrorElement.textContent = "PKPInput tidak memiliki nilai atau tidak valid.";
+    pkpErrorElement.textContent = "Penghasilan Kena Pajak tidak memiliki nilai atau kosong.";
     return;
   } else {
     pkpErrorElement.textContent = "";

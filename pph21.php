@@ -321,33 +321,34 @@ include("navbar.php") ?>
                                     <div class="modal-body">
                                         Langkah perhitungan mencari nilai PPH 21.
                                         <div class="table-responsive mt-4">
-                                            <table class="table table-bordered " id="pphTable">
+                                            <table class="table table-hover" id="pphTable">
                                                 <thead>
-                                                    <tr class="align-middle">
+
+                                                    <tr class="table-active table-primary">
                                                         <th class="text-center">Langkah</th>
-                                                        <th class="text-center">Nilai Turunan</th>
-                                                        <th class="text-center">Hasil Turunan</th>
-                                                        <th class="text-center">Tarif</th>
-                                                        <th class="text-center">Tarif Denda</th>
-                                                        <th class="text-center">Hasil</th>
+                                                        <th class="">Nilai Turunan</th>
+                                                        <th class="">Hasil Turunan</th>
+                                                        <th class="">Tarif</th>
+                                                        <th class="text-center">Denda</th>
+                                                        <th class="">Hasil</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <!-- Placeholder row for new entries -->
-                                                    <tr id="newRowTemplate">
+                                                    <tr id="newRowTemplate" style="display: none;">
                                                         <td class="text-center  align-middle"></td>
-                                                        <td class="nilaiTurunan" colspan="2"></td>
-                                                        <td class="hasilTurunan"></td>
-                                                        <td class="tarif" colspan="2"></td>
+                                                        <td class="nilaiTurunan"></td>
+                                                        <td class=" hasilTurunan"></td>
+                                                        <td class="tarif"></td>
                                                         <td class="tarifdenda"></td>
                                                         <td class="hasil"></td>
 
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr id="baristotal">
-                                                        <td colspan="5" class="text-end fs-4">Total</td>
-                                                        <td class="total">hasil</td>
+                                                    <tr id="baristotal" class="table-danger">
+                                                        <td colspan="5" class="text-end fs-5  ">Total</td>
+                                                        <td class="total fs-5 ">,-</td>
 
                                                 </tfoot>
                                             </table>
