@@ -321,10 +321,10 @@ include("navbar.php") ?>
                                     <div class="modal-body">
                                         Langkah perhitungan mencari nilai PPH 21.
                                         <div class="table-responsive mt-4">
-                                            <table class="table table-hover" id="pphTable">
+                                            <table class="table table-hover table-striped " id="pphTable">
                                                 <thead>
 
-                                                    <tr class="table-active table-primary">
+                                                    <tr class=" ">
                                                         <th class="text-center">Langkah</th>
                                                         <th class="">Nilai Turunan</th>
                                                         <th class="">Hasil Turunan</th>
@@ -336,9 +336,9 @@ include("navbar.php") ?>
                                                 <tbody>
                                                     <!-- Placeholder row for new entries -->
                                                     <tr id="newRowTemplate" style="display: none;">
-                                                        <td class="text-center  align-middle"></td>
+                                                        <td class="langkah"></td>
                                                         <td class="nilaiTurunan"></td>
-                                                        <td class=" hasilTurunan"></td>
+                                                        <td class="hasilTurunan"></td>
                                                         <td class="tarif"></td>
                                                         <td class="tarifdenda"></td>
                                                         <td class="hasil"></td>
@@ -346,13 +346,14 @@ include("navbar.php") ?>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr id="baristotal" class="table-danger">
-                                                        <td colspan="5" class="text-end fs-5  ">Total</td>
-                                                        <td class="total fs-5 ">,-</td>
+                                                    <tr id="baristotal" class="">
+                                                        <td colspan="4"></td>
+                                                        <td class="text-end fs-5 ">Total</td>
+                                                        <td class="total fs-5 table-active">,-</td>
 
                                                 </tfoot>
                                             </table>
-                                            <small id="pkpError" class="form-text text-danger"></small>
+                                            <div id="pkpError" class="text-center text-danger-emphasis bg-danger-subtle"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -401,6 +402,7 @@ include("navbar.php") ?>
 </div>
 <!-- akhir card -->
 </p>
+
 <script>
     // Menggunakan JavaScript untuk membuka tab baru saat tombol diklik
     document.getElementById('submitButton').addEventListener('click', function() {

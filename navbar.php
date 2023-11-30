@@ -14,8 +14,6 @@
   <link href="assets/css/bootstrap.css" rel="stylesheet">
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-
-
   <title>Kalkulator Pajak | <?php echo $pageTitle; ?> </title>
 </head>
 
@@ -48,6 +46,7 @@
               <li class="nav-item dropdown">
                 <button class="btn nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-sun-fill theme-icon-active" data-theme-icon-active="bi-sun-fill"></i>
+
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li>
@@ -77,6 +76,7 @@
     </header>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
     <script>
       /*!
        * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
@@ -109,40 +109,27 @@
 
         setTheme(getPreferredTheme())
 
-        const showActiveTheme = (theme, focus = false) => {
-          const themeSwitcher = document.querySelector('#bd-theme')
+        const showActiveTheme = theme => {
 
-          if (!themeSwitcher) {
-            return
-          }
-
-          const themeSwitcherText = document.querySelector('#bd-theme-text')
           const activeThemeIcon = document.querySelector('.theme-icon-active')
           const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
           const iconOfActiveBtn = btnToActive.querySelector('i').dataset.themeIcon
 
-
           document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
             element.classList.remove('active')
-            element.setAttribute('aria-pressed', 'false')
           })
 
           btnToActive.classList.add('active')
-
           activeThemeIcon.classList.remove(activeThemeIcon.dataset.themeIconActive)
           activeThemeIcon.classList.add(iconOfActiveBtn)
           activeThemeIcon.dataset.iconActive = iconOfActiveBtn
-          const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
-          themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
 
-          if (focus) {
-            themeSwitcher.focus()
-          }
+
         }
 
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
           const storedTheme = getStoredTheme()
-          if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          if (storedTheme !== 'light' || storedTheme !== 'dark') {
             setTheme(getPreferredTheme())
           }
         })

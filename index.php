@@ -15,7 +15,9 @@ include("navbar.php") ?>
     <div class="mb-3" style="max-width: 3000px;">
         <div class="row g-0">
             <div class="col-md-5">
-                <img src="assets/img/Tax-amico-(1).png" class="img-fluid rounded-start responsif">
+                <a href="https://storyset.com/people">
+                    <img src="assets/img/Tax-amico-(1).png" class="img-fluid rounded-start responsif" alt="People illustrations by Storyset">
+                </a>
             </div>
             <div class="col-md-7 g-4 ">
                 <div class="card-body fonttext  ">

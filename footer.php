@@ -3,7 +3,7 @@
     <div class="container">
         Copyright &copy; <?php echo date('Y') ?>
         <br>
-        <a href="https://storyset.com/people">People illustrations by Storyset</a>
+
     </div>
 </footer>
 </div>
