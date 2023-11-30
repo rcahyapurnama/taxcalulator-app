@@ -303,7 +303,7 @@ include("navbar.php") ?>
                     <div class="card-body">
                         <div class="col d-flex gap-3 justify-content-center">
 
-                            <button class="btn btn-warning col-5" type="button" onclick="resetInput()">Reset</button>
+                            <button class="btn btn-warning col-5" type="button" id="reset">Reset</button>
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary col-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -349,7 +349,7 @@ include("navbar.php") ?>
                                                     <tr id="baristotal" class="">
                                                         <td colspan="4"></td>
                                                         <td class="text-end fs-5 ">Total</td>
-                                                        <td class="total fs-5 table-active">,-</td>
+                                                        <td class="total fs-5 table-active" id="total">,-</td>
 
                                                 </tfoot>
                                             </table>

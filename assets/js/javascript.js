@@ -74,11 +74,15 @@ $(document).ready(function () {
   $("#pkp").on("input", function () {
     tambahBaris();
   });
+  $("#reset").on("click", function () {
+    resetInput();
+    updateTotal();
+  });
 
 
   document.addEventListener('DOMContentLoaded', function () {
     initializeStatus();
-    // Menambahkan event listener pada input PKP
+
 
   });
 
@@ -89,10 +93,6 @@ $(document).ready(function () {
     document.querySelector(elementSelector).innerHTML = text;
   }
 
-  // Function to reset input
-  function resetInput(inputId) {
-    document.querySelector(inputId).value = '';
-  }
 
 
 
@@ -351,7 +351,8 @@ $(document).ready(function () {
   function updateTotal() {
     var tbody = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
     var totalCell = document.getElementById("baristotal").querySelector('.total');
-
+    var PKPInputCrc = document.getElementById('pkp').value;
+    var PKPInput = parseFloat(PKPInputCrc.split(".").join("").split("Rp").join(""));
 
     var total = 0;
 
@@ -363,6 +364,7 @@ $(document).ready(function () {
       // Pastikan hasilValue adalah angka yang valid
       if (!isNaN(hasilValue)) {
         total += hasilValue;
+
       }
 
       // Format total sebagai mata uang
@@ -374,7 +376,11 @@ $(document).ready(function () {
       }).format(parseFloat(total));
 
       // Set nilai total pada tfoot
-      totalCell.textContent = formattedTotal;
+      if (isNaN(PKPInput)) {
+        totalCell.textContent = ',-';
+      } else {
+        totalCell.textContent = formattedTotal + ',-';
+      }
     }
   }
 
@@ -386,6 +392,8 @@ $(document).ready(function () {
 function initializeStatus() {
   var status = "TK/0"; // Set nilai status ke "tk/0" secara default
   calculatePTKP(status); // Hitung dan tampilkan nilai PTKP
+
+
 }
 
 function calculatePTKP(status) {
@@ -775,7 +783,6 @@ function pphbulanini() {
 
 
 function resetInput() {
-
   document.getElementById("status").value = "TK/0";
   initializeStatus();
   document.getElementById("gaji").value = "";
