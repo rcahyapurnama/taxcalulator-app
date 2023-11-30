@@ -827,31 +827,6 @@ function submitAndClear() {
   });
 }
 
-// Fungsi untuk menambahkan baris ke tabel
-function addRow(table, nomor, step, value, percentage, denda) {
-  var NPWPInput = document.getElementById('npwp').value;
-  var newRow = table.insertRow();
-  newRow.insertCell(0).textContent = nomor;
-  newRow.insertCell(1).textContent = step;
-  newRow.insertCell(2).textContent = value;
-  newRow.insertCell(3).textContent = percentage + ' %';
-  newRow.insertCell(4).textContent = denda + ' %';
-  if (NPWPInput === 'NPWP') {
-    var hasil = parseFloat(value.split("Rp").join("").split(".").join("")) * parseFloat(percentage) / 100;
-    newRow.insertCell(5).textContent = formatCurrency(hasil);
-  } else if (NPWPInput === 'Non-NPWP') {
-    var hasil = parseFloat(value.split("Rp").join("").split(".").join("")) * parseFloat(percentage) / 100 * parseFloat(denda) / 100;
-    newRow.insertCell(5).textContent = formatCurrency(hasil);
-  }
-  // Setel properti CSS untuk memusatkan teks di dalam sel
-  for (var i = 0; i <= 5; i++) {
-    if (i === 0 || i === 4) {
-      newRow.cells[i].style.textAlign = "center"; // Memusatkan secara horizontal
-      newRow.cells[i].style.verticalAlign = "middle"; // Memusatkan secara vertikal
-
-    }
-  }
-}
 
 
 
