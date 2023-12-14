@@ -151,6 +151,7 @@
     </script>
     <script src="https://kit.fontawesome.com/70b688cff9.js" crossorigin="anonymous"></script>
     <!-- J-QUERY -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <script src="assets/js/jquery-v3.7.1.js"></script>
 
 

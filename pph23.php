@@ -27,7 +27,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="jenispajak23" name="jenispajak23">
+                                <select class="form-select border border-secondary " id="jenispajak23" name="jenispajak23">
 
                                     <option value="1">PPH 22 Atas Dividen, Bunga, Royalti Dan Hadiah</option>
                                     <option value="2">PPH 22 Atas Sewa Dan Jasa</option>
@@ -38,7 +38,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Status NPWP</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="npwp_kertas" name="npwp_kertas">
+                                <select class="form-select border border-secondary " id="npwp_kertas" name="npwp_kertas">
 
                                     <option value="1" selected>NPWP</option>
                                     <option value="2">Non-NPWP</option>
@@ -49,7 +49,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Dasar Pengenaan Pajak (DPP)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp" inputmode="numeric" name="harga_barang_dpp">
+                                <input type="text" class="form-control border border-secondary  mataUang" id="harga_barang_dpp" inputmode="numeric" name="harga_barang_dpp">
                             </div>
                         </div>
                     </div>

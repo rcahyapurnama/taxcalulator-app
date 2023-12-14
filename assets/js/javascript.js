@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
   initializeStatus();
+
   var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   var popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
   $(".mataUang").on("input", function () {
@@ -68,321 +69,25 @@ $(document).ready(function () {
     hitungpph21()
     pphbulanini()
   });
+  $("#infonetto").on("click", function () {
+    infoNetto();
+  });
   $("#infopph").on("click", function () {
-    tambahBaris();
+    infoPPH();
   });
   $("#pkp").on("input", function () {
-    tambahBaris();
+    infoPPH();
   });
   $("#reset").on("click", function () {
     resetInput();
-    updateTotal();
+    updateTotalPPH();
   });
 
 
   document.addEventListener('DOMContentLoaded', function () {
     initializeStatus();
 
-
   });
-
-
-  let currentFormat = 'persen'; // Menyimpan status pilihan saat ini
-
-  function changeDropdownText(text, elementSelector) {
-    document.querySelector(elementSelector).innerHTML = text;
-  }
-
-
-
-
-  // Event listener untuk "(%)" pada Biaya Asuransi / Insurance
-  document.querySelector('#persen').addEventListener('click', function () {
-    changeDropdownText('JKK (%)', '#pilihjkk');
-    changeDropdownText('JKM (%)', '#pilihjkm');
-    changeDropdownText('BPJSKES (%)', '#pilihbpjskes');
-    changeDropdownText('JHT (%)', '#pilihjht');
-    changeDropdownText('JP (%)', '#pilihjp');
-
-
-    document.querySelector('#persenjkk').value = '0.24';
-    document.querySelector('#hasiljkk').value = '';
-    document.querySelector('#persenjkm').value = '0.30';
-    document.querySelector('#hasiljkm').value = '';
-    document.querySelector('#persenbpjs').value = '4';
-    document.querySelector('#hasilbpjs').value = '';
-    document.querySelector('#persenjht').value = '2';
-    document.querySelector('#hasiljht').value = '';
-    document.querySelector('#persenjp').value = '1';
-    document.querySelector('#hasiljp').value = '';
-    currentFormat = 'persen'; // Mengubah status pilihan saat ini
-
-    hitungBPJS();
-    hitungJumlahjkkjkm();
-    jumlahbruto();
-    hitungpengurangan()
-    hitungnetto()
-    nettosetahun()
-    hitungPKP()
-    hitungpph21()
-    pphbulanini()
-  });
-
-  // Event listener untuk "US$" pada Biaya Asuransi / Insurance
-  document.querySelector('#rupiah').addEventListener('click', function () {
-    changeDropdownText('JKK (Rp)', '#pilihjkk');
-    changeDropdownText('JKM (Rp)', '#pilihjkm');
-    changeDropdownText('BPJSKES (Rp)', '#pilihbpjskes');
-    changeDropdownText('JHT (Rp)', '#pilihjht');
-    changeDropdownText('JP (Rp)', '#pilihjp');
-
-    document.querySelector('#persenjkk').value = 'Rp 0';
-    document.querySelector('#hasiljkk').value = '';
-    document.querySelector('#persenjkm').value = 'Rp 0';
-    document.querySelector('#hasiljkm').value = '';
-    document.querySelector('#persenbpjs').value = 'Rp 0';
-    document.querySelector('#hasilbpjs').value = '';
-    document.querySelector('#persenjht').value = 'Rp 0';
-    document.querySelector('#hasiljht').value = '';
-    document.querySelector('#persenjp').value = 'Rp 0';
-    document.querySelector('#hasiljp').value = '';
-
-
-    currentFormat = 'rupiah'; // Mengubah status pilihan saat ini
-
-    hitungBPJS();
-    hitungJumlahjkkjkm();
-    jumlahbruto();
-    hitungpengurangan()
-    hitungnetto()
-    nettosetahun()
-    hitungPKP()
-    hitungpph21()
-    pphbulanini()
-  });
-
-  // Event listener untuk input pada Biaya Asuransi / Insurance
-  document.querySelector('#persenjkk').addEventListener('input', function () {
-
-    if (currentFormat === 'rupiah') {
-      formatMataUang(this);
-    }
-    hitungBPJS();
-
-  });
-  // Event listener untuk input pada Biaya Asuransi / Insurance
-  document.querySelector('#persenjkm').addEventListener('input', function () {
-
-    if (currentFormat === 'rupiah') {
-      formatMataUang(this);
-    }
-  });
-  // Event listener untuk input pada Biaya Asuransi / Insurance
-  document.querySelector('#persenbpjs').addEventListener('input', function () {
-    if (currentFormat === 'rupiah') {
-      formatMataUang(this);
-    }
-  });
-  document.querySelector('#persenjht').addEventListener('input', function () {
-
-    if (currentFormat === 'rupiah') {
-      formatMataUang(this);
-    }
-    hitungpengurangan();
-  });
-  document.querySelector('#persenjp').addEventListener('input', function () {
-    if (currentFormat === 'rupiah') {
-      formatMataUang(this);
-    }
-
-  });
-
-
-  // Fungsi untuk menambahkan baris ke tabel
-  function addRow(table, nomor, step, value, percentage, denda) {
-    var NPWPInput = document.getElementById('npwp').value;
-    var newRow = table.insertRow();
-    newRow.insertCell(0).textContent = nomor;
-    newRow.insertCell(1).textContent = step;
-    newRow.insertCell(2).textContent = value;
-    newRow.insertCell(3).textContent = percentage + ' %';
-    newRow.insertCell(4).textContent = denda + ' %';
-    if (NPWPInput === 'NPWP') {
-      var hasil = parseFloat(value.split("Rp").join("").split(".").join("")) * parseFloat(percentage) / 100;
-      newRow.insertCell(5).textContent = formatCurrency(hasil);
-    } else if (NPWPInput === 'Non-NPWP') {
-      var hasil = parseFloat(value.split("Rp").join("").split(".").join("")) * parseFloat(percentage) / 100 * parseFloat(denda) / 100;
-      newRow.insertCell(5).textContent = formatCurrency(hasil);
-    }
-    // Setel properti CSS untuk memusatkan teks di dalam sel
-    for (var i = 0; i <= 5; i++) {
-      if (i === 0 || i === 4) {
-        newRow.cells[i].style.textAlign = "center"; // Memusatkan secara horizontal
-        newRow.cells[i].style.verticalAlign = "middle"; // Memusatkan secara vertikal
-
-      }
-    }
-  }
-
-  // Fungsi untuk memformat mata uang
-  function formatCurrency(amount) {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  }
-
-  // Fungsi untuk menambahkan baris pada tabel
-  function tambahBaris() {
-    var tabel = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
-    var PKPInputCrc = document.getElementById('pkp').value;
-    var PKPInput = parseFloat(PKPInputCrc.split(".").join("").split("Rp").join(""));
-    var pkpErrorElement = document.getElementById('pkpError');
-    var NPWPInput = document.getElementById('npwp').value;
-
-    if (isNaN(PKPInput)) {
-      pkpErrorElement.textContent = "Penghasilan Kena Pajak tidak memiliki nilai atau kosong.";
-
-    } else {
-      pkpErrorElement.textContent = "";
-    }
-
-    while (tabel.rows.length > 0) {
-      tabel.deleteRow(0);
-    }
-    if (NPWPInput === 'NPWP') {
-      if (PKPInput < 60000000) {
-
-        addRow(tabel, '1', PKPInputCrc, PKPInputCrc, '5', '0');
-
-      } else if (PKPInput > 60000000 && PKPInput <= 250000000) {
-        var turunan1 = 60000000
-        var hitungturunan2 = PKPInput - turunan1
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
-        addRow(tabel, '2', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0');
-
-      } else if (PKPInput > 250000000 && PKPInput <= 500000000) {
-        var turunan1 = 60000000
-        var turunan2 = 250000000
-        var hitungturunan2 = turunan2 - turunan1
-        var hitungturunan3 = PKPInput - turunan2
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
-        addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0',);
-        addRow(tabel, '3', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '0');
-      } else if (PKPInput > 500000000 && PKPInput <= 5000000000) {
-        var turunan1 = 60000000
-        var turunan2 = 250000000
-        var turunan3 = 500000000
-        var hitungturunan2 = turunan2 - turunan1
-        var hitungturunan3 = turunan3 - turunan2
-        var hitungturunan4 = PKPInput - turunan3
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
-        addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0',);
-        addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '0');
-        addRow(tabel, '4', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '0');
-      } else if (PKPInput > 5000000000) {
-        var turunan1 = 60000000
-        var turunan2 = 250000000
-        var turunan3 = 500000000
-        var turunan4 = 5000000000
-        var hitungturunan2 = turunan2 - turunan1
-        var hitungturunan3 = turunan3 - turunan2
-        var hitungturunan4 = turunan4 - turunan3
-        var hitungturunan5 = PKPInput - turunan4
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
-        addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0',);
-        addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '0');
-        addRow(tabel, '4', `${formatCurrency(turunan4)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '0');
-        addRow(tabel, '5', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan4)}`, `${formatCurrency(hitungturunan5)}`, '35', '0');
-      }
-    } else if (NPWPInput === 'Non-NPWP') {
-      if (PKPInput < 60000000) {
-        var turunan1 = Math.min(PKPInput,);
-        addRow(tabel, '1', PKPInputCrc, PKPInputCrc, '5', '120');
-
-      } else if (PKPInput > 60000000 && PKPInput <= 250000000) {
-        var turunan1 = 60000000
-        var hitungturunan2 = PKPInput - turunan1
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
-        addRow(tabel, '2', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120');
-
-      } else if (PKPInput > 250000000 && PKPInput <= 500000000) {
-        var turunan1 = 60000000
-        var turunan2 = 250000000
-        var hitungturunan2 = turunan2 - turunan1
-        var hitungturunan3 = PKPInput - turunan2
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
-        addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120',);
-        addRow(tabel, '3', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '120');
-      } else if (PKPInput > 500000000 && PKPInput <= 5000000000) {
-        var turunan1 = 60000000
-        var turunan2 = 250000000
-        var turunan3 = 500000000
-        var hitungturunan2 = turunan2 - turunan1
-        var hitungturunan3 = turunan3 - turunan2
-        var hitungturunan4 = PKPInput - turunan3
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
-        addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120',);
-        addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '120');
-        addRow(tabel, '4', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '120');
-      } else if (PKPInput > 5000000000) {
-        var turunan1 = 60000000
-        var turunan2 = 250000000
-        var turunan3 = 500000000
-        var turunan4 = 5000000000
-        var hitungturunan2 = turunan2 - turunan1
-        var hitungturunan3 = turunan3 - turunan2
-        var hitungturunan4 = turunan4 - turunan3
-        var hitungturunan5 = PKPInput - turunan4
-        addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
-        addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120',);
-        addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '120');
-        addRow(tabel, '4', `${formatCurrency(turunan4)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '120');
-        addRow(tabel, '5', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan4)}`, `${formatCurrency(hitungturunan5)}`, '35', '120');
-      }
-    }
-
-    updateTotal();
-  }
-
-  // Fungsi untuk menghitung total dan memperbarui tfoot
-  function updateTotal() {
-    var tbody = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
-    var totalCell = document.getElementById("baristotal").querySelector('.total');
-    var PKPInputCrc = document.getElementById('pkp').value;
-    var PKPInput = parseFloat(PKPInputCrc.split(".").join("").split("Rp").join(""));
-
-    var total = 0;
-
-    // Iterasi melalui kolom hasil dalam tbody
-    for (var i = 0; i < tbody.rows.length; i++) {
-      var hasilText = tbody.rows[i].cells[5].textContent;
-      var hasilValue = parseFloat(hasilText.replace(/[^\d-]/g, ''));
-
-      // Pastikan hasilValue adalah angka yang valid
-      if (!isNaN(hasilValue)) {
-        total += hasilValue;
-
-      }
-
-      // Format total sebagai mata uang
-      var formattedTotal = new Intl.NumberFormat('id-ID', {
-        style: 'currency',
-        currency: 'IDR',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }).format(parseFloat(total));
-
-      // Set nilai total pada tfoot
-      if (isNaN(PKPInput)) {
-        totalCell.textContent = ',-';
-      } else {
-        totalCell.textContent = formattedTotal + ',-';
-      }
-    }
-  }
 
 
 });
@@ -395,6 +100,337 @@ function initializeStatus() {
 
 
 }
+
+let currentFormat = 'persen'; // Menyimpan status pilihan saat ini
+
+function changeDropdownText(text, elementSelector) {
+  document.querySelector(elementSelector).innerHTML = text;
+}
+
+
+
+
+// Event listener untuk "(%)" pada Biaya Asuransi / Insurance
+$(document).on('click', '#persen', function () {
+  changeDropdownText('JKK (%)', '#pilihjkk');
+  changeDropdownText('JKM (%)', '#pilihjkm');
+  changeDropdownText('BPJSKES (%)', '#pilihbpjskes');
+  changeDropdownText('JHT (%)', '#pilihjht');
+  changeDropdownText('JP (%)', '#pilihjp');
+
+
+  document.querySelector('#persenjkk').value = '0.24';
+  document.querySelector('#hasiljkk').value = '';
+  document.querySelector('#persenjkm').value = '0.30';
+  document.querySelector('#hasiljkm').value = '';
+  document.querySelector('#persenbpjs').value = '4';
+  document.querySelector('#hasilbpjs').value = '';
+  document.querySelector('#persenjht').value = '1';
+  document.querySelector('#hasiljht').value = '';
+  document.querySelector('#persenjp').value = '2';
+  document.querySelector('#hasiljp').value = '';
+
+
+  currentFormat = 'persen'; // Mengubah status pilihan saat ini
+});
+
+// Merubah Label "Rp." pada Label JKK,JKM,BPJSKES,JHT, dan JP
+$(document).on('click', '#rupiah', function () {
+  changeDropdownText('JKK (Rp)', '#pilihjkk');
+  changeDropdownText('JKM (Rp)', '#pilihjkm');
+  changeDropdownText('BPJSKES (Rp)', '#pilihbpjskes');
+  changeDropdownText('JHT (Rp)', '#pilihjht');
+  changeDropdownText('JP (Rp)', '#pilihjp');
+
+
+  document.querySelector('#persenjkk').value = 'Rp 0';
+  document.querySelector('#hasiljkk').value = '';
+  document.querySelector('#persenjkm').value = 'Rp 0';
+  document.querySelector('#hasiljkm').value = '';
+  document.querySelector('#persenbpjs').value = 'Rp 0';
+  document.querySelector('#hasilbpjs').value = '';
+  document.querySelector('#persenjht').value = 'Rp 0';
+  document.querySelector('#hasiljht').value = '';
+  document.querySelector('#persenjp').value = 'Rp 0';
+  document.querySelector('#hasiljp').value = '';
+
+
+  currentFormat = 'rupiah'; // Mengubah status pilihan saat ini
+
+
+});
+
+// Event listener untuk input  JKK,JKM,BPJSKES,JHT, dan JP
+$(document).on('input', '#persenjkk', function () {
+
+  if (currentFormat === 'rupiah') {
+    formatMataUang(this);
+  } else if (currentFormat === 'persen') {
+    formatpersen(this);
+  }
+  hitungBPJS();
+
+});
+// Event listener untuk input pada Biaya Asuransi / Insurance
+$(document).on('input', '#persenjkm', function () {
+
+  if (currentFormat === 'rupiah') {
+    formatMataUang(this);
+  } else if (currentFormat === 'persen') {
+    formatpersen(this);
+  }
+
+});
+// Event listener untuk input pada Biaya Asuransi / Insurance
+$(document).on('input', '#persenbpjs', function () {
+  if (currentFormat === 'rupiah') {
+    formatMataUang(this);
+  } else if (currentFormat === 'persen') {
+    formatpersen(this);
+  }
+
+});
+$(document).on('input', '#persenjht', function () {
+
+  if (currentFormat === 'rupiah') {
+    formatMataUang(this);
+  } else if (currentFormat === 'persen') {
+    formatpersen(this);
+  }
+  hitungpengurangan();
+});
+$(document).on('input', '#persenjp', function () {
+  if (currentFormat === 'rupiah') {
+    formatMataUang(this);
+  } else if (currentFormat === 'persen') {
+    formatpersen(this);
+  }
+
+
+});
+
+
+function infoNetto() {
+  var tabel = document.getElementById("nettoTable").getElementsByTagName('tbody')[0];
+  var RowTemplateNetto = document.getElementById("RowTemplateNetto");
+  var bruto = document.getElementById("bruto").value;
+  var jabatan = document.getElementById("jabatan").value;
+  var hasiljht = document.getElementById("hasiljht").value;
+  var hasiljp = document.getElementById("hasiljp").value;
+  var netto = document.getElementById("netto").value;
+  var nettoErrorElement = document.getElementById('nettoError');
+
+  if (!(bruto) && !(jabatan) && !(hasiljht) && !(hasiljp)) {
+    nettoErrorElement.textContent = "Penghasilan Bruto & Elemen Pengurangan tidak memiliki nilai atau kosong.";
+
+  } else {
+    nettoErrorElement.textContent = "";
+  }
+  // Hapus semua baris sebelum menambahkan yang baru
+  while (tabel.rows.length > 0) {
+    tabel.deleteRow(0);
+  }
+
+  // Clone template
+  var newRow = RowTemplateNetto.cloneNode(true);
+
+  // Setel nilai sel
+  newRow.cells[0].textContent = bruto;
+  newRow.cells[1].textContent = jabatan;
+  newRow.cells[2].textContent = hasiljht;
+  newRow.cells[3].textContent = hasiljp;
+  newRow.cells[4].textContent = netto;
+
+  // Tambahkan kelas 'new-row' agar bisa diidentifikasi
+  tabel.appendChild(newRow);
+}
+// Fungsi untuk menambahkan baris ke tabel
+function addRow(table, nomor, step, value, percentage, denda) {
+  var NPWPInput = document.getElementById('npwp').value;
+  var newRow = table.insertRow();
+  newRow.insertCell(0).textContent = nomor;
+  newRow.insertCell(1).textContent = step;
+  newRow.insertCell(2).textContent = value;
+  newRow.insertCell(3).textContent = percentage + ' %';
+  newRow.insertCell(4).textContent = denda + ' %';
+  if (NPWPInput === 'NPWP') {
+    var hasil = parseFloat(value.split("Rp").join("").split(".").join("")) * parseFloat(percentage) / 100;
+    newRow.insertCell(5).textContent = formatCurrency(hasil);
+  } else if (NPWPInput === 'Non-NPWP') {
+    var hasil = parseFloat(value.split("Rp").join("").split(".").join("")) * parseFloat(percentage) / 100 * parseFloat(denda) / 100;
+    newRow.insertCell(5).textContent = formatCurrency(hasil);
+  }
+  // Setel properti CSS untuk memusatkan teks di dalam sel
+  for (var i = 0; i <= 5; i++) {
+    if (i === 0 || i === 3 || i === 4) {
+      newRow.cells[i].style.textAlign = "center"; // Memusatkan secara horizontal
+      newRow.cells[i].style.verticalAlign = "middle"; // Memusatkan secara vertikal
+
+    }
+  }
+}
+
+// Fungsi untuk memformat mata uang
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+// Fungsi untuk menambahkan baris pada tabel Info PPH21
+function infoPPH() {
+  var tabel = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
+  var PKPInputCrc = document.getElementById('pkp').value;
+  var PKPInput = parseFloat(PKPInputCrc.split(".").join("").split("Rp").join(""));
+  var pkpErrorElement = document.getElementById('pkpError');
+  var NPWPInput = document.getElementById('npwp').value;
+
+  if (isNaN(PKPInput)) {
+    pkpErrorElement.textContent = "Penghasilan Kena Pajak tidak memiliki nilai atau kosong.";
+
+  } else {
+    pkpErrorElement.textContent = "";
+  }
+
+  while (tabel.rows.length > 0) {
+    tabel.deleteRow(0);
+  }
+  if (NPWPInput === 'NPWP') {
+    if (PKPInput < 60000000) {
+
+      addRow(tabel, '1', PKPInputCrc, PKPInputCrc, '5', '0');
+
+    } else if (PKPInput > 60000000 && PKPInput <= 250000000) {
+      var turunan1 = 60000000
+      var hitungturunan2 = PKPInput - turunan1
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
+      addRow(tabel, '2', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0');
+
+    } else if (PKPInput > 250000000 && PKPInput <= 500000000) {
+      var turunan1 = 60000000
+      var turunan2 = 250000000
+      var hitungturunan2 = turunan2 - turunan1
+      var hitungturunan3 = PKPInput - turunan2
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
+      addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0',);
+      addRow(tabel, '3', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '0');
+    } else if (PKPInput > 500000000 && PKPInput <= 5000000000) {
+      var turunan1 = 60000000
+      var turunan2 = 250000000
+      var turunan3 = 500000000
+      var hitungturunan2 = turunan2 - turunan1
+      var hitungturunan3 = turunan3 - turunan2
+      var hitungturunan4 = PKPInput - turunan3
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
+      addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0',);
+      addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '0');
+      addRow(tabel, '4', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '0');
+    } else if (PKPInput > 5000000000) {
+      var turunan1 = 60000000
+      var turunan2 = 250000000
+      var turunan3 = 500000000
+      var turunan4 = 5000000000
+      var hitungturunan2 = turunan2 - turunan1
+      var hitungturunan3 = turunan3 - turunan2
+      var hitungturunan4 = turunan4 - turunan3
+      var hitungturunan5 = PKPInput - turunan4
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '0');
+      addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '0',);
+      addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '0');
+      addRow(tabel, '4', `${formatCurrency(turunan4)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '0');
+      addRow(tabel, '5', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan4)}`, `${formatCurrency(hitungturunan5)}`, '35', '0');
+    }
+  } else if (NPWPInput === 'Non-NPWP') {
+    if (PKPInput < 60000000) {
+      var turunan1 = Math.min(PKPInput,);
+      addRow(tabel, '1', PKPInputCrc, PKPInputCrc, '5', '120');
+
+    } else if (PKPInput > 60000000 && PKPInput <= 250000000) {
+      var turunan1 = 60000000
+      var hitungturunan2 = PKPInput - turunan1
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
+      addRow(tabel, '2', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120');
+
+    } else if (PKPInput > 250000000 && PKPInput <= 500000000) {
+      var turunan1 = 60000000
+      var turunan2 = 250000000
+      var hitungturunan2 = turunan2 - turunan1
+      var hitungturunan3 = PKPInput - turunan2
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
+      addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120',);
+      addRow(tabel, '3', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '120');
+    } else if (PKPInput > 500000000 && PKPInput <= 5000000000) {
+      var turunan1 = 60000000
+      var turunan2 = 250000000
+      var turunan3 = 500000000
+      var hitungturunan2 = turunan2 - turunan1
+      var hitungturunan3 = turunan3 - turunan2
+      var hitungturunan4 = PKPInput - turunan3
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
+      addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120',);
+      addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '120');
+      addRow(tabel, '4', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '120');
+    } else if (PKPInput > 5000000000) {
+      var turunan1 = 60000000
+      var turunan2 = 250000000
+      var turunan3 = 500000000
+      var turunan4 = 5000000000
+      var hitungturunan2 = turunan2 - turunan1
+      var hitungturunan3 = turunan3 - turunan2
+      var hitungturunan4 = turunan4 - turunan3
+      var hitungturunan5 = PKPInput - turunan4
+      addRow(tabel, '1', formatCurrency(turunan1), formatCurrency(turunan1), '5', '120');
+      addRow(tabel, '2', `${formatCurrency(turunan2)} - ${formatCurrency(turunan1)}`, `${formatCurrency(hitungturunan2)}`, '15', '120',);
+      addRow(tabel, '3', `${formatCurrency(turunan3)} - ${formatCurrency(turunan2)}`, `${formatCurrency(hitungturunan3)}`, '25', '120');
+      addRow(tabel, '4', `${formatCurrency(turunan4)} - ${formatCurrency(turunan3)}`, `${formatCurrency(hitungturunan4)}`, '30', '120');
+      addRow(tabel, '5', `${formatCurrency(PKPInput)} - ${formatCurrency(turunan4)}`, `${formatCurrency(hitungturunan5)}`, '35', '120');
+    }
+  }
+
+  updateTotalPPH();
+}
+
+// Fungsi untuk menghitung total dan memperbarui tfoot
+function updateTotalPPH() {
+  var tbody = document.getElementById("pphTable").getElementsByTagName('tbody')[0];
+  var totalCell = document.getElementById("baristotal").querySelector('.total');
+  var PKPInputCrc = document.getElementById('pkp').value;
+  var PKPInput = parseFloat(PKPInputCrc.split(".").join("").split("Rp").join(""));
+
+  var total = 0;
+
+  // Iterasi melalui kolom hasil dalam tbody
+  for (var i = 0; i < tbody.rows.length; i++) {
+    var hasilText = tbody.rows[i].cells[5].textContent;
+    var hasilValue = parseFloat(hasilText.replace(/[^\d-]/g, ''));
+
+    // Pastikan hasilValue adalah angka yang valid
+    if (!isNaN(hasilValue)) {
+      total += hasilValue;
+
+    }
+
+    // Format total sebagai mata uang
+    var formattedTotal = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(parseFloat(total));
+
+    // Set nilai total pada tfoot
+    if (isNaN(PKPInput)) {
+      totalCell.textContent = ',-';
+    } else {
+      totalCell.textContent = formattedTotal + ',-';
+    }
+  }
+}
+
+
 
 function calculatePTKP(status) {
   // Mendapatkan nilai status dari text field
@@ -433,9 +469,10 @@ function calculatePTKP(status) {
 }
 
 
-
-// ... Sisa kode JavaScript Anda ...
-
+function formatpersen(input) {
+  var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
+  input.value = value;
+}
 
 function formatMataUang(input) {
   var value = input.value.replace(/[^\d.]/g, ''); // Hapus semua karakter non-angka dan titik
@@ -565,16 +602,18 @@ function hitungpengurangan() {
   var gaji = gajiCrc.split(".").join("").split("Rp").join("");
   var brutoCrc = document.getElementById('bruto').value;
   var bruto = brutoCrc.split(".").join("").split("Rp").join("");
+  var jabatan = document.getElementById('jabatan').value;
   var jhtCrc = document.getElementById('persenjht').value;
   var jpCrc = document.getElementById('persenjp').value;
-  var jht;
-  var jp;
+
+  var jht
+  var jp
 
 
-  // Periksa apakah jkkCrc berisi "Rp"
+
   if (jhtCrc.includes("Rp") || jpCrc.includes("Rp")) {
-    jht = jhtCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
-    jp = jpCrc.split(".").join("").split("Rp").join(""); // Hapus "Rp" jika ada
+    var jht = parseFloat(jhtCrc.split('Rp').join('').split(".").join(""));
+    var jp = parseFloat(jpCrc.split('Rp').join('').split(".").join(""));
 
   } else {
     var jhtpersen = parseFloat(jhtCrc.replace(/[^\d.]/g, ''));
@@ -585,19 +624,19 @@ function hitungpengurangan() {
     var gajiMaksimal = 9559600;
     var maxjp = Math.min(gaji, gajiMaksimal);
     var jp = (maxjp * jppersen) / 100;
-
-
-
   }
-  var jabatan = bruto * 0.05;
 
+  var jabatan = bruto * 0.05;
 
   // Jika biaya jabatan lebih dari 500 ribu, set nilai biaya jabatan menjadi 500 ribu
   if (jabatan > 500000) {
     jabatan = 500000;
   }
 
-  jumlah_pengurangan = jabatan + jht + jp;
+  var jumlah_pengurangan = jabatan + jht + jp;
+
+
+
 
   $("#jabatan").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -605,18 +644,21 @@ function hitungpengurangan() {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(jabatan));
+
   $("#hasiljht").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(jht));
+
   $("#hasiljp").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(jp));
+
   $("#jumlah_pengurangan").val(new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
@@ -625,6 +667,8 @@ function hitungpengurangan() {
   }).format(jumlah_pengurangan));
 
 }
+
+
 function hitungnetto() {
   var brutoCrc = document.getElementById('bruto').value;
   var bruto = brutoCrc.split(".").join("").split("Rp").join("");
@@ -636,7 +680,7 @@ function hitungnetto() {
   var jp = jpCrc.split(".").join("").split("Rp").join("");
 
 
-  var hitungnetto = (bruto - jabatan - jht - jp);
+  var hitungnetto = bruto - jabatan - jht - jp;
 
 
   $("#netto").val(new Intl.NumberFormat('id-ID', {
@@ -672,6 +716,8 @@ function hitungPKP() {
     pkp = 0;
   } else {
     var pkp = parseFloat(nettosetahun) - parseFloat(ptkp);
+    // ROUNDDOWN implementation using Math.floor
+    pkp = Math.floor(pkp / 1000) * 1000; // Round down to three decimal places
 
   }
   if (isNaN(pkp)) {
@@ -790,12 +836,18 @@ function resetInput() {
   document.getElementById("jumlahjkkjkm").value = "";
   document.getElementById("jumlahbpjskes").value = "";
   document.getElementById("bruto").value = "";
+  document.getElementById("persenjkk").value = "";
+  document.getElementById("persenjkm").value = "";
+  document.getElementById("persenbpjs").value = "";
   document.getElementById("hasiljkk").value = "";
   document.getElementById("hasiljkm").value = "";
   document.getElementById("hasilbpjs").value = "";
   document.getElementById("jabatan").value = "";
+  document.getElementById("persenjht").value = "";
+  document.getElementById("persenjp").value = "";
   document.getElementById("hasiljht").value = "";
   document.getElementById("hasiljp").value = "";
+  document.getElementById("jumlah_pengurangan").value = "";
   document.getElementById("netto").value = "";
   document.getElementById("nettosetahun").value = "";
   document.getElementById("pkp").value = "";

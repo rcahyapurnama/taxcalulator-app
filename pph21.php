@@ -20,7 +20,7 @@ include("navbar.php") ?>
                 <div class="card shadow">
                     <h5 class="card-header text-bg-primary ">A. Personal</h5>
                     <div class="card-body">
-                        <div class="row mb-3">
+                        <div class="row mb-3 mt-4">
                             <label class="col-lg-6 col-form-label">Status NPWP</label>
                             <div class="col-lg-5 ms-auto">
                                 <select class="form-select border border-secondary-subtle shadow " id="npwp" name="npwp">
@@ -49,10 +49,10 @@ include("navbar.php") ?>
                                 </select>
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        <div class="row mb-5">
                             <label class="col-lg-6 col-form-label">Penghasilan Tidak Kena Pajak</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary-subtle shadow" name="ptkp" id="ptkp" readonly>
+                                <input type="text" class="form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " name="ptkp" id="ptkp" readonly>
 
                             </div>
                         </div>
@@ -65,33 +65,33 @@ include("navbar.php") ?>
                         <div class="row">
                             <label class="col-lg-6 col-form-label">Gaji Pokok</label>
                             <div class="col-lg-5 ms-auto mb-3">
-                                <input type="int" class="mataUang form-control  border border-secondary-subtle shadow" id="gaji" name='gaji' inputmode="numeric">
+                                <input type="int" class="mataUang form-control  border border-secondary-subtle shadow text-end" id="gaji" name='gaji' inputmode="numeric">
                             </div>
                         </div>
 
                         <div class=" row mb-3">
                             <label class="col-lg-6 col-form-label">Tunjangan</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class="mataUang form-control border border-secondary-subtle shadow" id="tunjangan" name="tunjangan" inputmode="numeric">
+                                <input type="text" class="mataUang form-control border border-secondary-subtle shadow text-end" id="tunjangan" name="tunjangan" inputmode="numeric">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Jumlah Tunjangan JKK + JKM </label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="jumlahjkkjkm" name="jumlahjkkjkm" readonly>
+                                <input type="text" class=" form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="jumlahjkkjkm" name="jumlahjkkjkm" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Jumlah Tunjangan BPJSKES</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="jumlahbpjskes" name="jumlahbpjskes" readonly>
+                                <input type="text" class=" form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="jumlahbpjskes" name="jumlahbpjskes" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Jumah Penghasilan Bruto</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary-subtle shadow" id="bruto" name="bruto" readonly>
+                                <input type="text" class="form-control border border-secondary-subtle shadow text-end bg-secondary-subtle  " id="bruto" name="bruto" readonly>
                             </div>
                         </div>
 
@@ -102,16 +102,19 @@ include("navbar.php") ?>
                     <div class="card-body">
 
                         <div class="row mb-3">
-                            <label class="dropdown-toggle col-lg-2 col-form-label" data-bs-toggle="dropdown" aria-expanded="false" id="pilihjkk">
-                                JKK (%)
-                            </label>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" id="persen">Satuan (%)</a></li>
-                                <li><a class="dropdown-item" id="rupiah">Satuan (Rp)</a></li>
-                            </ul>
+                            <div class="btn-group" id="btnjkk">
+                                <button class=" btn btn-sm btn-primary dropdown-toggle col-lg-2 text-start mb-2" data-bs-toggle="dropdown" aria-expanded="false" id="pilihjkk">
+                                    JKK (%)
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                    <li><a class="dropdown-item" id="persen">Satuan Persen (%)</a></li>
+                                    <li><a class="dropdown-item" id="rupiah">Satuan Rupiah (Rp)</a></li>
+                                </ul>
+                            </div>
                             <div class="col-lg-3">
                                 <div class="col-auto">
                                     <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkk" value="0.24" inputmode="numeric">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="inputjkk" name="inputjkk" value="JKK (%)" hidden>
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
@@ -119,7 +122,7 @@ include("navbar.php") ?>
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JKK dihasilkan dari Gaji Pokok x JKK%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle shadow" type=" text" id="hasiljkk" name="hasiljkk" readonly>
+                                        <input class="form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " type=" text" id="hasiljkk" name="hasiljkk" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -129,6 +132,7 @@ include("navbar.php") ?>
                             <div class="col-lg-3">
                                 <div class="col-auto">
                                     <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjkm" value="0.30" inputmode="numeric">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="inputjkm" name="inputjkm" value="JKM (%)" hidden>
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
@@ -136,7 +140,7 @@ include("navbar.php") ?>
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JKM dihasilkan dari Gaji Pokok x JKM%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle shadow" type=" text" id="hasiljkm" name="hasiljkm" readonly>
+                                        <input class="form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " type=" text" id="hasiljkm" name="hasiljkm" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -145,6 +149,7 @@ include("navbar.php") ?>
                             <label class="col-lg-2 col-form-label " id="pilihbpjskes"> BPJSKES (%)</label>
                             <div class="col-lg-3">
                                 <input type="text" class="col-2 form-control  border border-secondary-subtle text-end" id="persenbpjs" value="4" inputmode="numeric">
+                                <input type="text" class="form-control text-end border border-secondary-subtle" id="inputbpjskes" name="inputbpjskes" value="BPJSKES (%)" hidden>
                             </div>
 
                             <label class="col-auto col-form-label ms-4 "> = </label>
@@ -153,7 +158,7 @@ include("navbar.php") ?>
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai BPJS Kesehatan dihasilkan dari Gaji Pokok x BPJSKES% dengan kriteria maksimal Gaji Pokok Rp. 12.000.000" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
 
-                                        <input type="text" class="form-control border border-secondary-subtle shadow" id="hasilbpjs" name="hasilbpjs" readonly>
+                                        <input type="text" class="form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="hasilbpjs" name="hasilbpjs" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -175,8 +180,8 @@ include("navbar.php") ?>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
                                     <div class="input-group">
-                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info mb-3" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai biaya jabatan dihasilkan dari 5% Gaji Pokok dan nilai maksimal biaya jabatan adalah 500,000." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input type="text" class="form-control  border border-secondary-subtle shadow mb-3" id="jabatan" name="jabatan" readonly>
+                                        <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info mb-3" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai biaya jabatan dihasilkan dari 5% Jumah Penghasilan Bruto dan nilai maksimal biaya jabatan adalah 500,000." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                        <input type="text" class="form-control  border border-secondary-subtle shadow mb-3 text-end bg-secondary-subtle " id="jabatan" name="jabatan" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -186,22 +191,25 @@ include("navbar.php") ?>
                             <div class="col-lg-3">
                                 <div class="col-auto">
 
-                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjht" value="2" inputmode="numeric">
-
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjht" value="1" inputmode="numeric">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="inputjht" name="inputjht" value="JHT (%)" hidden>
                                 </div>
 
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control shadow border border-secondary-subtle" id="hasiljht" name="hasiljht" readonly>
+                                <div class="input-group">
+                                    <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JHT dihasilkan dari Gaji Pokok x JHT%" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                    <input type="text" class="form-control shadow border border-secondary-subtle text-end bg-secondary-subtle " id="hasiljht" name="hasiljht" readonly>
+                                </div>
                             </div>
-
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-2 col-form-label" id="pilihjp"> JP (%)</label>
                             <div class="col-lg-3">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="1" inputmode="numeric">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="persenjp" value="2" inputmode="numeric">
+                                    <input type="text" class="form-control text-end border border-secondary-subtle" id="inputjp" name="inputjp" value="JP (%)" hidden>
                                 </div>
                             </div>
                             <label class="col-auto col-form-label ms-4"> = </label>
@@ -209,17 +217,17 @@ include("navbar.php") ?>
                                 <div class="col-auto">
                                     <div class="input-group">
                                         <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai JP dihasilkan dari Gaji Pokok x JP% dengan kriteria maksimal Gaji Pokok Rp. 9,559,600" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                        <input class="form-control border border-secondary-subtle" type=" text" id="hasiljp" name="hasiljp" readonly>
+                                        <input class="form-control border border-secondary-subtle text-end bg-secondary-subtle bg-secondary-subtle " type="text" id="hasiljp" name="hasiljp" readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" hidden>
+                        <div class="row">
                             <label class="col-lg-6 mb-2 col-form-label">Jumlah Pengurangan</label>
                             <div class="col-lg-5 ms-auto">
                                 <div class="col-auto">
 
-                                    <input type=" text" class="form-control  border border-secondary-subtle shadow mb-3" id="jumlah_pengurangan" name="jumlah_pengurangan">
+                                    <input type=" text" class="form-control  border border-secondary-subtle shadow mb-3 text-end bg-secondary-subtle " id="jumlah_pengurangan" name="jumlah_pengurangan">
 
                                 </div>
                             </div>
@@ -235,19 +243,25 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Penghasilan Netto</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="netto" name="netto" readonly>
+                                <div class="input-group">
+                                    <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" id="infonetto" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                    <input type="text" class=" form-control  border border-secondary-subtle shadow text-end bg-secondary-subtle " id="netto" name="netto" readonly>
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Penghasilan Netto Disetahunkan </label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control  border border-secondary-subtle shadow" id="nettosetahun" name="nettosetahun" readonly>
+                                <input type="text" class=" form-control  border border-secondary-subtle shadow text-end bg-secondary-subtle " id="nettosetahun" name="nettosetahun" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Penghasilan Kena Pajak</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="pkp" name="pkp" readonly>
+                                <div class="input-group">
+                                    <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" id="popover-icon" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-custom-class="custom-popover" data-bs-placement="right" data-bs-title="Informasi." data-bs-content="Nilai Penghasilan Kena Pajak didapat dari Penghasilan Netto Disetahunkan  dikurangi Penghasilan Tidak Kena Pajak, dan hasilnya dibulatkan kebawah." style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
+                                    <input type="text" class=" form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="pkp" name="pkp" readonly>
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -255,14 +269,14 @@ include("navbar.php") ?>
                             <div class="col-lg-5 ms-auto">
                                 <div class="input-group">
                                     <a tabindex="0" class="input-group-text icon-link-hover  border border-secondary-subtle text-bg-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" id="infopph" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0)"><i class="bi bi-question-lg"></i></a>
-                                    <input type="text" class=" form-control  border border-secondary-subtle shadow" id="pphsetahun" name="pphsetahun" readonly>
+                                    <input type="text" class=" form-control  border border-secondary-subtle shadow text-end bg-secondary-subtle " id="pphsetahun" name="pphsetahun" readonly>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="pphsebulan" name="pphsebulan" readonly>
+                                <input type="text" class=" form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="pphsebulan" name="pphsebulan" readonly>
                             </div>
                         </div>
 
@@ -275,19 +289,19 @@ include("navbar.php") ?>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">Penghasilan Netto</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="gajibersih" readonly>
+                                <input type="text" class=" form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="gajibersih" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-lg-6 col-form-label">PPH 21 Atas Gaji Bulan Ini</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class=" form-control border border-secondary-subtle shadow" id="pph21sebulan1" readonly>
+                                <input type="text" class=" form-control border border-secondary-subtle shadow text-end bg-secondary-subtle " id="pph21sebulan1" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <label class="col-lg-6 col-form-label">Total Gaji Bersih Bulan ini</label>
                             <div class="col-lg-5 ms-auto">
-                                <input type="text" class="form-control border border-secondary-subtle shadow mb-4" id="hasil_akhir" readonly>
+                                <input type="text" class="form-control border border-secondary-subtle shadow text-end bg-secondary-subtle  mb-4 " id="hasil_akhir" readonly>
                             </div>
                         </div>
 
@@ -306,9 +320,56 @@ include("navbar.php") ?>
                             <button class="btn btn-warning col-5" type="button" id="reset">Reset</button>
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary col-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-primary col-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
                                 Cetak
                             </button>
+                        </div>
+
+                        <!-- Modal Info perhitungan Penghasilan Netto -->
+                        <div class="modal fade" id="staticBackdrop1" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Informasi.</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Langkah perhitungan mendapatkan nilai Penghasilan Netto.
+                                        <p>
+                                        </p>
+                                        <div class="text-center"><b> <i>Penghasilan Bruto</i> - <i>Biaya Jabatan</i> - <i>JHT</i> - <i>JP</i> = <i>Hasil</i></b></div>
+                                        <div class="table-responsive mt-4">
+                                            <table class="table table-hover  table-bordered" id="nettoTable">
+                                                <thead>
+                                                    <tr class="align-middle text-center table-primary border-secondary  ">
+                                                        <th rowspan="2">Penghasilan Bruto </th>
+                                                        <th colspan="3">Elemen Pengurangan</th>
+                                                        <th rowspan="2">Hasil</th>
+                                                    </tr>
+                                                    <tr class="align-middle text-center table-primary border-secondary">
+                                                        <th style="width: 20%;">Biaya jabatan </th>
+                                                        <th style="width: 20%;">JHT</th>
+                                                        <th style="width: 20%;">JP</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Placeholder row for new entries -->
+                                                    <tr id="RowTemplateNetto" class="text-center border-secondary ">
+                                                        <td class=" bruto">
+                                                        </td>
+                                                        <td class="jabatan"></td>
+                                                        <td class="jht"></td>
+                                                        <td class="jp"></td>
+                                                        <td class="hasil"></td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div id="nettoError" class="text-center text-danger-emphasis bg-danger-subtle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Modal Info perhitungan PPH 21 -->
                         <div class="modal fade" id="staticBackdrop2" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -319,52 +380,66 @@ include("navbar.php") ?>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Langkah perhitungan mencari nilai PPH 21.
-                                        <div class="table-responsive mt-4">
-                                            <table class="table table-hover table-striped " id="pphTable">
-                                                <thead>
+                                        Langkah perhitungan mendapatkan nilai PPH 21.
+                                        <p></p>
+                                        <div class="container ">
+                                            <div class="row justify-content-center">
+                                                <div class="col-5">
 
-                                                    <tr class=" ">
-                                                        <th class="text-center">Langkah</th>
-                                                        <th class="">Nilai Turunan</th>
-                                                        <th class="">Hasil Turunan</th>
-                                                        <th class="">Tarif</th>
-                                                        <th class="text-center">Denda</th>
-                                                        <th class="">Hasil</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!-- Placeholder row for new entries -->
-                                                    <tr id="newRowTemplate" style="display: none;">
-                                                        <td class="langkah"></td>
-                                                        <td class="nilaiTurunan"></td>
-                                                        <td class="hasilTurunan"></td>
-                                                        <td class="tarif"></td>
-                                                        <td class="tarifdenda"></td>
-                                                        <td class="hasil"></td>
+                                                    1. Jika memiliki NPWP
+                                                    <div class="ms-3 "> <b><i>Hasil Turunan</i> x <i>Tarif</i> = <i>Hasil</i></b></div>
+                                                </div>
+                                                <div class="col-5 ">
+                                                    2. Jika Tidak memiliki NPWP
+                                                    <div class="ms-3 "> <b><i>Hasil Turunan</i> x <i>Tarif</i> x <i>Denda</i> = <i>Hasil</i></b></div>
+                                                </div>
+                                            </div>
 
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr id="baristotal" class="">
-                                                        <td colspan="4"></td>
-                                                        <td class="text-end fs-5 ">Total</td>
-                                                        <td class="total fs-5 table-active" id="total">,-</td>
+                                            <div class="table-responsive mt-4">
+                                                <table class="table table-hover table-striped table-bordered  border-secondary " id="pphTable">
+                                                    <thead>
 
-                                                </tfoot>
-                                            </table>
-                                            <div id="pkpError" class="text-center text-danger-emphasis bg-danger-subtle"></div>
+                                                        <tr class=" text-center table-primary border-secondary ">
+                                                            <th class="">Langkah</th>
+                                                            <th class="">Nilai Turunan</th>
+                                                            <th class="">Hasil Turunan</th>
+                                                            <th class="">Tarif</th>
+                                                            <th class="">Denda</th>
+                                                            <th class="">Hasil</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Placeholder row for new entries -->
+                                                        <tr id="newRowTemplate" style="display: none;">
+                                                            <td class="langkah"></td>
+                                                            <td class="nilaiTurunan"></td>
+                                                            <td class="hasilTurunan"></td>
+                                                            <td class="tarif"></td>
+                                                            <td class="tarifdenda"></td>
+                                                            <td class="hasil"></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr id="baristotal" class="">
+                                                            <td colspan="5" class="text-end fs-5 ">Total :</td>
+                                                            <td class="total fs-5 table-warning" id="total">,-</td>
+
+                                                    </tfoot>
+                                                </table>
+                                                <div id="pkpError" class="text-center text-danger-emphasis bg-danger-subtle">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog  modal-dialog-centered myModal">
+                        <div class="modal fade" id="staticBackdrop3" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Masukan Data</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Informasi.</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -396,9 +471,8 @@ include("navbar.php") ?>
                 </div>
             </div>
         </div>
-</div>
 
-</form>
+    </form>
 </div>
 <!-- akhir card -->
 </p>

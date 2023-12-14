@@ -27,7 +27,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="jenispajak">
+                                <select class="form-select border border-secondary " id="jenispajak">
                                     <option value="pph22-impor.php">PPH 22 Atas Barang Impor</option>
                                     <option value="pph22-pemerintah.php">PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
                                     <option value="pph22-kertas.php">PPH 22 Atas Penjualan Kertas Dalam Negeri</option>
@@ -45,7 +45,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Status NPWP</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="npwp_kertas" name="npwp_kertas">
+                                <select class="form-select border border-secondary " id="npwp_kertas" name="npwp_kertas">
 
                                     <option value="1" selected>NPWP</option>
                                     <option value="2">Non-NPWP</option>
@@ -56,7 +56,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Dasar Pengenaan Pajak (DPP)</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang_dpp" inputmode="numeric" name="harga_barang_dpp">
+                                <input type="text" class="form-control border border-secondary  mataUang" id="harga_barang_dpp" inputmode="numeric" name="harga_barang_dpp">
                             </div>
                         </div>
                     </div>

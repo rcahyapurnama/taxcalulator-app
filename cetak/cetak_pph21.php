@@ -14,7 +14,7 @@ $gaji = $_POST['gaji'];
 $tunjangan = $_POST['tunjangan'];
 $bruto = $_POST['bruto'];
 $jkk = $_POST['hasiljkk'];
-$jkm = $_POST['hasiljkk'];
+$jkm = $_POST['hasiljkm'];
 $bpjs = $_POST['hasilbpjs'];
 $jabatan = $_POST['jabatan'];
 $jht = $_POST['hasiljht'];
@@ -25,7 +25,11 @@ $nettosetahun = $_POST['nettosetahun'];
 $pkp = $_POST['pkp'];
 $pphsetahun = $_POST['pphsetahun'];
 $pphsebulan = $_POST['pphsebulan'];
-
+$labeljkk = $_POST['inputjkk'];
+$labeljkm = $_POST['inputjkm'];
+$labelbpjskes = $_POST['inputbpjskes'];
+$labeljht = $_POST['inputjht'];
+$labeljp = $_POST['inputjp'];
 
 // Membuat objek FPDF
 $pdf = new FPDF();
@@ -96,7 +100,7 @@ $pdf->Cell(40, 10, 'Jumlah JP', 'LR');
 $pdf->Cell(50, 10, iconv('UTF-8', 'ISO-8859-9', "$jp"), 'LR');
 $pdf->Ln(9);
 $pdf->Cell(50, 10, 'Jumlah JKM', 'LR');
-$pdf->Cell(45, 10, iconv('UTF-8', 'ISO-8859-9', "$gaji"), 'LR');
+$pdf->Cell(45, 10, iconv('UTF-8', 'ISO-8859-9', "$jkm"), 'LR');
 $pdf->Cell(5);
 $pdf->Cell(40, 10, '', 'LR');
 $pdf->Cell(50, 10, '', 'LR');

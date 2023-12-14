@@ -22,7 +22,10 @@ flex-direction: column;
     
     padding-top: 10px;
 }
-
+   #btnjkk {
+       width: 16.9%;
+       
+   }
 
     body::-webkit-scrollbar {
         display: none;
@@ -103,6 +106,7 @@ flex-direction: column;
           .col.note {
               width: 380px;
           }
+        
     }
 
    

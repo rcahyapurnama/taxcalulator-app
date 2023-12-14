@@ -26,7 +26,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Pilih Jenis Pajak</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="jenispajak">
+                                <select class="form-select border border-secondary" id="jenispajak">
 
                                     <option value="pph22-impor.php">PPH 22 Atas Barang Impor</option>
                                     <option value="pph22-pemerintah.php" selected>PPH 22 Atas Penjualan Barang Kepada Pemerintah</option>
@@ -45,7 +45,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Status NPWP</label>
                             <div class="col-sm-auto">
-                                <select class="form-select border border-secondary shadow" id="npwp" name="npwp">
+                                <select class="form-select border border-secondary" id="npwp" name="npwp">
 
                                     <option value="1">NPWP</option>
                                     <option value="2">Non-NPWP</option>
@@ -56,7 +56,7 @@ include("navbar.php") ?>
                         <div class="mb-3">
                             <label class="form-label">Harga Barang</label>
                             <div class="col-sm-auto">
-                                <input type="text" class="form-control border border-secondary shadow mataUang" id="harga_barang" name="harga_barang" inputmode="numeric">
+                                <input type="text" class="form-control border border-secondary mataUang" id="harga_barang" name="harga_barang" inputmode="numeric">
                             </div>
                         </div>
                         <div class="col d-flex gap-3 justify-content-center">
@@ -126,20 +126,20 @@ include("navbar.php") ?>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga Barang </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control  border border-secondary shadow " id="harga_barang1" name="harga_barang1" readonly>
+                                                <input type="text" class="form-control  border border-secondary shadow text-end bg-secondary-subtle" id="harga_barang1" name="harga_barang1" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1" name="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="persen_pph1" name="persen_pph1" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="persen_pph1" name="persen_pph1" readonly>
                                                 <input type="hidden" class="ubahLabel shadow " id="persen_pph_hidden" name="persen_pph_hidden" value="1.5%" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="uang_diterima" name="uang_diterima" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="uang_diterima" name="uang_diterima" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -156,31 +156,31 @@ include("navbar.php") ?>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang termasuk PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang2" name="harga_barang2" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="harga_barang2" name="harga_barang2" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="ppn1" name="ppn1" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="ppn1" name="ppn1" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang tidak termasuk PPN (11%) / DPP</label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang_tidak_termasuk" name="harga_barang_tidak_termasuk" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="harga_barang_tidak_termasuk" name="harga_barang_tidak_termasuk" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1" name="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="persen_pph2" name="persen_pph2" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="persen_pph2" name="persen_pph2" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="uang_diterima2" name="uang_diterima2" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="uang_diterima2" name="uang_diterima2" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -197,37 +197,37 @@ include("navbar.php") ?>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang termasuk PPN (11%) dan PPnBM (20%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang3" name="harga_barang3" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="harga_barang3" name="harga_barang3" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPN (11%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="ppn3" name="ppn3" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="ppn3" name="ppn3" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> PPnBM (20%) </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="ppnbm" name="ppnbm" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="ppnbm" name="ppnbm" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Harga barang tidak termasuk PPN dan PPnBM </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="harga_barang_tidak_termasuk2" name="harga_barang_tidak_termasuk2" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="harga_barang_tidak_termasuk2" name="harga_barang_tidak_termasuk2" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Pajak Penghasilan Pasal 22 <span class="ubahLabel" id="label1">(1.5%)</span> </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="persen_pph3" name="persen_pph3" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="persen_pph3" name="persen_pph3" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-6 col-form-label"> Jumlah uang yang diterima </label>
                                             <div class="col-sm-5 ms-auto">
-                                                <input type="text" class="form-control border border-secondary shadow " id="uang_diterima3" name="uang_diterima3" readonly>
+                                                <input type="text" class="form-control border border-secondary shadow text-end bg-secondary-subtle" id="uang_diterima3" name="uang_diterima3" readonly>
                                             </div>
                                         </div>
                                     </div>
