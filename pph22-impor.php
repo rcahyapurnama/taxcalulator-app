@@ -102,7 +102,7 @@ include("navbar.php") ?>
                             <label class="col-sm-3 col-form-label ">Bea Masuk (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control  border border-secondary " id="persenmasuk" value="10" name="persenmasuk" inputmode="numeric">
+                                    <input type="text" class="form-control  border border-secondary persen " id="persenmasuk" value="10" name="persenmasuk" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
@@ -119,7 +119,7 @@ include("navbar.php") ?>
                             <label class="col-sm-3 col-form-label ">Bea Tambahan Lainnya (%)</label>
                             <div class="col-sm-2">
                                 <div class="col-auto">
-                                    <input type="text" class="form-control border border-secondary" id="persentambah" name="persentambah" value="6" inputmode="numeric">
+                                    <input type="text" class="form-control border border-secondary persen" id="persentambah" name="persentambah" value="6" inputmode="numeric">
                                 </div>
                             </div>
                             <label class="col-1 col-form-label ms-4" style="font-size: 25px; margin-top:-8px;"> = </label>
@@ -242,7 +242,7 @@ include("navbar.php") ?>
 <script>
     $(document).ready(function() {
 
-        $("#cost, #insurance, #freight, #persenmasuk, #persentambah").on("input", function() {
+        $("#cost, #persenmasuk, #persentambah").on("input", function() {
             calculateCif();
         });
 
@@ -252,10 +252,11 @@ include("navbar.php") ?>
 
         $(".dolar").on("input", function() {
             formatDolar(this);
-
         });
 
-
+        $(".persen").on("input", function() {
+            formatpersen(this);
+        });
 
     });
 
@@ -281,6 +282,7 @@ include("navbar.php") ?>
         pilihandropdown = 'persen'; // Mengubah status pilihan saat ini
 
 
+        calculateCif();
     });
     // Event listener untuk "US$" pada Biaya Asuransi / Insurance
     $(document).on('click', '#dolar', function() {
@@ -296,7 +298,7 @@ include("navbar.php") ?>
 
 
         pilihandropdown = 'dolar'; // Mengubah status pilihan saat ini
-
+        calculateCif();
 
 
     });
@@ -440,7 +442,7 @@ include("navbar.php") ?>
         var hasil = impor * 2.5 / 100;
         var hasil1 = impor * 7.5 / 100;
 
-
+        console.log(cifRp);
         $("#cifrp").val(new Intl.NumberFormat('id-ID', {
             style: 'currency',
             currency: 'IDR',

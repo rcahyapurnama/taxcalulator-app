@@ -27,10 +27,7 @@ flex-direction: column;
        
    }
 
-    body::-webkit-scrollbar {
-        display: none;
-    }
-
+   
     footer {
         background-color: #ffc107;
             color: #000;

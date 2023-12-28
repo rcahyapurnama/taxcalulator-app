@@ -39,7 +39,7 @@ $titleText = isset($jenispajakMapping[$jenispajak23]) ? $jenispajakMapping[$jeni
 // Membuat objek FPDF
 $pdf = new FPDF();
 
-$pdf->SetTitle('cetak pph22 atas penjualan kertas.pdf');
+$pdf->SetTitle('CETAK PPH23 ' . $titleText  . '.pdf');
 
 $pdf->AddPage();
 
@@ -98,4 +98,4 @@ $pdf->Cell(90, 9, iconv('UTF-8', 'ISO-8859-9', $nilaipph), 'LBR', 0, 'R');
 
 
 // Simpan dokumen PDF
-$pdf->Output('cetak pph22 atas penjualan kertas.pdf', 'I');
+$pdf->Output('CETAK PPH23  ' . $titleText  . '.pdf', 'I');
